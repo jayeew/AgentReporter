@@ -1,0 +1,2730 @@
+
+<!DOCTYPE html>
+<html lang="en" >
+    <head >
+
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="HandheldFriendly" content="True" />
+        <meta name="MobileOptimized" content="320" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        
+        
+
+        
+        
+  <link  rel="stylesheet" href="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/assets/base_style-BxRs1iOp.css" />
+<script type="module" crossorigin="" src="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/assets/base_style-D-jH62-1.js"></script>
+
+  <link  rel="stylesheet" href="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/assets/article_style-B67IZFds.css" />
+<link  rel="stylesheet" href="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/assets/style-D77LS1kY.css" />
+<script type="module" crossorigin="" src="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/assets/article_style-CTAd1LmM.js"></script>
+
+  
+  
+    <style>
+  
+  
+  @media screen and (min-width: 64em) {
+    div.pmc-wm {
+      background: repeat-y;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='350' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cdefs%3E%3Cfilter x='-.02' y='0' width='1.05' height='1' id='c'%3E%3CfeFlood flood-color='%23FFF'/%3E%3CfeComposite in='SourceGraphic'/%3E%3C/filter%3E%3Ctext id='b' font-family='Helvetica' font-size='11pt' style='opacity:1;fill:%23005ea2;stroke:none;text-anchor:middle' x='175' y='14'%3E%3C/text%3E%3Cpath id='a' style='fill:%23005ea2' d='M0 8h350v3H0z'/%3E%3C/defs%3E%3Cuse xlink:href='%23a' transform='rotate(90 10 10)'/%3E%3Cuse xlink:href='%23b' transform='rotate(90 10 10)' filter='url(%23c)'/%3E%3C/svg%3E");
+      padding-left: 3rem;
+    }
+  }
+</style>
+
+  
+
+
+
+        
+            <link rel="apple-touch-icon"
+                  sizes="180x180"
+                  href="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/img/favicons/apple-touch-icon.png" />
+            <link rel="icon"
+                  type="image/png"
+                  sizes="48x48"
+                  href="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/img/favicons/favicon-48x48.png" />
+            <link rel="icon"
+                  type="image/png"
+                  sizes="32x32"
+                  href="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/img/favicons/favicon-32x32.png" />
+            <link rel="icon"
+                  type="image/png"
+                  sizes="16x16"
+                  href="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/img/favicons/favicon-16x16.png" />
+            <link rel="manifest" href="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/img/favicons/site.webmanifest" />
+            <link rel="mask-icon"
+                  href="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/img/favicons/safari-pinned-tab.svg"
+                  color="#0071bc" />
+            <meta name="msapplication-config"
+                  content="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/img/favicons/browserconfig.xml" />
+            <meta name="theme-color" content="#ffffff" />
+        
+
+        <title>
+            Leveraging Large Language Models for Decision Support in Personalized Oncology - PMC
+        </title>
+
+        
+        
+  
+  <!-- Logging params: Pinger defaults -->
+<meta name="ncbi_app" content="cloudpmc-viewer" />
+<meta name="ncbi_db" content="pmc" />
+<meta name="ncbi_phid" content="4A9032A8A4A0A4B30932A800A01873B0.m_1" />
+<meta name="ncbi_pinger_stat_url" content="https://pmc.ncbi.nlm.nih.gov/stat" />
+<!-- Logging params: Pinger custom -->
+<meta name="ncbi_pdid" content="article" />
+  
+    <link rel="preconnect" href="https://www.google-analytics.com" />
+
+    
+        <link rel="preconnect" href="https://cdn.ncbi.nlm.nih.gov" />
+    
+
+    <!-- Include USWDS Init Script -->
+    <script src="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/assets/uswds-init.js"></script>
+
+
+    <meta name="ncbi_domain" content="jamasd">
+<meta name="ncbi_type" content="fulltext">
+<meta name="ncbi_pcid" content="journal">
+<meta name="ncbi_feature" content="associated_data">
+<link rel="canonical" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10656647/">
+<meta name="robots" content="INDEX,NOFOLLOW,NOARCHIVE">
+<meta name="citation_journal_title" content="JAMA Network Open">
+<meta name="citation_title" content="Leveraging Large Language Models for Decision Support in Personalized Oncology">
+<meta name="citation_author" content="Manuela Benary">
+<meta name="citation_author_institution" content="Charité Comprehensive Cancer Center, Charité–Universitätsmedizin Berlin, Corporate Member of Freie Universität Berlin and Humboldt-Universität zu Berlin, Berlin, Germany">
+<meta name="citation_author_institution" content="Core Unit Bioinformatics, Berlin Institute of Health at Charité–Universitätsmedizin Berlin, Charitéplatz 1, Berlin, Germany">
+<meta name="citation_author" content="Xing David Wang">
+<meta name="citation_author_institution" content="Knowledge Management in Bioinformatics, Humboldt-Universität zu Berlin, Berlin, Germany">
+<meta name="citation_author" content="Max Schmidt">
+<meta name="citation_author_institution" content="Charité Comprehensive Cancer Center, Charité–Universitätsmedizin Berlin, Corporate Member of Freie Universität Berlin and Humboldt-Universität zu Berlin, Berlin, Germany">
+<meta name="citation_author_institution" content="Department of Hematology, Oncology and Cancer Immunology, Campus Benjamin Franklin, Charité–Universitätsmedizin Berlin, Corporate Member of Freie Universität Berlin and Humboldt-Universität zu Berlin, Berlin, Germany">
+<meta name="citation_author" content="Dominik Soll">
+<meta name="citation_author_institution" content="Charité Comprehensive Cancer Center, Charité–Universitätsmedizin Berlin, Corporate Member of Freie Universität Berlin and Humboldt-Universität zu Berlin, Berlin, Germany">
+<meta name="citation_author_institution" content="Department of Endocrinology and Metabolic Diseases, Charité Universitätsmedizin Berlin, Department of Endocrinology and Metabolic Diseases, Corporate Member of Freie Universität Berlin and Humboldt-Universität zu Berlin, Berlin, Germany">
+<meta name="citation_author" content="Georg Hilfenhaus">
+<meta name="citation_author_institution" content="Charité Comprehensive Cancer Center, Charité–Universitätsmedizin Berlin, Corporate Member of Freie Universität Berlin and Humboldt-Universität zu Berlin, Berlin, Germany">
+<meta name="citation_author_institution" content="Department of Hematology, Oncology and Cancer Immunology, Campus Charité Mitte, Charité–Universitätsmedizin Berlin, Corporate Member of Freie Universität Berlin and Humboldt-Universität zu Berlin, Berlin, Germany">
+<meta name="citation_author" content="Mani Nassir">
+<meta name="citation_author_institution" content="Charité Comprehensive Cancer Center, Charité–Universitätsmedizin Berlin, Corporate Member of Freie Universität Berlin and Humboldt-Universität zu Berlin, Berlin, Germany">
+<meta name="citation_author_institution" content="Department of Hematology, Oncology and Cancer Immunology, Campus Charité Mitte, Charité–Universitätsmedizin Berlin, Corporate Member of Freie Universität Berlin and Humboldt-Universität zu Berlin, Berlin, Germany">
+<meta name="citation_author" content="Christian Sigler">
+<meta name="citation_author_institution" content="Charité Comprehensive Cancer Center, Charité–Universitätsmedizin Berlin, Corporate Member of Freie Universität Berlin and Humboldt-Universität zu Berlin, Berlin, Germany">
+<meta name="citation_author" content="Maren Knödler">
+<meta name="citation_author_institution" content="Charité Comprehensive Cancer Center, Charité–Universitätsmedizin Berlin, Corporate Member of Freie Universität Berlin and Humboldt-Universität zu Berlin, Berlin, Germany">
+<meta name="citation_author" content="Ulrich Keller">
+<meta name="citation_author_institution" content="Department of Hematology, Oncology and Cancer Immunology, Campus Benjamin Franklin, Charité–Universitätsmedizin Berlin, Corporate Member of Freie Universität Berlin and Humboldt-Universität zu Berlin, Berlin, Germany">
+<meta name="citation_author_institution" content="German Cancer Consortium and German Cancer Research Center, Partner Site Berlin, Germany">
+<meta name="citation_author" content="Dieter Beule">
+<meta name="citation_author_institution" content="Core Unit Bioinformatics, Berlin Institute of Health at Charité–Universitätsmedizin Berlin, Charitéplatz 1, Berlin, Germany">
+<meta name="citation_author" content="Ulrich Keilholz">
+<meta name="citation_author_institution" content="Charité Comprehensive Cancer Center, Charité–Universitätsmedizin Berlin, Corporate Member of Freie Universität Berlin and Humboldt-Universität zu Berlin, Berlin, Germany">
+<meta name="citation_author_institution" content="German Cancer Consortium and German Cancer Research Center, Partner Site Berlin, Germany">
+<meta name="citation_author" content="Ulf Leser">
+<meta name="citation_author_institution" content="Knowledge Management in Bioinformatics, Humboldt-Universität zu Berlin, Berlin, Germany">
+<meta name="citation_author" content="Damian T Rieke">
+<meta name="citation_author_institution" content="Charité Comprehensive Cancer Center, Charité–Universitätsmedizin Berlin, Corporate Member of Freie Universität Berlin and Humboldt-Universität zu Berlin, Berlin, Germany">
+<meta name="citation_author_institution" content="Department of Hematology, Oncology and Cancer Immunology, Campus Benjamin Franklin, Charité–Universitätsmedizin Berlin, Corporate Member of Freie Universität Berlin and Humboldt-Universität zu Berlin, Berlin, Germany">
+<meta name="citation_author_institution" content="German Cancer Consortium and German Cancer Research Center, Partner Site Berlin, Germany">
+<meta name="citation_publication_date" content="2023 Nov 17">
+<meta name="citation_volume" content="6">
+<meta name="citation_issue" content="11">
+<meta name="citation_firstpage" content="e2343689">
+<meta name="citation_doi" content="10.1001/jamanetworkopen.2023.43689">
+<meta name="citation_pmid" content="37976064">
+<meta name="citation_abstract_html_url" content="https://pmc.ncbi.nlm.nih.gov/articles/PMC10656647/">
+<meta name="citation_fulltext_html_url" content="https://pmc.ncbi.nlm.nih.gov/articles/PMC10656647/">
+<meta name="description" content="Can current conversational large language models (LLMs) be used as a tool for personalized decision-making in precision oncology? In this diagnostic study, treatment option identification from 4 LLMs for 10 fictional patients deviated substantially ...">
+<meta name="og:title" content="Leveraging Large Language Models for Decision Support in Personalized Oncology">
+<meta name="og:type" content="article">
+<meta name="og:site_name" content="PubMed Central (PMC)">
+<meta name="og:description" content="Can current conversational large language models (LLMs) be used as a tool for personalized decision-making in precision oncology? In this diagnostic study, treatment option identification from 4 LLMs for 10 fictional patients deviated substantially ...">
+<meta name="og:url" content="https://pmc.ncbi.nlm.nih.gov/articles/PMC10656647/">
+<meta name="og:image" content="https://cdn.ncbi.nlm.nih.gov/pmc/cms/images/pmc-card-share.jpg?_=0">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@ncbi">
+    
+    
+
+    </head>
+    <body >
+        
+    <a class="usa-skipnav " href="#main-content">
+      Skip to main content
+    </a>
+
+
+        
+            
+
+<section class="usa-banner " aria-label="Official website of the United States government" >
+    <div class="usa-accordion">
+        <header class="usa-banner__header">
+            <div class="usa-banner__inner">
+                <div class="grid-col-auto">
+                    <img aria-hidden="true"
+                         class="usa-banner__header-flag"
+                         src="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/img/us_flag.svg"
+                         alt="" />
+                </div>
+
+                <div class="grid-col-fill tablet:grid-col-auto" aria-hidden="true">
+                    <p class="usa-banner__header-text">
+                        An official website of the United States government
+                    </p>
+                    <span class="usa-banner__header-action">Here's how you know</span>
+                </div>
+
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        <button
+            type="button"
+        
+    
+    class="usa-accordion__button usa-banner__button
+           
+
+           
+               
+               
+               
+               
+            
+
+           
+           
+           
+           "
+    aria-expanded="false"
+    aria-controls="gov-banner-default"
+    
+    data-testid="storybook-django-banner"
+    
+    >
+    
+        
+
+        
+                    <span class="usa-banner__button-text">Here's how you know</span>
+                
+
+        
+    
+        
+            </button>
+        
+
+
+            </div>
+        </header>
+
+        <div class="usa-banner__content usa-accordion__content"
+             id="gov-banner-default"
+             hidden>
+            <div class="grid-row grid-gap-lg">
+                <div class="usa-banner__guidance tablet:grid-col-6">
+                    <img class="usa-banner__icon usa-media-block__img"
+                         src="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/img/icon-dot-gov.svg"
+                         alt=""
+                         aria-hidden="true" />
+                    <div class="usa-media-block__body">
+                        <p>
+                            <strong>Official websites use .gov</strong>
+                            <br />
+                            A
+                            <strong>.gov</strong> website belongs to an official
+                            government organization in the United States.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="usa-banner__guidance tablet:grid-col-6">
+                    <img class="usa-banner__icon usa-media-block__img"
+                         src="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/img/icon-https.svg"
+                         alt=""
+                         aria-hidden="true" />
+
+                    <div class="usa-media-block__body">
+                        <p>
+                            <strong>Secure .gov websites use HTTPS</strong>
+                            <br />
+                            A <strong>lock</strong> (
+                            <span class="icon-lock">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     width="52"
+                                     height="64"
+                                     viewBox="0 0 52 64"
+                                     class="usa-banner__lock-image"
+                                     role="graphics-symbol"
+                                     aria-labelledby="banner-lock-description"
+                                     focusable="false">
+                                    <title id="banner-lock-title">Lock</title>
+                                    <desc id="banner-lock-description">
+                                    Locked padlock icon
+                                    </desc>
+                                    <path fill="#000000"
+                                          fill-rule="evenodd"
+                                          d="M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z" />
+                                </svg>
+</span>) or <strong>https://</strong> means you've safely
+                                connected to the .gov website. Share sensitive
+                                information only on official, secure websites.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        
+
+        
+    
+    
+    
+
+<div class="usa-overlay">
+</div>
+
+
+
+<header class="usa-header usa-header--extended usa-header--wide" data-header data-testid="header"    >
+    <div class="ncbi-header">
+        <div class="ncbi-header__container">
+            <a class="ncbi-header__logo-container"
+               href="https://www.ncbi.nlm.nih.gov/">
+                <img alt="NCBI home page"
+                     class="ncbi-header__logo-image"
+                     src="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/img/ncbi-logos/nih-nlm-ncbi--white.svg"
+                     width="410"
+                     height="100" />
+            </a>
+
+            <!-- Mobile menu hamburger button -->
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        <button
+            type="button"
+        
+    
+    class="usa-menu-btn ncbi-header__hamburger-button
+           
+
+           
+               
+               
+               
+               
+            
+
+           
+           
+           
+           "
+    
+    
+    aria-label="Show menu"
+    data-testid="navMenuButton"
+    
+    >
+    
+        
+
+        
+                <svg aria-hidden="true"
+                     class="ncbi-hamburger-icon"
+                     fill="none"
+                     focusable="false"
+                     height="21"
+                     viewBox="0 0 31 21"
+                     width="31"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path clip-rule="evenodd"
+                          d="M0.125 20.75H30.875V17.3333H0.125V20.75ZM0.125 12.2083H30.875V8.79167H0.125V12.2083ZM0.125 0.25V3.66667H30.875V0.25H0.125Z"
+                          fill="#F1F1F1"
+                          fill-rule="evenodd" />
+                </svg>
+            
+
+        
+    
+        
+            </button>
+        
+
+
+
+            
+                <!-- Desktop buttons-->
+                <div class="ncbi-header__desktop-buttons">
+                    
+                        <!-- Desktop search button -->
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        <button
+            type="button"
+        
+    
+    class="usa-button
+           
+
+           
+               
+               
+               
+               
+            
+
+           
+           
+           usa-button--unstyled ncbi-header__desktop-button
+           "
+    aria-expanded="false"
+    aria-controls="search-field-desktop-navigation"
+    aria-label="Show search overlay"
+    data-testid="toggleSearchPanelButton"
+    data-toggle-search-panel-button
+    >
+    
+        
+
+        
+                            
+
+
+
+    <img
+        src="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/img/search.svg"
+        class="usa-icon "
+        aria-hidden="true"
+        
+        
+    />
+
+
+                            Search
+                        
+
+        
+    
+        
+            </button>
+        
+
+
+                    
+
+                    <!-- Desktop login dropdown -->
+                    
+                        <div class="ncbi-header__login-dropdown">
+                            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        <button
+            type="button"
+        
+    
+    class="usa-button
+           
+
+           
+               
+               
+               
+               
+            
+
+           
+           
+           usa-button--unstyled ncbi-header__desktop-button ncbi-header__login-dropdown-button
+           "
+    aria-expanded="false"
+    aria-controls="login-dropdown-menu"
+    aria-label="Show login menu"
+    data-testid="toggleLoginMenuDropdown"
+    data-desktop-login-button
+    >
+    
+        
+
+        
+                                
+
+
+
+    <img
+        src="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/img/person.svg"
+        class="usa-icon "
+        aria-hidden="true"
+        
+        
+    />
+
+
+
+                                <span data-login-dropdown-text>Log in</span>
+
+                                <!-- Dropdown icon pointing up -->
+                                
+
+
+
+    <img
+        src="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/img/expand_less.svg"
+        class="usa-icon ncbi-header__login-dropdown-icon ncbi-header__login-dropdown-icon--expand-less ncbi-header__login-dropdown-icon--hidden"
+        aria-hidden="true"
+        data-login-dropdown-up-arrow
+        
+    />
+
+
+
+                                <!-- Dropdown icon pointing down -->
+                                
+
+
+
+    <img
+        src="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/img/expand_more.svg"
+        class="usa-icon ncbi-header__login-dropdown-icon ncbi-header__login-dropdown-icon--expand-more ncbi-header__login-dropdown-icon--hidden"
+        aria-hidden="true"
+        data-login-dropdown-down-arrow
+        
+    />
+
+
+                            
+
+        
+    
+        
+            </button>
+        
+
+
+
+                            <!-- Login dropdown menu -->
+                            <ul class="usa-nav__submenu ncbi-header__login-dropdown-menu"
+                                id="login-dropdown-menu"
+                                data-desktop-login-menu-dropdown
+                                hidden>
+                                
+                                    <li class="usa-nav__submenu-item">
+                                        <!-- Uses custom style overrides to render external and document links. -->
+                                        
+
+
+
+
+
+
+
+
+
+    <a href="https://www.ncbi.nlm.nih.gov/myncbi/" class="usa-link  "  >
+        
+
+        
+            Dashboard
+        
+
+        
+    </a>
+
+
+                                    </li>
+                                
+                                    <li class="usa-nav__submenu-item">
+                                        <!-- Uses custom style overrides to render external and document links. -->
+                                        
+
+
+
+
+
+
+
+
+
+    <a href="https://www.ncbi.nlm.nih.gov/myncbi/collections/bibliography/" class="usa-link  "  >
+        
+
+        
+            Publications
+        
+
+        
+    </a>
+
+
+                                    </li>
+                                
+                                    <li class="usa-nav__submenu-item">
+                                        <!-- Uses custom style overrides to render external and document links. -->
+                                        
+
+
+
+
+
+
+
+
+
+    <a href="https://www.ncbi.nlm.nih.gov/account/settings/" class="usa-link  "  >
+        
+
+        
+            Account settings
+        
+
+        
+    </a>
+
+
+                                    </li>
+                                
+                                <li class="usa-nav__submenu-item">
+                                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        <button
+            type="button"
+        
+    
+    class="usa-button
+           
+
+           
+               
+               
+               
+               
+            
+
+           
+           
+           usa-button--outline ncbi-header__login-dropdown-logout-button
+           "
+    
+    
+    
+    data-testid="desktopLogoutButton"
+    data-desktop-logout-button
+    >
+    
+        
+
+        Log out
+
+        
+    
+        
+            </button>
+        
+
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                </div>
+            
+        </div>
+    </div>
+
+    <!-- Search panel -->
+    
+        <div class="ncbi-search-panel ncbi--show-only-at-desktop"
+             data-header-search-panel
+             hidden>
+            <div class="ncbi-search-panel__container">
+                <form action="https://www.ncbi.nlm.nih.gov/search/all/"
+                      
+                      autocomplete="off"
+                      class="usa-search usa-search--big ncbi-search-panel__form"
+                      data-testid="desktop-navigation-search-form"
+                      method="GET"
+                      role="search">
+                    <label class="usa-sr-only" for="search-field-desktop-navigation">
+                        Search…
+                    </label>
+                    <input class="usa-input"
+                           id="search-field-desktop-navigation"
+                           name="term"
+                           
+                               placeholder="Search NCBI"
+                           
+                           type="search"
+                           value="" />
+                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        <button
+            type="submit"
+        
+    
+    class="usa-button
+           
+
+           
+               
+               
+               
+               
+            
+
+           
+           
+           
+           "
+    
+    
+    
+    
+    
+    >
+    
+        
+
+        
+                        <span class="usa-search__submit-text">
+                            Search NCBI
+                        </span>
+                    
+
+        
+    
+        
+            </button>
+        
+
+
+                </form>
+
+                
+            </div>
+        </div>
+    
+
+    <nav aria-label="Primary navigation" class="usa-nav">
+        <p class="usa-sr-only" id="primary-navigation-sr-only-title">
+            Primary site navigation
+        </p>
+
+        <!-- Mobile menu close button -->
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        <button
+            type="button"
+        
+    
+    class="usa-nav__close ncbi-nav__close-button
+           
+
+           
+               
+               
+               
+               
+            
+
+           
+           
+           
+           "
+    
+    
+    aria-label="Close navigation menu"
+    data-testid="navCloseButton"
+    
+    >
+    
+        
+
+        
+            <img src="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/img/usa-icons/close.svg" alt="Close" />
+        
+
+        
+    
+        
+            </button>
+        
+
+
+
+        
+            <!-- Mobile search component -->
+            <form class="usa-search usa-search--small ncbi--hide-at-desktop"
+                  action="https://www.ncbi.nlm.nih.gov/search/all/"
+                  
+                  autocomplete="off"
+                  data-testid="mobile-navigation-search-form"
+                  method="GET"
+                  role="search">
+                <label class="usa-sr-only" for="search-field-mobile-navigation">
+                    Search
+                </label>
+
+                <input class="usa-input"
+                       id="search-field-mobile-navigation"
+                       type="search"
+                       
+                           placeholder="Search NCBI"
+                       
+                       name="term" />
+
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        <button
+            type="submit"
+        
+    
+    class="usa-button
+           
+
+           
+               
+               
+               
+               
+            
+
+           
+           
+           
+           "
+    
+    
+    
+    
+    
+    >
+    
+        
+
+        
+                    <!-- This SVG should be kept inline and not replaced with a link to the icon as otherwise it will render in the wrong color -->
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0Ij48cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTE1LjUgMTRoLS43OWwtLjI4LS4yN0E2LjQ3MSA2LjQ3MSAwIDAgMCAxNiA5LjUgNi41IDYuNSAwIDEgMCA5LjUgMTZjMS42MSAwIDMuMDktLjU5IDQuMjMtMS41N2wuMjcuMjh2Ljc5bDUgNC45OUwyMC40OSAxOWwtNC45OS01em0tNiAwQzcuMDEgMTQgNSAxMS45OSA1IDkuNVM3LjAxIDUgOS41IDUgMTQgNy4wMSAxNCA5LjUgMTEuOTkgMTQgOS41IDE0eiIvPjwvc3ZnPg=="
+                         class="usa-search__submit-icon"
+                         alt="Search" />
+                
+
+        
+    
+        
+            </button>
+        
+
+
+            </form>
+
+            
+        
+
+        <!-- Primary navigation menu items -->
+        <!-- This usa-nav__inner wrapper is required to correctly style the navigation items on Desktop -->
+        
+
+        
+            <div class="ncbi-nav__mobile-login-menu ncbi--hide-at-desktop"
+                 data-mobile-login-menu
+                 hidden>
+                <p class="ncbi-nav__mobile-login-menu-status">
+                    Logged in as:
+                    <strong class="ncbi-nav__mobile-login-menu-email"
+                            data-mobile-login-email-text></strong>
+                </p>
+                <ul class="usa-nav__primary usa-accordion">
+                    
+                        <li class="usa-nav__primary-item">
+                            
+
+
+
+
+
+
+
+
+
+    <a href="https://www.ncbi.nlm.nih.gov/myncbi/" class="usa-link  "  >
+        
+
+        
+            Dashboard
+        
+
+        
+    </a>
+
+
+                        </li>
+                    
+                        <li class="usa-nav__primary-item">
+                            
+
+
+
+
+
+
+
+
+
+    <a href="https://www.ncbi.nlm.nih.gov/myncbi/collections/bibliography/" class="usa-link  "  >
+        
+
+        
+            Publications
+        
+
+        
+    </a>
+
+
+                        </li>
+                    
+                        <li class="usa-nav__primary-item">
+                            
+
+
+
+
+
+
+
+
+
+    <a href="https://www.ncbi.nlm.nih.gov/account/settings/" class="usa-link  "  >
+        
+
+        
+            Account settings
+        
+
+        
+    </a>
+
+
+                        </li>
+                    
+                </ul>
+            </div>
+        
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        <button
+            type="button"
+        
+    
+    class="usa-button
+           
+
+           
+               
+               
+               
+               
+            
+
+           
+           
+           ncbi-nav__mobile-login-button ncbi--hide-at-desktop
+           "
+    
+    
+    
+    data-testid="mobileLoginButton"
+    data-mobile-login-button
+    >
+    
+        
+
+        Log in
+
+        
+    
+        
+            </button>
+        
+
+
+    </nav>
+</header>
+
+    
+    
+        
+
+<section class="pmc-header pmc-header--basic" aria-label="PMC Header with search box">
+    <div class="pmc-nav-container">
+        <div class="pmc-header__bar">
+           <div class="pmc-header__logo">
+               <a href="/" title="Home" aria-label="PMC Home"></a>
+           </div>
+            <button
+                    type="button"
+                    class="usa-button usa-button--unstyled pmc-header__search__button"
+                    aria-label="Open search"
+                    data-ga-category="search"
+                    data-ga-action="PMC"
+                    data-ga-label="pmc_search_panel_mobile"
+            >
+                <img src="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/img/search.svg" alt="PMC search open icon" aria-hidden="true" class="usa-icon usa-icon--size-4 pmc-icon__open" />
+                <img src="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/img/close.svg" alt="PMC search close ison" aria-hidden="true" class="usa-icon usa-icon--size-4 pmc-icon__close" />
+            </button>
+        </div>
+        <div class="pmc-header__search">
+            
+
+
+<form class="usa-search usa-search--extra usa-search--article-right-column  pmc-header__search__form" id="pmc-search-form" autocomplete="off" role="search">
+<label class="usa-sr-only" for="pmc-search">Search PMC Full-Text Archive</label>
+<span class="autoComplete_wrapper flex-1">
+<input class="usa-input width-full maxw-none" required="required" placeholder="Search PMC Full-Text Archive" id="pmc-search"  type="search" name="term" data-autocomplete-url="https://pmc.ncbi.nlm.nih.gov/autocomp/search/autocomp/"/>
+</span>
+<button
+class="usa-button"
+type="submit"
+formaction="https://pmc.ncbi.nlm.nih.gov/search/"
+data-ga-category="search"
+data-ga-action="PMC"
+data-ga-label="PMC_search_button"
+>
+<span class="usa-search__submit-text">Search in PMC</span>
+<img
+src="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/img/usa-icons-bg/search--white.svg"
+class="usa-search__submit-icon"
+alt="Search"
+/>
+</button>
+</form>
+            <div class="display-flex flex-column tablet:flex-row tablet:flex-justify flex-justify-center flex-align-center width-full desktop:maxw-44">
+                <ul class="pmc-header__search__menu">
+                    <li>
+                        
+                            <a class="usa-link" href="/journals/" data-ga-action="featured_link" data-ga-label="journal list">
+                                Journal List
+                            </a>
+                        
+                    </li>
+                    <li>
+                        
+                            <a class="usa-link" href="/about/userguide/" data-ga-action="featured_link"
+                            data-ga-label="user guide">
+                                User Guide
+                            </a>
+                        
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+    
+
+
+        
+        
+
+       
+  <div class="usa-section padding-top-0 desktop:padding-top-6 pmc-article-section" data-article-db="pmc" data-article-id="10656647">
+
+    
+
+   
+
+
+
+<div class="grid-container pmc-actions-bar" aria-label="Actions bar" role="complementary">
+    <div class="grid-row">
+        <div class="grid-col-fill display-flex">
+             <div class="display-flex">
+                <ul class="usa-list usa-list--unstyled usa-list--horizontal">
+                    <li class="margin-right-2 mobile-lg:margin-right-4 display-flex mob">
+                        <button
+                                type="button"
+                                class="usa-button pmc-sidenav__container__open usa-button--unstyled width-auto display-flex"
+                                aria-label="Open resources"
+                                data-extra-class="is-visible-resources"
+                                data-ga-category="resources_accordion"
+                                data-ga-action="click"
+                                data-ga-label="mobile_icon"
+                        >
+                            <img src="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/img/more_vert.svg" alt="Open resources icon" class="usa-icon usa-icon--size-4 usa-icon--link" />
+                        </button>
+                    </li>
+                    
+                    <li class="margin-right-2 mobile-lg:margin-right-4 display-flex mob">
+                        <a
+                                href="https://doi.org/10.1001/jamanetworkopen.2023.43689"
+                                class="usa-link display-flex usa-tooltip"
+                                role="button"
+                                target="_blank"
+                                rel="noreferrer noopener"
+                                title="View on publisher site"
+                                data-position="bottom"
+                                aria-label="View on publisher site"
+                                data-ga-category="actions"
+                                data-ga-action="click"
+                                data-ga-label="publisher_link_mobile"
+                        >
+                                <img src="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/img/launch.svg" alt="View on publisher site icon" class="usa-icon usa-icon--size-4 usa-icon--link" />
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="margin-right-2 mobile-lg:margin-right-4 display-flex">
+                        <button
+                            class="usa-button usa-button--unstyled  usa-tooltip collections-dialog-trigger collections-button display-flex collections-button-empty"
+                            title="Add to Collections"
+                            data-position="bottom"
+                            aria-label="Save article in MyNCBI collections."
+                            data-ga-category="actions"
+                            data-ga-action="click"
+                            data-ga-label="collections_button_mobile"
+                            data-collections-open-dialog-enabled="false"
+                            data-collections-open-dialog-url="https://account.ncbi.nlm.nih.gov/?back_url=https%3A%2F%2Fpmc.ncbi.nlm.nih.gov%2Farticles%2FPMC10656647%2F%23open-collections-dialog"
+                            data-in-collections="false"
+                        >
+                            <img src="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/img/action-bookmark-full.svg" alt="Collections icon" aria-hidden="true" class="usa-icon usa-icon--size-4 usa-icon--link usa-icon--bookmark-full" />
+                            <img src="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/img/action-bookmark-empty.svg" alt="Collections icon" aria-hidden="true" class="usa-icon usa-icon--size-4 usa-icon--link usa-icon--bookmark-empty" />
+                        </button>
+                    </li>
+                    
+                    <li class="margin-right-2 mobile-lg:margin-right-4 display-flex">
+                        <button role="button" class="usa-button usa-button--unstyled usa-tooltip citation-dialog-trigger display-flex"
+                            aria-label="Open dialog with citation text in different styles"
+                            title="Cite"
+                            data-position="bottom"
+                            data-ga-category="actions"
+                            data-ga-action="open"
+                            data-ga-label="cite_mobile"
+                            data-all-citations-url="/resources/citations/10656647/"
+                            data-citation-style="nlm"
+                            data-download-format-link="/resources/citations/10656647/export/"
+                        >
+                            <img src="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/img/format_quote.svg" alt="Cite icon" aria-hidden="true" class="usa-icon usa-icon--size-4 usa-icon--link" />
+                        </button>
+                    </li>
+                    
+                    <li class="pmc-permalink display-flex" >
+                         <button
+                                 type="button"
+                                 title="Permalink"
+                                 data-position="bottom"
+                                 class="usa-button usa-button--unstyled display-flex usa-tooltip"
+                                 aria-label="Show article permalink"
+                                 aria-expanded="false"
+                                 aria-haspopup="true"
+                                 data-ga-category="actions"
+                                 data-ga-action="open"
+                                 data-ga-label="permalink_mobile"
+                         >
+                            <img src="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/img/share.svg" alt="Show article permalink icon" aria-hidden="true" class="usa-icon usa-icon--size-4 usa-icon--link" />
+                        </button>
+                        
+
+<div class="pmc-permalink__dropdown" hidden>
+    <div class="pmc-permalink__dropdown__container">
+          <h2 class="usa-modal__heading margin-top-0 margin-bottom-2 text-uppercase font-sans-xs">PERMALINK</h2>
+          <div class="pmc-permalink__dropdown__content">
+              <input type="text" class="usa-input" value="https://pmc.ncbi.nlm.nih.gov/articles/PMC10656647/" aria-label="Article permalink">
+              <button class="usa-button display-inline-flex pmc-permalink__dropdown__copy__btn margin-right-0" title="Copy article permalink" data-ga-category="save_share" data-ga-action="link" data-ga-label="copy_link">
+                  <img src="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/img/content_copy.svg" alt="Copy icon" aria-hidden="true" class="usa-icon usa-icon--white" />
+                  <span class="margin-left-1">Copy</span>
+              </button>
+          </div>
+    </div>
+</div>
+                    </li>
+                </ul>
+            </div>
+            <button
+                    type="button"
+                    class="usa-button pmc-sidenav__container__open usa-button--unstyled width-auto display-flex"
+                    aria-label="Open article navigation"
+                    data-extra-class="is-visible-in-page"
+                    data-ga-category="actions"
+                    data-ga-action="open"
+                    data-ga-label="article_nav_mobile"
+            >
+                <img src="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/img/list.svg" alt="Open article navigation icon" aria-hidden="true" class="usa-icon usa-icon--size-4 usa-icon--link" />
+            </button>
+        </div>
+    </div>
+</div>
+    <div class="grid-container desktop:padding-left-6">
+      <div id="article-container" class="grid-row grid-gap">
+        <div class="grid-col-12 desktop:grid-col-8 order-2 pmc-layout__content">
+            <div class="grid-container padding-left-0 padding-right-0">
+                <div class="grid-row desktop:margin-left-neg-6">
+                    <div class="grid-col-12">
+                        <div class="pmc-layout__disclaimer" role="complementary" aria-label="Disclaimer note">
+    As a library, NLM provides access to scientific literature. Inclusion in an NLM database does not imply endorsement of, or agreement with,
+    the contents by NLM or the National Institutes of Health.<br/>
+    Learn more:
+    <a class="usa-link" data-ga-category="Link click" data-ga-action="Disclaimer" data-ga-label="New disclaimer box" href="/about/disclaimer/">PMC Disclaimer</a>
+    |
+    <a class="usa-link" data-ga-category="Link click" data-ga-action="PMC Copyright Notice" data-ga-label="New disclaimer box" href="/about/copyright/">
+        PMC Copyright Notice
+    </a>
+</div>
+                    </div>
+                </div>
+                <div class="grid-row pmc-wm desktop:margin-left-neg-6">
+                    <!-- Main content -->
+                    <main
+                      id="main-content"
+                      class="usa-layout-docs__main usa-layout-docs grid-col-12 pmc-layout pmc-prose padding-0"
+                    >
+
+                      
+                        <section class="pmc-journal-banner text-center line-height-none" aria-label="Journal banner"><img src="https://cdn.ncbi.nlm.nih.gov/pmc/banners/logo-jamasd.png" alt="JAMA Network logo" usemap="#pmc-banner-imagemap" width="500" height="75"><map name="pmc-banner-imagemap"><area alt="Link to JAMA Network" title="Link to JAMA Network" shape="default" href="https://doi.org/10.1001/jamanetworkopen.2023.43689" target="_blank" rel="noopener noreferrer"></map></section><article lang="en"><section aria-label="Article citation and metadata"><section class="pmc-layout__citation font-secondary font-xs"><div>
+<div class="display-inline-block"><button type="button" class="cursor-pointer text-no-underline bg-transparent border-0 padding-0 text-left margin-0 text-normal text-primary" aria-controls="journal_context_menu">JAMA Netw Open</button></div>. 2023 Nov 17;6(11):e2343689. doi: <a href="https://doi.org/10.1001/jamanetworkopen.2023.43689" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">10.1001/jamanetworkopen.2023.43689</a>
+</div>
+<nav id="journal_context_menu" hidden="hidden"><ul class="menu-list font-family-ui" role="menu">
+<li role="presentation"><a href='https://pmc.ncbi.nlm.nih.gov/search/?term="JAMA%20Netw%20Open"[jour]' class="usa-link" role="menuitem">Search in PMC</a></li>
+<li role="presentation"><a href='https://pubmed.ncbi.nlm.nih.gov/?term="JAMA%20Netw%20Open"[jour]' lang="en" class="usa-link" role="menuitem">Search in PubMed</a></li>
+<li role="presentation"><a href='https://www.ncbi.nlm.nih.gov/nlmcatalog?term="JAMA%20Netw%20Open"[Title%20Abbreviation]' class="usa-link" role="menuitem">View in NLM Catalog</a></li>
+<li role="presentation"><a href='?term="JAMA%20Netw%20Open"[jour]' class="usa-link" role="menuitem" data-add-to-search="true">Add to search</a></li>
+</ul></nav></section><section class="front-matter"><div class="ameta p font-secondary font-xs">
+<hgroup><h1>Leveraging Large Language Models for Decision Support in Personalized Oncology</h1></hgroup><div class="cg p">
+<a href='https://pubmed.ncbi.nlm.nih.gov/?term="Benary%20M"[Author]' class="usa-link" aria-describedby="id1"><span class="name western">Manuela Benary</span></a><div hidden="hidden" id="id1">
+<h3>
+<span class="name western">Manuela Benary</span>, <span class="degrees">PhD</span>
+</h3>
+<div class="p">
+<sup>1</sup>Charité Comprehensive Cancer Center, Charité–Universitätsmedizin Berlin, Corporate Member of Freie Universität Berlin and Humboldt-Universität zu Berlin, Berlin, Germany</div>
+<div class="p">
+<sup>2</sup>Core Unit Bioinformatics, Berlin Institute of Health at Charité–Universitätsmedizin Berlin, Charitéplatz 1, Berlin, Germany</div>
+<div class="p">Find articles by <a href='https://pubmed.ncbi.nlm.nih.gov/?term="Benary%20M"[Author]' class="usa-link"><span class="name western">Manuela Benary</span></a>
+</div>
+</div>
+<sup>1,</sup><sup>2</sup>, <a href='https://pubmed.ncbi.nlm.nih.gov/?term="Wang%20XD"[Author]' class="usa-link" aria-describedby="id2"><span class="name western">Xing David Wang</span></a><div hidden="hidden" id="id2">
+<h3>
+<span class="name western">Xing David Wang</span>, <span class="degrees">MSc</span>
+</h3>
+<div class="p">
+<sup>3</sup>Knowledge Management in Bioinformatics, Humboldt-Universität zu Berlin, Berlin, Germany</div>
+<div class="p">Find articles by <a href='https://pubmed.ncbi.nlm.nih.gov/?term="Wang%20XD"[Author]' class="usa-link"><span class="name western">Xing David Wang</span></a>
+</div>
+</div>
+<sup>3</sup>, <a href='https://pubmed.ncbi.nlm.nih.gov/?term="Schmidt%20M"[Author]' class="usa-link" aria-describedby="id3"><span class="name western">Max Schmidt</span></a><div hidden="hidden" id="id3">
+<h3>
+<span class="name western">Max Schmidt</span>, <span class="degrees">MD</span>
+</h3>
+<div class="p">
+<sup>1</sup>Charité Comprehensive Cancer Center, Charité–Universitätsmedizin Berlin, Corporate Member of Freie Universität Berlin and Humboldt-Universität zu Berlin, Berlin, Germany</div>
+<div class="p">
+<sup>4</sup>Department of Hematology, Oncology and Cancer Immunology, Campus Benjamin Franklin, Charité–Universitätsmedizin Berlin, Corporate Member of Freie Universität Berlin and Humboldt-Universität zu Berlin, Berlin, Germany</div>
+<div class="p">Find articles by <a href='https://pubmed.ncbi.nlm.nih.gov/?term="Schmidt%20M"[Author]' class="usa-link"><span class="name western">Max Schmidt</span></a>
+</div>
+</div>
+<sup>1,</sup><sup>4</sup>, <a href='https://pubmed.ncbi.nlm.nih.gov/?term="Soll%20D"[Author]' class="usa-link" aria-describedby="id4"><span class="name western">Dominik Soll</span></a><div hidden="hidden" id="id4">
+<h3>
+<span class="name western">Dominik Soll</span>, <span class="degrees">MD</span>
+</h3>
+<div class="p">
+<sup>1</sup>Charité Comprehensive Cancer Center, Charité–Universitätsmedizin Berlin, Corporate Member of Freie Universität Berlin and Humboldt-Universität zu Berlin, Berlin, Germany</div>
+<div class="p">
+<sup>5</sup>Department of Endocrinology and Metabolic Diseases, Charité Universitätsmedizin Berlin, Department of Endocrinology and Metabolic Diseases, Corporate Member of Freie Universität Berlin and Humboldt-Universität zu Berlin, Berlin, Germany</div>
+<div class="p">Find articles by <a href='https://pubmed.ncbi.nlm.nih.gov/?term="Soll%20D"[Author]' class="usa-link"><span class="name western">Dominik Soll</span></a>
+</div>
+</div>
+<sup>1,</sup><sup>5</sup>, <a href='https://pubmed.ncbi.nlm.nih.gov/?term="Hilfenhaus%20G"[Author]' class="usa-link" aria-describedby="id5"><span class="name western">Georg Hilfenhaus</span></a><div hidden="hidden" id="id5">
+<h3>
+<span class="name western">Georg Hilfenhaus</span>, <span class="degrees">MD</span>
+</h3>
+<div class="p">
+<sup>1</sup>Charité Comprehensive Cancer Center, Charité–Universitätsmedizin Berlin, Corporate Member of Freie Universität Berlin and Humboldt-Universität zu Berlin, Berlin, Germany</div>
+<div class="p">
+<sup>6</sup>Department of Hematology, Oncology and Cancer Immunology, Campus Charité Mitte, Charité–Universitätsmedizin Berlin, Corporate Member of Freie Universität Berlin and Humboldt-Universität zu Berlin, Berlin, Germany</div>
+<div class="p">Find articles by <a href='https://pubmed.ncbi.nlm.nih.gov/?term="Hilfenhaus%20G"[Author]' class="usa-link"><span class="name western">Georg Hilfenhaus</span></a>
+</div>
+</div>
+<sup>1,</sup><sup>6</sup>, <a href='https://pubmed.ncbi.nlm.nih.gov/?term="Nassir%20M"[Author]' class="usa-link" aria-describedby="id6"><span class="name western">Mani Nassir</span></a><div hidden="hidden" id="id6">
+<h3>
+<span class="name western">Mani Nassir</span>, <span class="degrees">MD</span>
+</h3>
+<div class="p">
+<sup>1</sup>Charité Comprehensive Cancer Center, Charité–Universitätsmedizin Berlin, Corporate Member of Freie Universität Berlin and Humboldt-Universität zu Berlin, Berlin, Germany</div>
+<div class="p">
+<sup>6</sup>Department of Hematology, Oncology and Cancer Immunology, Campus Charité Mitte, Charité–Universitätsmedizin Berlin, Corporate Member of Freie Universität Berlin and Humboldt-Universität zu Berlin, Berlin, Germany</div>
+<div class="p">Find articles by <a href='https://pubmed.ncbi.nlm.nih.gov/?term="Nassir%20M"[Author]' class="usa-link"><span class="name western">Mani Nassir</span></a>
+</div>
+</div>
+<sup>1,</sup><sup>6</sup>, <a href='https://pubmed.ncbi.nlm.nih.gov/?term="Sigler%20C"[Author]' class="usa-link" aria-describedby="id7"><span class="name western">Christian Sigler</span></a><div hidden="hidden" id="id7">
+<h3>
+<span class="name western">Christian Sigler</span>, <span class="degrees">MD</span>
+</h3>
+<div class="p">
+<sup>1</sup>Charité Comprehensive Cancer Center, Charité–Universitätsmedizin Berlin, Corporate Member of Freie Universität Berlin and Humboldt-Universität zu Berlin, Berlin, Germany</div>
+<div class="p">Find articles by <a href='https://pubmed.ncbi.nlm.nih.gov/?term="Sigler%20C"[Author]' class="usa-link"><span class="name western">Christian Sigler</span></a>
+</div>
+</div>
+<sup>1</sup>, <a href='https://pubmed.ncbi.nlm.nih.gov/?term="Kn%C3%B6dler%20M"[Author]' class="usa-link" aria-describedby="id8"><span class="name western">Maren Knödler</span></a><div hidden="hidden" id="id8">
+<h3>
+<span class="name western">Maren Knödler</span>, <span class="degrees">MD</span>
+</h3>
+<div class="p">
+<sup>1</sup>Charité Comprehensive Cancer Center, Charité–Universitätsmedizin Berlin, Corporate Member of Freie Universität Berlin and Humboldt-Universität zu Berlin, Berlin, Germany</div>
+<div class="p">Find articles by <a href='https://pubmed.ncbi.nlm.nih.gov/?term="Kn%C3%B6dler%20M"[Author]' class="usa-link"><span class="name western">Maren Knödler</span></a>
+</div>
+</div>
+<sup>1</sup>, <a href='https://pubmed.ncbi.nlm.nih.gov/?term="Keller%20U"[Author]' class="usa-link" aria-describedby="id9"><span class="name western">Ulrich Keller</span></a><div hidden="hidden" id="id9">
+<h3>
+<span class="name western">Ulrich Keller</span>, <span class="degrees">MD</span>
+</h3>
+<div class="p">
+<sup>4</sup>Department of Hematology, Oncology and Cancer Immunology, Campus Benjamin Franklin, Charité–Universitätsmedizin Berlin, Corporate Member of Freie Universität Berlin and Humboldt-Universität zu Berlin, Berlin, Germany</div>
+<div class="p">
+<sup>7</sup>German Cancer Consortium and German Cancer Research Center, Partner Site Berlin, Germany</div>
+<div class="p">Find articles by <a href='https://pubmed.ncbi.nlm.nih.gov/?term="Keller%20U"[Author]' class="usa-link"><span class="name western">Ulrich Keller</span></a>
+</div>
+</div>
+<sup>4,</sup><sup>7</sup>, <a href='https://pubmed.ncbi.nlm.nih.gov/?term="Beule%20D"[Author]' class="usa-link" aria-describedby="id10"><span class="name western">Dieter Beule</span></a><div hidden="hidden" id="id10">
+<h3>
+<span class="name western">Dieter Beule</span>, <span class="degrees">PhD</span>
+</h3>
+<div class="p">
+<sup>2</sup>Core Unit Bioinformatics, Berlin Institute of Health at Charité–Universitätsmedizin Berlin, Charitéplatz 1, Berlin, Germany</div>
+<div class="p">Find articles by <a href='https://pubmed.ncbi.nlm.nih.gov/?term="Beule%20D"[Author]' class="usa-link"><span class="name western">Dieter Beule</span></a>
+</div>
+</div>
+<sup>2</sup>, <a href='https://pubmed.ncbi.nlm.nih.gov/?term="Keilholz%20U"[Author]' class="usa-link" aria-describedby="id11"><span class="name western">Ulrich Keilholz</span></a><div hidden="hidden" id="id11">
+<h3>
+<span class="name western">Ulrich Keilholz</span>, <span class="degrees">MD</span>
+</h3>
+<div class="p">
+<sup>1</sup>Charité Comprehensive Cancer Center, Charité–Universitätsmedizin Berlin, Corporate Member of Freie Universität Berlin and Humboldt-Universität zu Berlin, Berlin, Germany</div>
+<div class="p">
+<sup>7</sup>German Cancer Consortium and German Cancer Research Center, Partner Site Berlin, Germany</div>
+<div class="p">Find articles by <a href='https://pubmed.ncbi.nlm.nih.gov/?term="Keilholz%20U"[Author]' class="usa-link"><span class="name western">Ulrich Keilholz</span></a>
+</div>
+</div>
+<sup>1,</sup><sup>7</sup>, <a href='https://pubmed.ncbi.nlm.nih.gov/?term="Leser%20U"[Author]' class="usa-link" aria-describedby="id12"><span class="name western">Ulf Leser</span></a><div hidden="hidden" id="id12">
+<h3>
+<span class="name western">Ulf Leser</span>, <span class="degrees">PhD</span>
+</h3>
+<div class="p">
+<sup>3</sup>Knowledge Management in Bioinformatics, Humboldt-Universität zu Berlin, Berlin, Germany</div>
+<div class="p">Find articles by <a href='https://pubmed.ncbi.nlm.nih.gov/?term="Leser%20U"[Author]' class="usa-link"><span class="name western">Ulf Leser</span></a>
+</div>
+</div>
+<sup>3</sup>, <a href='https://pubmed.ncbi.nlm.nih.gov/?term="Rieke%20DT"[Author]' class="usa-link" aria-describedby="id13"><span class="name western">Damian T Rieke</span></a><div hidden="hidden" id="id13">
+<h3>
+<span class="name western">Damian T Rieke</span>, <span class="degrees">MD</span>
+</h3>
+<div class="p">
+<sup>1</sup>Charité Comprehensive Cancer Center, Charité–Universitätsmedizin Berlin, Corporate Member of Freie Universität Berlin and Humboldt-Universität zu Berlin, Berlin, Germany</div>
+<div class="p">
+<sup>4</sup>Department of Hematology, Oncology and Cancer Immunology, Campus Benjamin Franklin, Charité–Universitätsmedizin Berlin, Corporate Member of Freie Universität Berlin and Humboldt-Universität zu Berlin, Berlin, Germany</div>
+<div class="p">
+<sup>7</sup>German Cancer Consortium and German Cancer Research Center, Partner Site Berlin, Germany</div>
+<div class="p">Find articles by <a href='https://pubmed.ncbi.nlm.nih.gov/?term="Rieke%20DT"[Author]' class="usa-link"><span class="name western">Damian T Rieke</span></a>
+</div>
+</div>
+<sup>1,</sup><sup>4,</sup><sup>7,</sup><sup>✉</sup>
+</div>
+<ul class="d-buttons inline-list">
+<li><button class="d-button" aria-controls="aip_a" aria-expanded="false">Author information</button></li>
+<li><button class="d-button" aria-controls="anp_a" aria-expanded="false">Article notes</button></li>
+<li><button class="d-button" aria-controls="clp_a" aria-expanded="false">Copyright and License information</button></li>
+</ul>
+<div class="d-panels font-secondary-light">
+<div id="aip_a" class="d-panel p" style="display: none">
+<div class="p" id="zoi231267aff1">
+<sup>1</sup>Charité Comprehensive Cancer Center, Charité–Universitätsmedizin Berlin, Corporate Member of Freie Universität Berlin and Humboldt-Universität zu Berlin, Berlin, Germany</div>
+<div id="zoi231267aff2">
+<sup>2</sup>Core Unit Bioinformatics, Berlin Institute of Health at Charité–Universitätsmedizin Berlin, Charitéplatz 1, Berlin, Germany</div>
+<div id="zoi231267aff3">
+<sup>3</sup>Knowledge Management in Bioinformatics, Humboldt-Universität zu Berlin, Berlin, Germany</div>
+<div id="zoi231267aff4">
+<sup>4</sup>Department of Hematology, Oncology and Cancer Immunology, Campus Benjamin Franklin, Charité–Universitätsmedizin Berlin, Corporate Member of Freie Universität Berlin and Humboldt-Universität zu Berlin, Berlin, Germany</div>
+<div id="zoi231267aff5">
+<sup>5</sup>Department of Endocrinology and Metabolic Diseases, Charité Universitätsmedizin Berlin, Department of Endocrinology and Metabolic Diseases, Corporate Member of Freie Universität Berlin and Humboldt-Universität zu Berlin, Berlin, Germany</div>
+<div id="zoi231267aff6">
+<sup>6</sup>Department of Hematology, Oncology and Cancer Immunology, Campus Charité Mitte, Charité–Universitätsmedizin Berlin, Corporate Member of Freie Universität Berlin and Humboldt-Universität zu Berlin, Berlin, Germany</div>
+<div id="zoi231267aff7">
+<sup>7</sup>German Cancer Consortium and German Cancer Research Center, Partner Site Berlin, Germany</div>
+<div class="author-notes p">
+<div class="fn" id="p1">
+<p><strong>Accepted for Publication:</strong> October 4, 2023.</p>
+<p><strong>Published:</strong> November 17, 2023. doi:<a href="https://doi.org/10.1001/jamanetworkopen.2023.43689" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">10.1001/jamanetworkopen.2023.43689</a></p>
+<p><strong>Open Access:</strong> This is an open access article distributed under the terms of the <a href="https://jamanetwork.com/pages/cc-by-license-permissions" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">CC-BY License</a>. © 2023 Benary M et al. <em>JAMA Network Open</em>.</p>
+</div>
+<div class="fn" id="zoi231267cor1">
+<sup>✉</sup><p class="display-inline"><strong>Corresponding Author:</strong> Damian T. Rieke, MD, Comprehensive Cancer Center, Charité–Universitätsmedizin Berlin, Charitéplatz 1, 10117 Berlin, Germany; (<span>damian.rieke@charite.de</span>).</p>
+</div>
+<div class="fn" id="p4">
+<p><strong>Author Contributions:</strong> Drs Benary and Rieke had full access to all of the data in the study and take responsibility for the integrity of the data and the accuracy of the data analysis. Dr Benary, Mr Wang, Dr Leser, and Dr Rieke contributed equally to this article.</p>
+<p><em>Concept and design:</em> Benary, Wang, Sigler, Keilholz, Leser, Rieke.</p>
+<p><em>Acquisition, analysis, or interpretation of data:</em> Benary, Wang, Schmidt, Soll, Hilfenhaus, Nassir, Knödler, Keller, Beule, Keilholz, Leser, Rieke.</p>
+<p><em>Drafting of the manuscript:</em> Benary, Wang, Keilholz, Rieke.</p>
+<p><em>Critical review of the manuscript for important intellectual content:</em> All authors.</p>
+<p><em>Statistical analysis:</em> Benary, Wang, Leser, Rieke.</p>
+<p><em>Obtained funding:</em> Beule, Keilholz, Leser.</p>
+<p><em>Administrative, technical, or material support:</em> Schmidt, Hilfenhaus, Beule, Keilholz, Rieke.</p>
+<p><em>Supervision:</em> Nassir, Sigler, Knödler, Keller, Beule, Keilholz, Leser, Rieke.</p>
+<p><strong>Conflict of Interest Disclosures:</strong> Dr Schmidt reported receiving advisor fees from Fosanis GmbH outside the submitted work. Dr Hilfenhaus reported receiving speaker fees from AstraZeneca outside the submitted work. Dr Keller reported service on advisory boards for Roche, Janssen-Cilag, Bristol-Myers Squibb/Celgene, Takeda, Gilead, Pfizer, AstraZeneca, Lilly, and Pentixapharm; he reported receiving clinical research support from Janssen-Cilag, Bristol-Myers Squibb, and Roche; and he reported receiving travel support from Roche, Bristol-Myers Squibb/Celgene, Gilead, Lilly, Takeda, and Janssen-Cilag outside the submitted work. Dr Rieke reported receiving consulting, advisory board, or speaking fees from Lilly, Bayer, Roche, and Bristol-Myers Squibb outside the submitted work. No other disclosures were reported.</p>
+<p><strong>Funding/Support:</strong> This project was supported by the Deutsche Forschungsgemeinschaft (No. RTG2424 CompCancer), the German Cancer Aid (Förderung onkologischer Spitzenzentren der deutschen Krebshilfe No. 70114014) and by the Innovation Committee of the Federal Joint Committee of Germany (Innovationsfonds des Gemeinsamen Bundesausschusses) under grant numbers 01VSF22041 (IntSim-Onko) and 01NVF20006 (DNPM).</p>
+<p><strong>Role of the Funder/Sponsor:</strong> The funders had no role in the design and conduct of the study; collection, management, analysis, and interpretation of the data; preparation, review, or approval of the manuscript; and decision to submit the manuscript for publication.</p>
+<p><strong>Meeting Presentation:</strong> Part of this work was presented during the European Society for Medical Oncology 2023 Congress; October 21, 2023; Madrid, Spain.</p>
+<p><strong>Data Sharing Statement:</strong> See <a href="#note-ZOI231267-1-s" class="usa-link">Supplement 2</a>.</p>
+</div>
+<div class="fn" id="_fncrsp93pmc__">
+<sup>✉</sup><p class="display-inline">Corresponding author.</p>
+</div>
+</div>
+</div>
+<div id="anp_a" class="d-panel p" style="display: none"><div class="notes p"><section id="historyarticle-meta1" class="history"><p>Received 2023 Aug 23; Accepted 2023 Oct 4; Collection date 2023 Nov.</p></section></div></div>
+<div id="clp_a" class="d-panel p" style="display: none">
+<div>Copyright 2023 Benary M et al. <em>JAMA Network Open</em>.</div>
+<p>This is an open access article distributed under the terms of the CC-BY License.</p>
+<div class="p"><a href="/about/copyright/" class="usa-link">PMC Copyright notice</a></div>
+</div>
+</div>
+<div>PMCID: PMC10656647  PMID: <a href="https://pubmed.ncbi.nlm.nih.gov/37976064/" class="usa-link">37976064</a>
+</div>
+</div></section></section><section aria-label="Article content"><section class="body main-article-body"><section class="abstract" id="abstract1"><h2>Key Points</h2>
+<section id="ab-zoi231267-1"><h3 class="pmc_sec_title">Question</h3>
+<p>Can current conversational large language models (LLMs) be used as a tool for personalized decision-making in precision oncology?</p></section><section id="ab-zoi231267-2"><h3 class="pmc_sec_title">Findings</h3>
+<p>In this diagnostic study, treatment option identification from 4 LLMs for 10 fictional patients deviated substantially from expert recommendations. Nevertheless, LLMs correctly identified several important treatment strategies and partly provided reasonable suggestions that were not easily found by experts.</p></section><section id="ab-zoi231267-3"><h3 class="pmc_sec_title">Meaning</h3>
+<p>These results suggest that LLMs are not yet applicable as a routine tool for aiding personalized clinical decision-making in oncology, but do improve upon existing LLM-based methods.</p></section></section><section class="abstract" id="abstract2"><hr class="headless">
+<p>This diagnostic study evaluates treatment recommendations for 10 fictional patients with advanced cancer made by 4 large language models, as evaluated by members of a molecular tumor board.</p></section><section class="abstract" id="abstract3"><h2>Abstract</h2>
+<section id="ab-zoi231267-4"><h3 class="pmc_sec_title">Importance</h3>
+<p>Clinical interpretation of complex biomarkers for precision oncology currently requires manual investigations of previous studies and databases. Conversational large language models (LLMs) might be beneficial as automated tools for assisting clinical decision-making.</p></section><section id="ab-zoi231267-5"><h3 class="pmc_sec_title">Objective</h3>
+<p>To assess performance and define their role using 4 recent LLMs as support tools for precision oncology.</p></section><section id="ab-zoi231267-6"><h3 class="pmc_sec_title">Design, Setting, and Participants</h3>
+<p>This diagnostic study examined 10 fictional cases of patients with advanced cancer with genetic alterations. Each case was submitted to 4 different LLMs (ChatGPT, Galactica, Perplexity, and BioMedLM) and 1 expert physician to identify personalized treatment options in 2023. Treatment options were masked and presented to a molecular tumor board (MTB), whose members rated the likelihood of a treatment option coming from an LLM on a scale from 0 to 10 (0, extremely unlikely; 10, extremely likely) and decided whether the treatment option was clinically useful.</p></section><section id="ab-zoi231267-7"><h3 class="pmc_sec_title">Main Outcomes and Measures</h3>
+<p>Number of treatment options, precision, recall, F1 score of LLMs compared with human experts, recognizability, and usefulness of recommendations.</p></section><section id="ab-zoi231267-8"><h3 class="pmc_sec_title">Results</h3>
+<p>For 10 fictional cancer patients (4 with lung cancer, 6 with other; median [IQR] 3.5 [3.0-4.8] molecular alterations per patient), a median (IQR) number of 4.0 (4.0-4.0) compared with 3.0 (3.0-5.0), 7.5 (4.3-9.8), 11.5 (7.8-13.0), and 13.0 (11.3-21.5) treatment options each was identified by the human expert and 4 LLMs, respectively. When considering the expert as a criterion standard, LLM-proposed treatment options reached F1 scores of 0.04, 0.17, 0.14, and 0.19 across all patients combined. Combining treatment options from different LLMs allowed a precision of 0.29 and a recall of 0.29 for an F1 score of 0.29. LLM-generated treatment options were recognized as AI-generated with a median (IQR) 7.5 (5.3-9.0) points in contrast to 2.0 (1.0-3.0) points for manually annotated cases. A crucial reason for identifying AI-generated treatment options was insufficient accompanying evidence. For each patient, at least 1 LLM generated a treatment option that was considered helpful by MTB members. Two unique useful treatment options (including 1 unique treatment strategy) were identified only by LLM.</p></section><section id="ab-zoi231267-9"><h3 class="pmc_sec_title">Conclusions and Relevance</h3>
+<p>In this diagnostic study, treatment options of LLMs in precision oncology did not reach the quality and credibility of human experts; however, they generated helpful ideas that might have complemented established procedures. Considering technological progress, LLMs could play an increasingly important role in assisting with screening and selecting relevant biomedical literature to support evidence-based, personalized treatment decisions.</p></section></section><section id="H1-1-ZOI231267"><h2 class="pmc_sec_title">Introduction</h2>
+<p>Precision medicine describes the concept of personalized clinical decision-making by accounting for individual variation.<sup><a href="#zoi231267r1" class="usa-link" aria-describedby="zoi231267r1">1</a></sup> This concept requires an evidence-based interpretation of variations as biomarkers. In oncology, the integration of genetic (tumor) alterations as predictive biomarkers comes closest to this concept of personalized medicine, as targeted treatment of well-defined molecular alterations shows clinical efficacy.<sup><a href="#zoi231267r2" class="usa-link" aria-describedby="zoi231267r2">2</a>,<a href="#zoi231267r3" class="usa-link" aria-describedby="zoi231267r3">3</a>,<a href="#zoi231267r4" class="usa-link" aria-describedby="zoi231267r4">4</a></sup> Accordingly, comprehensive multigene sequencing has become a standard tool for diagnosis and treatment allocation and is used increasingly in multiple tumor types.<sup><a href="#zoi231267r2" class="usa-link" aria-describedby="zoi231267r2">2</a>,<a href="#zoi231267r3" class="usa-link" aria-describedby="zoi231267r3">3</a>,<a href="#zoi231267r4" class="usa-link" aria-describedby="zoi231267r4">4</a></sup> However, the identification of uncommon and complex molecular alterations or defined biomarkers falling outside currently established guidelines and recommendations creates challenges for clinical decision-making. These findings are frequently discussed in specialized and interdisciplinary molecular tumor boards (MTB).<sup><a href="#zoi231267r5" class="usa-link" aria-describedby="zoi231267r5">5</a></sup> Especially in these settings, the clinical interpretation of molecular alterations remains manual work based on search engines and specialized curated databases.<sup><a href="#zoi231267r6" class="usa-link" aria-describedby="zoi231267r6">6</a></sup> Yet, these databases contain mostly nonoverlapping information,<sup><a href="#zoi231267r7" class="usa-link" aria-describedby="zoi231267r7">7</a></sup> which provides strong evidence for their incompleteness. Accordingly, the selection and interpretation of evidence for less well-characterized molecular alterations create inter-interpreter heterogeneity.<sup><a href="#zoi231267r8" class="usa-link" aria-describedby="zoi231267r8">8</a></sup></p>
+<p>The development of new artificial intelligence systems (AI), such as large language models (LLMs),<sup><a href="#zoi231267r9" class="usa-link" aria-describedby="zoi231267r9">9</a>,<a href="#zoi231267r10" class="usa-link" aria-describedby="zoi231267r10">10</a></sup> has improved the quality of automated analysis of large and complex data sets considerably. LLMs have already been assessed in various biomedical contexts, such as clinical language understanding<sup><a href="#zoi231267r11" class="usa-link" aria-describedby="zoi231267r11">11</a></sup> and optimization of general clinical decision support.<sup><a href="#zoi231267r12" class="usa-link" aria-describedby="zoi231267r12">12</a></sup> Their potential role in supporting personalized oncology remains undefined. Here, we present results from an explorative analysis of LLM-generated treatment recommendations to assist an MTB.</p></section><section id="H1-2-ZOI231267"><h2 class="pmc_sec_title">Methods</h2>
+<p>This diagnostic study of the development of LLM-based treatment generation followed the Standards for Reporting of Diagnostic Accuracy (<a href="http://www.equator-network.org/reporting-guidelines/stard/" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">STARD</a>) reporting guideline. An overview of the workflow and additional context is provided in eMethods and eFigure 3 in <a href="#note-ZOI231267-1-s" class="usa-link">Supplement 1</a>. Review by the Universitätsmedizin Berlin ethics review board was not required because no patient data were used.</p>
+<section id="H2-1-ZOI231267"><h3 class="pmc_sec_title">Development of Fictional Case Vignettes</h3>
+<p>We created molecular profiles for 10 fictional patients based on realistic clinical scenarios, similar to a previous study.<sup><a href="#zoi231267r8" class="usa-link" aria-describedby="zoi231267r8">8</a></sup> Cases covered 7 different tumor entities and included 59 distinct molecular alterations largely falling outside current guidelines. An overview of all cases is available in the <a href="#zoi231267t1" class="usa-link">Table</a>, and a detailed description is in eTable 1 in <a href="#note-ZOI231267-1-s" class="usa-link">Supplement 1</a>. Cases were designed to represent tumor types and alterations typically encountered in molecular tumor boards, including an overrepresentation of lung adenocarcinoma cases, where multigene sequencing is standard-of-care.<sup><a href="#zoi231267r13" class="usa-link" aria-describedby="zoi231267r13">13</a></sup></p>
+<section class="tw xbox font-sm" id="zoi231267t1"><h4 class="obj_head">Table.  Patient Characteristics of Mock Patients in Analyzing of Artificial Intelligence Large Language Models.</h4>
+<div class="tbl-box p" tabindex="0"><table class="content" frame="hsides" rules="groups">
+<col width="62.13%" span="1">
+<col width="37.87%" span="1">
+<thead><tr>
+<th valign="top" align="left" scope="col" rowspan="1" colspan="1">Variable</th>
+<th valign="top" align="left" scope="col" rowspan="1" colspan="1">Participants, No. (%) (N = 10)</th>
+</tr></thead>
+<tbody>
+<tr>
+<td valign="top" align="left" scope="row" rowspan="1" colspan="1">Age, median (IQR) [range], y</td>
+<td valign="top" align="left" rowspan="1" colspan="1">57 (48-59) [26-79]</td>
+</tr>
+<tr>
+<td valign="top" align="left" scope="col" rowspan="1" colspan="1">Sex</td>
+<td valign="top" align="left" rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td valign="top" align="left" scope="row" rowspan="1" colspan="1"> Female</td>
+<td valign="top" align="left" rowspan="1" colspan="1">3 (30)</td>
+</tr>
+<tr>
+<td valign="top" align="left" scope="row" rowspan="1" colspan="1"> Male</td>
+<td valign="top" align="left" rowspan="1" colspan="1">3 (30)</td>
+</tr>
+<tr>
+<td valign="top" align="left" scope="row" rowspan="1" colspan="1"> Unknown</td>
+<td valign="top" align="left" rowspan="1" colspan="1">4 (40)</td>
+</tr>
+<tr>
+<td valign="top" align="left" scope="col" rowspan="1" colspan="1">Diagnosis</td>
+<td valign="top" align="left" rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td valign="top" align="left" scope="row" rowspan="1" colspan="1"> Lung adenocarcinoma</td>
+<td valign="top" align="left" rowspan="1" colspan="1">4 (40)</td>
+</tr>
+<tr>
+<td valign="top" align="left" scope="row" rowspan="1" colspan="1"> Other</td>
+<td valign="top" align="left" rowspan="1" colspan="1">6 (60)</td>
+</tr>
+<tr>
+<td valign="top" align="left" scope="row" rowspan="1" colspan="1">Tumor purity, median (IQR) [range], %</td>
+<td valign="top" align="left" rowspan="1" colspan="1">60 (50-77.5) [30-80]</td>
+</tr>
+<tr>
+<td valign="top" align="left" scope="col" rowspan="1" colspan="1">Type of sequencing</td>
+<td valign="top" align="left" rowspan="1" colspan="1"></td>
+</tr>
+<tr>
+<td valign="top" align="left" scope="row" rowspan="1" colspan="1"> Panel</td>
+<td valign="top" align="left" rowspan="1" colspan="1">9 (90)</td>
+</tr>
+<tr>
+<td valign="top" align="left" scope="row" rowspan="1" colspan="1"> Whole exome sequencing</td>
+<td valign="top" align="left" rowspan="1" colspan="1">1 (10)</td>
+</tr>
+<tr>
+<td valign="top" align="left" scope="row" rowspan="1" colspan="1">TMB, median (IQR) [range]</td>
+<td valign="top" align="left" rowspan="1" colspan="1">7.2 (3.2-11.1) [3.2-12.8]</td>
+</tr>
+<tr>
+<td valign="top" align="left" scope="row" rowspan="1" colspan="1">Total variants, median (IQR) [range], No.</td>
+<td valign="top" align="left" rowspan="1" colspan="1">3.5 (3.0-4.75) [2.0-18.0]</td>
+</tr>
+</tbody>
+</table></div>
+<div class="p text-right font-secondary"><a href="table/zoi231267t1/" class="usa-link" target="_blank" rel="noopener noreferrer">Open in a new tab</a></div>
+<div class="tw-foot p"><div class="fn" id="_fn_p32"><p>Abbreviation: TMB, tumor mutational burden.</p></div></div></section></section><section id="H2-2-ZOI231267"><h3 class="pmc_sec_title">Clinical Interpretation of Molecular Data</h3>
+<p>Each case vignette was assigned to 1 expert physician of the Charité MTB for manual clinical interpretation of molecular findings, following previously described workflows.<sup><a href="#zoi231267r5" class="usa-link" aria-describedby="zoi231267r5">5</a></sup> Additionally, 4 different LLMs were tasked to generate treatment options: BioMed LM (MosaicML; Stanford University) (LLM 1),<sup><a href="#zoi231267r14" class="usa-link" aria-describedby="zoi231267r14">14</a></sup> Perplexity.ai (University of California, Berkeley) (LLM 2),<sup><a href="#zoi231267r15" class="usa-link" aria-describedby="zoi231267r15">15</a></sup> ChatGPT (OpenAI) (LLM 3),<sup><a href="#zoi231267r16" class="usa-link" aria-describedby="zoi231267r16">16</a></sup> and Galactica (Meta) (LLM 4).<sup><a href="#zoi231267r17" class="usa-link" aria-describedby="zoi231267r17">17</a></sup> These 4 were selected to compare across 4 different criteria: type of usage (local installation vs online, important regarding data privacy requirements), model size (in terms of computational resources required), openness (whether an integrated retrieval engine is used, impact on up-to-datedness), and pretraining domain (general or medical, impact on result quality) (eTable 2 in <a href="#note-ZOI231267-1-s" class="usa-link">Supplement 1</a>).</p>
+<p>Because the field of LLMs is rapidly evolving, we also performed a poststudy comparison with ChatGPT version 4, which was not available at the time of the study with MTB members. Complete information regarding the fictional patient cases, the LLM-generated answers, and the scripts to generate the results are available online.<sup><a href="#zoi231267r18" class="usa-link" aria-describedby="zoi231267r18">18</a></sup></p></section><section id="H2-3-ZOI231267"><h3 class="pmc_sec_title">Prompting LLMs</h3>
+<p>By explorative analysis, we first designed a general natural language prompting template that we then adapted specifically to the LLM at hand (eTable 3; eFigure 1 in <a href="#note-ZOI231267-1-s" class="usa-link">Supplement 1</a>). These adapted templates were then used for prompting an LLM for each patient case separately. An exemplary template used as an LLM prompt was: “Given a &lt;<em>diagnosis of disease&gt;</em> with mutations &lt;<em>enumeration of mutations&gt;</em>. What are possible targeted therapies available? Please always add NCT/PubMed IDs and specify evidence level and clinical significance if possible.” The bracketed slots were replaced for each patient case with a diagnosis and listed molecular alterations. For example, in case 10 the diagnosis of disease was listed as <em>lung adenocarcinoma</em> and the enumeration of mutations as <em>EGFR E746_A750del, EGFR C797S, and STK11 C210*</em><em>.</em></p>
+<p>We gathered all answers generated by the LLM and transformed them into a unified table with each row containing the molecular alteration examined, the LLM used, their recommended treatment option plus additional information, in particular with references (ie, clinicaltrials.gov National Clinical Trial [NCT] or PubMed identifier), mechanism of proposed drugs, evidence level of the corresponding study, phase (I, II, or III), evidence for drug efficacy evaluation (eFigure 2 in <a href="#note-ZOI231267-1-s" class="usa-link">Supplement 1</a>). This information was directly extracted from the LLM answer and not checked for accuracy at this point. The structured summary enabled comparison of results across LLMs and with the manual annotations from human experts.</p></section><section id="H2-4-ZOI231267"><h3 class="pmc_sec_title">Assessment of Results in an Interdisciplinary MTB</h3>
+<p>Treatment options from the 4 LLMs were condensed into 2 types of summaries for evaluation in the MTB: (1) combined treatment option, which contained options identified by at least 2 different LLMs; and (2) clinical treatment option, containing options with at least 1 associated NCT or PubMed identifier. These 2 lists and a third, manually annotated list of treatment options were masked and presented to the MTB at Charité’s Comprehensive Cancer Center.</p>
+<p>We created an online survey for MTB members (eTable 4 in <a href="#note-ZOI231267-1-s" class="usa-link">Supplement 1</a>). Participants rated the likelihood of a treatment option coming from an AI (on a scale from 0 to 10, with 10 signifying options most likely coming from AI). Furthermore, the MTB members selected which option they would most likely pursue further and rated the general usefulness of recommendations.</p></section><section id="H2-5-ZOI231267"><h3 class="pmc_sec_title">Statistical Analysis</h3>
+<p>The concordance of LLM-generated treatment options (4 individual and 2 combined options) with the manually generated treatment options as criterion standard was measured using precision, recall, and F1 score. Precision, which denotes the fraction of relevant treatment options among the suggested options, was defined as precision = true positives / (true positives + false positives). Recall, or the fraction of all treatment options in the criterion standard found by LLMs, was defined as recall = true positives / (true positives + false negatives). The F1 score is the harmonic mean of precision and recall, and thus penalizes unbalanced precision and recall scores (ie, is higher when both precision and recall have similar values): F1 score = (2 × precision × recall) / (precision + recall). The higher any of the 3 scores, the better the LLM has performed compared with the human recommendations, with 1 being the maximum value for each score.</p>
+<p>Data analysis, calculation of precision, recall and F1 scores were done in R version 4.3.0 (R Project for Statistical Computing). All scripts and raw data are available in the study github repository.<sup><a href="#zoi231267r18" class="usa-link" aria-describedby="zoi231267r18">18</a></sup></p></section></section><section id="H1-3-ZOI231267"><h2 class="pmc_sec_title">Results</h2>
+<section id="H2-6-ZOI231267"><h3 class="pmc_sec_title">Quantitative Evaluation of Treatment Options</h3>
+<p>Ten fictional cancer patients (4 with lung cancer, 6 with other cancer types) with a median (IQR) of 3.5 (3.0-4.8) molecular alterations (59 molecular alterations total) were designed and submitted to an expert physician and 4 LLMs to identify treatment options (<a href="#zoi231267t1" class="usa-link">Table</a>; eTable 1 in <a href="#note-ZOI231267-1-s" class="usa-link">Supplement 1</a>). Expert interpretation identified treatment options for 21 of the 59 molecular alterations with a median of 2 unique treatment options per alteration (range, 1-4 treatment options). The number of alterations with a treatment option identified by the LLMs was 54 for LLM 1, 38 for LLM 2, 37 for LLM 3, and 24 for LLM 4. A median (IQR) of 4.0 (3.0-5.0) treatment options per alteration were identified by LLM 1, 3.0 (2.0-5.0) by LLM 2, 2. 0 (1.0-2.0) by LLM 3, and 1.0 (1.0-1.3) by LLM 4. These numbers corresponded to a median number of 4 treatment options per patient for expert curation, 13.0 (11.3-21.5) for LLM 1, 11.5 (7.8-13.0) for LLM 2, 7.5 (4.3-9.8) for LLM 3, and 3.0 (3.0-5.0) for LLM 4. The highest absolute overlap in treatment options between 2 LLMs was 19 (LLMs 1 and 3) (<a href="#zoi231267f1" class="usa-link">Figure 1</a>).</p>
+<figure class="fig xbox font-sm" id="zoi231267f1"><h4 class="obj_head">Figure 1.  Overlap Analysis of Treatment Options.</h4>
+<p class="img-box line-height-none margin-x-neg-2 tablet:margin-x-0 text-center"><a class="tileshop" target="_blank" href="https://www.ncbi.nlm.nih.gov/core/lw/2.0/html/tileshop_pmc/tileshop_pmc_inline.html?title=Click%20on%20image%20to%20zoom&amp;p=PMC3&amp;id=10656647_jamanetwopen-e2343689-g001.jpg"><img class="graphic zoom-in" src="https://cdn.ncbi.nlm.nih.gov/pmc/blobs/c81d/10656647/a3f5914430e3/jamanetwopen-e2343689-g001.jpg" loading="lazy" height="412" width="819" alt="Figure 1. "></a></p>
+<div class="p text-right font-secondary"><a href="figure/zoi231267f1/" class="usa-link" target="_blank" rel="noopener noreferrer">Open in a new tab</a></div>
+<figcaption><p>Total number of recommendations (right-hand bar plot) and overlap between the recommended treatment options from the different large language models (LLMs) and a human annotator given 58 unique alterations across 10 fictional patients. Sources under comparison are indicated in the matrix (indicated by dark dots) and number of treatment options coming from multiple sources are shown in the upper bar plot. For clarity, only overlaps with 5 or more treatment options are shown.</p></figcaption></figure><p>When manually identified treatment options were set as the criterion standard, the LLMs reached F1 scores of 0.04 (LLM 1), 0.14 (LLM 2), 0.17 (LLM 3), and 0.19 (LLM 4) (<a href="#zoi231267f2" class="usa-link">Figure 2</a>). Because of the limited individual performance, LLM-generated treatment options were summarized into combined treatment option and clinical treatment option for further analyses. Combined treatment option considered only treatment options identified by more than 1 LLM and clinical treatment option were restricted to treatment options associated with a concrete (although possibly wrong) reference to clinical evidence. Combined treatment options reached an F1 score of 0.29, thus outperforming the best individual performance of an LLM. The clinical treatment options reached the highest recall of 0.34 of all the LLMs.</p>
+<figure class="fig xbox font-sm" id="zoi231267f2"><h4 class="obj_head">Figure 2.  Quantitative Analysis of Model Performance.</h4>
+<p class="img-box line-height-none margin-x-neg-2 tablet:margin-x-0 text-center"><a class="tileshop" target="_blank" href="https://www.ncbi.nlm.nih.gov/core/lw/2.0/html/tileshop_pmc/tileshop_pmc_inline.html?title=Click%20on%20image%20to%20zoom&amp;p=PMC3&amp;id=10656647_jamanetwopen-e2343689-g002.jpg"><img class="graphic zoom-in" src="https://cdn.ncbi.nlm.nih.gov/pmc/blobs/c81d/10656647/ee414cc8563a/jamanetwopen-e2343689-g002.jpg" loading="lazy" height="1036" width="780" alt="Figure 2. "></a></p>
+<div class="p text-right font-secondary"><a href="figure/zoi231267f2/" class="usa-link" target="_blank" rel="noopener noreferrer">Open in a new tab</a></div></figure></section><section id="H2-7-ZOI231267"><h3 class="pmc_sec_title">Qualitative Analysis</h3>
+<p>The set of all obtained treatment options was masked and presented to an interdisciplinary MTB. MTB members were asked to rate the likelihood of treatment options coming from an LLM (on a 10-point scale, with 0 being extremely unlikely and 10 extremely likely) and their clinical usefulness. LLM-generated combined treatment options and clinical treatment options yielded median (IQR) scores of 7.5 (5.3-9.0) and 8.0 (7.5-9.5) points, respectively. Manually generated options reached a median score of 2.0 (1.0-3.0) points. Thus, MTB members were able to identify LLM-generated treatment options with high confidence (<a href="#zoi231267f3" class="usa-link">Figure 3</a>).</p>
+<figure class="fig xbox font-sm" id="zoi231267f3"><h4 class="obj_head">Figure 3.  Treatment Evaluations of 10 Fictional Patients by Molecular Tumor Board (MTB) Experts.</h4>
+<p class="img-box line-height-none margin-x-neg-2 tablet:margin-x-0 text-center"><a class="tileshop" target="_blank" href="https://www.ncbi.nlm.nih.gov/core/lw/2.0/html/tileshop_pmc/tileshop_pmc_inline.html?title=Click%20on%20image%20to%20zoom&amp;p=PMC3&amp;id=10656647_jamanetwopen-e2343689-g003.jpg"><img class="graphic zoom-in" src="https://cdn.ncbi.nlm.nih.gov/pmc/blobs/c81d/10656647/c70f8095870e/jamanetwopen-e2343689-g003.jpg" loading="lazy" height="1065" width="780" alt="Figure 3. "></a></p>
+<div class="p text-right font-secondary"><a href="figure/zoi231267f3/" class="usa-link" target="_blank" rel="noopener noreferrer">Open in a new tab</a></div>
+<figcaption><p>For each patient, 3 options for treatment recommendations were presented to the MTB. Members of the MTB ranked each option from 0 (least likely to come from a large language model [LLM]) to 10 (most likely to come from an LLM). In addition, the totals on the right side of the plot indicate how many participants would choose the given option for the patient.</p></figcaption></figure><p>In the 43 overall answers, MTB participants further indicated which 1 of the 3 treatment options they would most likely consider for clinical decision-making. In 37 cases, they preferred to pursue the human annotation, and in 6 cases, they indicated a preference for an LLM-generated treatment option (<a href="#zoi231267f3" class="usa-link">Figure 3</a>). At least 1 LLM-generated treatment option per patient was considered helpful by MTB members. The accuracy of provided references was frequently cited as a reason why LLM-generated treatment options were disregarded. LLMs 1 and 4 were not able to provide any useful references in our preliminary studies, so prompting for references was eventually stopped for both. LLM 3 provided 85 unique NCT identifiers across 74 of its 86 treatment options. LLM 2 was able to provide references for 131 of its 142 treatment options, 34 of them being unique NCT identifiers and the rest being PubMed and PubMed Central identifiers or other web resources. We performed an assessment to check how many of the suggested references, specifically the NCT identifiers, linked to an existing study. Out of the 85 provided NCT identifiers by LLM 3, 27 did not exist. In contrast, none of the 34 NCT identifiers provided by LLM 2 were hallucinated (eFigure 4 in <a href="#note-ZOI231267-1-s" class="usa-link">Supplement 1</a>).</p></section><section id="H2-8-ZOI231267"><h3 class="pmc_sec_title">Unique Treatment Recommendations</h3>
+<p>Although the treatment options presented by LLMs did not match all recommendations from expert human annotators, 2 unique treatment options (including 1 unique treatment strategy) were pointed out as clinically useful by MTB members that were identified only by the LLMs and not by the human expert. The unique treatment strategy was antiandrogen therapy in a patient with salivary duct carcinoma with <em>HRAS</em> and <em>PIK3CA</em> variation. <em>HRAS</em> and <em>PIK3CA</em> comutated salivary duct carcinoma usually stain positive for the androgen receptor in immunohistochemistry.<sup><a href="#zoi231267r19" class="usa-link" aria-describedby="zoi231267r19">19</a></sup> Antiandrogen therapy was not suggested by the human expert because no immunohistochemistry results were provided.</p></section><section id="H2-9-ZOI231267"><h3 class="pmc_sec_title">Retrospective Analysis of an Updated LLM</h3>
+<p>To evaluate how newer models of AI assistance may affect results, we retrospectively analyzed differences in results from ChatGPT 3 with those of its most recent version, which was not available at the time of the primary analysis. The newer version generated 74 treatment options for the 10 fictional patients, compared with the 85 treatment options from ChatGPT 3. Twenty-six treatment options overlapped between both versions, showing the high instability of updated models. In comparison with the human expert, the updated LLM reached an F1 score of 0.26, surpassing all 4 LLMs we tested in the study (eFigure 5 in <a href="#note-ZOI231267-1-s" class="usa-link">Supplement 1</a>). In contrast to ChatGPT 3, its newer version reduced the number of hallucinated references: only 1 out of 17 unique NCT identifiers provided did not exist vs 27 out of 85 with ChatGPT 3.</p></section></section><section id="H1-4-ZOI231267"><h2 class="pmc_sec_title">Discussion</h2>
+<p>Artificial intelligence systems are used increasingly for health care applications.<sup><a href="#zoi231267r20" class="usa-link" aria-describedby="zoi231267r20">20</a></sup> Previous reports have shown good performance for well-defined tasks in radiology, dermatology, or pathology.<sup><a href="#zoi231267r21" class="usa-link" aria-describedby="zoi231267r21">21</a></sup> More recently developed LLMs might also help to deal with more complex tasks in medicine, such as clinical decision-support in organ-specific tumor boards to facilitate the implementation of existing guidelines.<sup><a href="#zoi231267r22" class="usa-link" aria-describedby="zoi231267r22">22</a>,<a href="#zoi231267r23" class="usa-link" aria-describedby="zoi231267r23">23</a>,<a href="#zoi231267r24" class="usa-link" aria-describedby="zoi231267r24">24</a></sup> Integrating multidimensional data beyond established guidelines is an additional challenge typically faced in precision oncology and molecular tumor boards, making this a compelling use case for LLMs. This study reports results from an analysis of LLM-supported decision-making to facilitate personalized oncology. Despite the small sample size of 10 fictional patients, we were able to generate first results for model performance that overall were consistent across LLMs.</p>
+<p>The F1 scores reached by LLMs compared with expert recommendations were generally low (below 0.3). The best-performing LLM generated a recall value of 0.34. This result suggests that applying LLMs to prefilter treatment options for human experts is not yet efficient, as important recommendations were not reported. However, these results came close to the performance of established precision oncology knowledge databases (eFigure 5 in <a href="#note-ZOI231267-1-s" class="usa-link">Supplement 1</a>). Additionally, such an interpretation considers single-expert annotation as criterion standard, despite considerable inter-interpreter heterogeneity.<sup><a href="#zoi231267r6" class="usa-link" aria-describedby="zoi231267r6">6</a></sup> Furthermore, at least 1 LLM-generated treatment option per patient was considered practically relevant, and 2 treatment options were identified only by an LLM suggesting their potential usefulness as a complementary search tool.</p>
+<p>A comparison of the 4 examined LLMs shows that the smaller model BioMed LM trained only on PubMed did not reach the performance of the 3 larger general purpose LLMs trained on further corpora. This is consistent with previous results suggesting that an increase in model size is one of the key factors for improving performance.<sup><a href="#zoi231267r25" class="usa-link" aria-describedby="zoi231267r25">25</a>,<a href="#zoi231267r26" class="usa-link" aria-describedby="zoi231267r26">26</a></sup> The F1 scores for extracted treatment options were similar across the 3 larger models. However, for MTB members, the quality of the provided study references was decisive for their assessment that most LLM-generated treatment options were not actionable. Analyses of LLMs for other complex medical tasks observed similar challenges.<sup><a href="#zoi231267r27" class="usa-link" aria-describedby="zoi231267r27">27</a>,<a href="#zoi231267r28" class="usa-link" aria-describedby="zoi231267r28">28</a></sup> Future developments thus should focus on identifying adequate references for supporting recommendations.</p>
+<p>Other specific requirements exist for health care applications of LLMs. Online-only models like ChatGPT and Perplexity.ai allow for a low-maintenance integration in existing workflows and provide continuous updates but require disclosing patient data to commercial services. Uncontrolled model updates furthermore make the quality of results unpredictable and destroy reproducibility of recommendations. On the other hand, stand-alone applications like BioMed LM or Galactica require local installation and maintenance but have the advantage of full data privacy and reproducibility of results. Updates can be performed in a controlled manner and follow an internal versioning control for ensuring accountability of recommendations. Selecting the most suitable tool for specific requirements therefore needs careful prior evaluation. Selection of LLMs is additionally complicated by the rapid development of the field, with new LLMs being published at an almost weekly basis.<sup><a href="#zoi231267r29" class="usa-link" aria-describedby="zoi231267r29">29</a>,<a href="#zoi231267r30" class="usa-link" aria-describedby="zoi231267r30">30</a></sup> From a conceptual point of view, they rely on the same computational model as ChatGPT, but use different training corpora, different inference architecture, and different training procedures. Being up-to-date thus requires continuous repetition of assessments with new models. In a retrospective analysis, a newer model of ChatGPT reached a higher F1 score than the 4 LLMs included in the primary analysis and reduced the number of hallucinated references in comparison with its predecessor. This comparison highlights that the performance of LLMs is highly influenced by versioning, and rapid improvements are expected in the future.</p>
+<p>The integration of complex clinical and molecular data by LLMs, as shown here for precision oncology, also holds important implications for other fields in oncology and medicine. For example, an automated and comprehensive review of existing data could help design clinical and preclinical research.<sup><a href="#zoi231267r31" class="usa-link" aria-describedby="zoi231267r31">31</a></sup> This approach could be especially useful in precision oncology, where a highly individual combination of biomarkers limits traditional trial design.<sup><a href="#zoi231267r32" class="usa-link" aria-describedby="zoi231267r32">32</a></sup></p>
+<section id="H2-10-ZOI231267"><h3 class="pmc_sec_title">Limitations</h3>
+<p>This study had several limitations. The limited number of fictional patients, as well as the rapid development of new LLM models and versions, limit conclusions from study results. The design of highly dimensional fictional patients and an analysis plan including 4 different LLM with different technological backgrounds still allowed for a first validation of LLM for precision oncology applications.</p></section></section><section id="H1-5-ZOI231267"><h2 class="pmc_sec_title">Conclusions</h2>
+<p>In this diagnostic study of LLM-based decision support for personalized oncology, LLMs were not yet suitable to automate an MTB annotation process. However, rapid developments can be expected in the near future and LLMs could already be used to complement the screening of large biomedical data sets. Addressing the accountability of clinical evidence, data privacy and quality control remain key challenges.</p></section><section id="note-ZOI231267-1"><section class="sm xbox font-sm" id="note-ZOI231267-1-s"><div class="caption p">
+<span>Supplement 1.</span><p>
+eMethods.
+</p>
+<p><strong>eTable 1.</strong> Detailed Descriptions of the 10 Mock Patients</p>
+<p><strong>eTable 2.</strong> Comparison of the LLMs Used in This Study</p>
+<p><strong>eTable 3.</strong> Prompt Templates for All LLMs in the Given Study</p>
+<p><strong>eTable 4.</strong> Questions for the Survey</p>
+<p><strong>eFigure 1.</strong> Number of Treatment Options per Prompt Type</p>
+<p><strong>eFigure 2.</strong> Workflow of LLM Prompting</p>
+<p><strong>eFigure 3.</strong> General Workflow of the Analysis</p>
+<p><strong>eFigure 4.</strong> Number of Unique Clinical Trials Suggested by LLMs and the Oncological Experts</p>
+<p><strong>eFigure 5.</strong> Precision, Recall, and F1 Scores for the Structured Databases and LLMs Compared With the Human Criterion Standard</p>
+<p>
+eReferences.
+</p>
+</div>
+<div class="media p"><div class="caption">
+<a href="/articles/instance/10656647/bin/jamanetwopen-e2343689-s001.pdf" data-ga-action="click_feat_suppl" class="usa-link">Click here for additional data file.</a><sup> (471.8KB, pdf) </sup>
+</div></div></section><section class="sm xbox font-sm" id="supplementary-material2"><div class="caption p">
+<span>Supplement 2.</span><p>
+Data Sharing Statement
+</p>
+</div>
+<div class="media p"><div class="caption">
+<a href="/articles/instance/10656647/bin/jamanetwopen-e2343689-s002.pdf" data-ga-action="click_feat_suppl" class="usa-link">Click here for additional data file.</a><sup> (11.5KB, pdf) </sup>
+</div></div></section></section><section id="REF-ZOI231267" class="ref-list"><h2 class="pmc_sec_title">References</h2>
+<section id="REF-ZOI231267_sec2"><ul class="ref-list font-sm" style="list-style-type:none">
+<li id="zoi231267r1">
+<span class="label">1.</span><cite>Collins FS, Varmus H. A new initiative on precision medicine. N Engl J Med. 2015;372(9):793-795. doi: 10.1056/NEJMp1500523</cite> [<a href="https://doi.org/10.1056/NEJMp1500523" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">DOI</a>] [<a href="/articles/PMC5101938/" class="usa-link">PMC free article</a>] [<a href="https://pubmed.ncbi.nlm.nih.gov/25635347/" class="usa-link">PubMed</a>] [<a href="https://scholar.google.com/scholar_lookup?journal=N%20Engl%20J%20Med&amp;title=A%20new%20initiative%20on%20precision%20medicine&amp;volume=372&amp;issue=9&amp;publication_year=2015&amp;pages=793-795&amp;pmid=25635347&amp;doi=10.1056/NEJMp1500523&amp;" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">Google Scholar</a>]</li>
+<li id="zoi231267r2">
+<span class="label">2.</span><cite>Drilon A, Laetsch TW, Kummar S, et al. Efficacy of larotrectinib in TRK fusion–positive cancers in adults and children. N Engl J Med. 2018;378(8):731-739. doi: 10.1056/NEJMoa1714448</cite> [<a href="https://doi.org/10.1056/NEJMoa1714448" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">DOI</a>] [<a href="/articles/PMC5857389/" class="usa-link">PMC free article</a>] [<a href="https://pubmed.ncbi.nlm.nih.gov/29466156/" class="usa-link">PubMed</a>] [<a href="https://scholar.google.com/scholar_lookup?journal=N%20Engl%20J%20Med&amp;title=Efficacy%20of%20larotrectinib%20in%20TRK%20fusion%E2%80%93positive%20cancers%20in%20adults%20and%20children&amp;volume=378&amp;issue=8&amp;publication_year=2018&amp;pages=731-739&amp;pmid=29466156&amp;doi=10.1056/NEJMoa1714448&amp;" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">Google Scholar</a>]</li>
+<li id="zoi231267r3">
+<span class="label">3.</span><cite>Drilon A, Oxnard GR, Tan DSW, et al. Efficacy of selpercatinib in RET fusion–positive non–small-cell lung cancer. N Engl J Med. 2020;383(9):813-824. doi: 10.1056/NEJMoa2005653</cite> [<a href="https://doi.org/10.1056/NEJMoa2005653" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">DOI</a>] [<a href="/articles/PMC7506467/" class="usa-link">PMC free article</a>] [<a href="https://pubmed.ncbi.nlm.nih.gov/32846060/" class="usa-link">PubMed</a>] [<a href="https://scholar.google.com/scholar_lookup?journal=N%20Engl%20J%20Med&amp;title=Efficacy%20of%20selpercatinib%20in%20RET%20fusion%E2%80%93positive%20non%E2%80%93small-cell%20lung%20cancer&amp;volume=383&amp;issue=9&amp;publication_year=2020&amp;pages=813-824&amp;pmid=32846060&amp;doi=10.1056/NEJMoa2005653&amp;" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">Google Scholar</a>]</li>
+<li id="zoi231267r4">
+<span class="label">4.</span><cite>Wirth LJ, Sherman E, Robinson B, et al. Efficacy of selpercatinib in RET-altered thyroid cancers. N Engl J Med. 2020;383(9):825-835. doi: 10.1056/NEJMoa2005651</cite> [<a href="https://doi.org/10.1056/NEJMoa2005651" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">DOI</a>] [<a href="/articles/PMC10777663/" class="usa-link">PMC free article</a>] [<a href="https://pubmed.ncbi.nlm.nih.gov/32846061/" class="usa-link">PubMed</a>] [<a href="https://scholar.google.com/scholar_lookup?journal=N%20Engl%20J%20Med&amp;title=Efficacy%20of%20selpercatinib%20in%20RET-altered%20thyroid%20cancers&amp;volume=383&amp;issue=9&amp;publication_year=2020&amp;pages=825-835&amp;pmid=32846061&amp;doi=10.1056/NEJMoa2005651&amp;" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">Google Scholar</a>]</li>
+<li id="zoi231267r5">
+<span class="label">5.</span><cite>Rieke DT, de Bortoli T, Horak P, et al. Feasibility and outcome of reproducible clinical interpretation of high-dimensional molecular data: a comparison of two molecular tumor boards. BMC Med. 2022;20(1):367. doi: 10.1186/s12916-022-02560-5</cite> [<a href="https://doi.org/10.1186/s12916-022-02560-5" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">DOI</a>] [<a href="/articles/PMC9590222/" class="usa-link">PMC free article</a>] [<a href="https://pubmed.ncbi.nlm.nih.gov/36274133/" class="usa-link">PubMed</a>] [<a href="https://scholar.google.com/scholar_lookup?journal=BMC%20Med&amp;title=Feasibility%20and%20outcome%20of%20reproducible%20clinical%20interpretation%20of%20high-dimensional%20molecular%20data:%20a%20comparison%20of%20two%20molecular%20tumor%20boards&amp;volume=20&amp;issue=1&amp;publication_year=2022&amp;pages=367&amp;pmid=36274133&amp;doi=10.1186/s12916-022-02560-5&amp;" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">Google Scholar</a>]</li>
+<li id="zoi231267r6">
+<span class="label">6.</span><cite>Lamping M, Benary M, Leyvraz S, et al. Support of a molecular tumour board by an evidence-based decision management system for precision oncology. Eur J Cancer. 2020;127:41-51. doi: 10.1016/j.ejca.2019.12.017</cite> [<a href="https://doi.org/10.1016/j.ejca.2019.12.017" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">DOI</a>] [<a href="https://pubmed.ncbi.nlm.nih.gov/31982633/" class="usa-link">PubMed</a>] [<a href="https://scholar.google.com/scholar_lookup?journal=Eur%20J%20Cancer&amp;title=Support%20of%20a%20molecular%20tumour%20board%20by%20an%20evidence-based%20decision%20management%20system%20for%20precision%20oncology&amp;volume=127&amp;publication_year=2020&amp;pages=41-51&amp;pmid=31982633&amp;doi=10.1016/j.ejca.2019.12.017&amp;" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">Google Scholar</a>]</li>
+<li id="zoi231267r7">
+<span class="label">7.</span><cite>Pallarz S, Benary M, Lamping M, et al. Comparative Analysis of Public Knowledge Bases for Precision Oncology. JCO Precis Oncol. 2019;3(3):1-8. doi: 10.1200/PO.18.00371</cite> [<a href="https://doi.org/10.1200/PO.18.00371" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">DOI</a>] [<a href="/articles/PMC7446431/" class="usa-link">PMC free article</a>] [<a href="https://pubmed.ncbi.nlm.nih.gov/32914021/" class="usa-link">PubMed</a>] [<a href="https://scholar.google.com/scholar_lookup?journal=JCO%20Precis%20Oncol&amp;title=Comparative%20Analysis%20of%20Public%20Knowledge%20Bases%20for%20Precision%20Oncology&amp;volume=3&amp;issue=3&amp;publication_year=2019&amp;pages=1-8&amp;pmid=32914021&amp;doi=10.1200/PO.18.00371&amp;" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">Google Scholar</a>]</li>
+<li id="zoi231267r8">
+<span class="label">8.</span><cite>Rieke DT, Lamping M, Schuh M, et al. Comparison of treatment recommendations by molecular tumor boards worldwide. JCO Precis Oncol. 2018;2:1-14. doi: 10.1200/PO.18.00098</cite> [<a href="https://doi.org/10.1200/PO.18.00098" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">DOI</a>] [<a href="https://pubmed.ncbi.nlm.nih.gov/35135153/" class="usa-link">PubMed</a>] [<a href="https://scholar.google.com/scholar_lookup?journal=JCO%20Precis%20Oncol&amp;title=Comparison%20of%20treatment%20recommendations%20by%20molecular%20tumor%20boards%20worldwide&amp;volume=2&amp;publication_year=2018&amp;pages=1-14&amp;pmid=35135153&amp;doi=10.1200/PO.18.00098&amp;" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">Google Scholar</a>]</li>
+<li id="zoi231267r9">
+<span class="label">9.</span><cite>Devlin J, Chang M-W, Lee K, Toutanova K. BERT: pre-training of deep bidirectional transformers for language understanding. arXiv. Preprint posted online May 24, 2019. doi: 10.48550/arXiv.1810.04805</cite> [<a href="https://doi.org/10.48550/arXiv.1810.04805" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">DOI</a>]</li>
+<li id="zoi231267r10">
+<span class="label">10.</span><cite>Vaswani A, Shazeer N, Parmar N, et al. Attention is all you need. In: Advances in Neural Information Processing Systems. Published 2017. Accessed May 5, 2023. <a href="https://proceedings.neurips.cc/paper/2017/hash/3f5ee243547dee91fbd053c1c4a845aa-Abstract.html" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">https://proceedings.neurips.cc/paper/2017/hash/3f5ee243547dee91fbd053c1c4a845aa-Abstract.html</a></cite>
+</li>
+<li id="zoi231267r11">
+<span class="label">11.</span><cite>Wang Y, Zhao Y, Petzold L. Are large language models ready for healthcare? a comparative study on clinical language understanding. arXiv. Preprint posted online July 30, 2023. doi: 10.48550/arXiv.2304.05368</cite> [<a href="https://doi.org/10.48550/arXiv.2304.05368" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">DOI</a>]</li>
+<li id="zoi231267r12">
+<span class="label">12.</span><cite>Liu S, Wright AP, Patterson BL, et al. Using AI-generated suggestions from ChatGPT to optimize clinical decision support. J Inform Health Biomed. 2023;30(7):1237-1245. doi: 10.1093/jamia/ocad072</cite> [<a href="https://doi.org/10.1093/jamia/ocad072" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">DOI</a>] [<a href="/articles/PMC10280357/" class="usa-link">PMC free article</a>] [<a href="https://pubmed.ncbi.nlm.nih.gov/37087108/" class="usa-link">PubMed</a>] [<a href="https://scholar.google.com/scholar_lookup?journal=J%20Inform%20Health%20Biomed&amp;title=Using%20AI-generated%20suggestions%20from%20ChatGPT%20to%20optimize%20clinical%20decision%20support&amp;volume=30&amp;issue=7&amp;publication_year=2023&amp;pages=1237-1245&amp;pmid=37087108&amp;doi=10.1093/jamia/ocad072&amp;" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">Google Scholar</a>]</li>
+<li id="zoi231267r13">
+<span class="label">13.</span><cite>Hendriks LE, Kerr KM, Menis J, et al. ; ESMO Guidelines Committee . Non-oncogene-addicted metastatic non-small-cell lung cancer: ESMO Clinical Practice Guideline for diagnosis, treatment and follow-up. Ann Oncol. 2023;34(4):358-376. doi: 10.1016/j.annonc.2022.12.013</cite> [<a href="https://doi.org/10.1016/j.annonc.2022.12.013" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">DOI</a>] [<a href="https://pubmed.ncbi.nlm.nih.gov/36669645/" class="usa-link">PubMed</a>] [<a href="https://scholar.google.com/scholar_lookup?journal=Ann%20Oncol&amp;title=Non-oncogene-addicted%20metastatic%20non-small-cell%20lung%20cancer:%20ESMO%20Clinical%20Practice%20Guideline%20for%20diagnosis,%20treatment%20and%20follow-up&amp;volume=34&amp;issue=4&amp;publication_year=2023&amp;pages=358-376&amp;pmid=36669645&amp;doi=10.1016/j.annonc.2022.12.013&amp;" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">Google Scholar</a>]</li>
+<li id="zoi231267r14">
+<span class="label">14.</span><cite>Venigalla A, Frankle J, Carbin M. BioMedLM: a Domain-Specific Large Language Model for Biomedical Text. MosaicML press release. Revised January 1, 2023. Accessed May 5, 2023. <a href="https://www.mosaicml.com/blog/introducing-pubmed-gpt" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">https://www.mosaicml.com/blog/introducing-pubmed-gpt</a></cite>
+</li>
+<li id="zoi231267r15">
+<span class="label">15.</span><cite>Perplexity AI portal. Accessed February 17, 2023. <a href="https://www.perplexity.ai/" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">https://www.perplexity.ai/</a></cite>
+</li>
+<li id="zoi231267r16">
+<span class="label">16.</span><cite>OpenAI . Introducing ChatGPT. OpenAI website. November 30, 2022. Accessed February 17, 2023. <a href="https://openai.com/blog/chatgpt" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">https://openai.com/blog/chatgpt</a></cite>
+</li>
+<li id="zoi231267r17">
+<span class="label">17.</span><cite>Taylor R, Kardas M, Cucurull G, et al. Galactica: a large language model for science. arXiv. Preprint posted online November 16, 2022. doi: 10.48550/arXiv.2211.09085</cite> [<a href="https://doi.org/10.48550/arXiv.2211.09085" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">DOI</a>]</li>
+<li id="zoi231267r18">
+<span class="label">18.</span><cite>LLMs in PO GitHub page. Updated October 6, 2023. Accessed October 19, 2023. <a href="https://github.com/WangXII/LLMs_in_PO/" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">https://github.com/WangXII/LLMs_in_PO/</a></cite>
+</li>
+<li id="zoi231267r19">
+<span class="label">19.</span><cite>Rieke DT, Schröder S, Schafhausen P, et al. Targeted treatment in a case series of AR+, HRAS/PIK3CA co-mutated salivary duct carcinoma. Front Oncol. 2023;13:1107134. doi: 10.3389/fonc.2023.1107134</cite> [<a href="https://doi.org/10.3389/fonc.2023.1107134" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">DOI</a>] [<a href="/articles/PMC10325704/" class="usa-link">PMC free article</a>] [<a href="https://pubmed.ncbi.nlm.nih.gov/37427101/" class="usa-link">PubMed</a>] [<a href="https://scholar.google.com/scholar_lookup?journal=Front%20Oncol&amp;title=Targeted%20treatment%20in%20a%20case%20series%20of%20AR+,%20HRAS/PIK3CA%20co-mutated%20salivary%20duct%20carcinoma&amp;volume=13&amp;publication_year=2023&amp;pages=1107134&amp;pmid=37427101&amp;doi=10.3389/fonc.2023.1107134&amp;" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">Google Scholar</a>]</li>
+<li id="zoi231267r20">
+<span class="label">20.</span><cite>Li R, Kumar A, Chen JH. How chatbots and large language model artificial intelligence systems will reshape modern medicine: fountain of creativity or pandora’s box?
+JAMA Intern Med. 2023;183(6):596-597. doi: 10.1001/jamainternmed.2023.1835</cite> [<a href="https://doi.org/10.1001/jamainternmed.2023.1835" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">DOI</a>] [<a href="/articles/PMC12049698/" class="usa-link">PMC free article</a>] [<a href="https://pubmed.ncbi.nlm.nih.gov/37115531/" class="usa-link">PubMed</a>] [<a href="https://scholar.google.com/scholar_lookup?journal=JAMA%20Intern%20Med&amp;title=How%20chatbots%20and%20large%20language%20model%20artificial%20intelligence%20systems%20will%20reshape%20modern%20medicine:%20fountain%20of%20creativity%20or%20pandora%E2%80%99s%20box?&amp;volume=183&amp;issue=6&amp;publication_year=2023&amp;pages=596-597&amp;pmid=37115531&amp;doi=10.1001/jamainternmed.2023.1835&amp;" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">Google Scholar</a>]</li>
+<li id="zoi231267r21">
+<span class="label">21.</span><cite>Haupt CE, Marks M. AI-generated medical advice—GPT and beyond. JAMA. 2023;329(16):1349-1350. doi: 10.1001/jama.2023.5321</cite> [<a href="https://doi.org/10.1001/jama.2023.5321" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">DOI</a>] [<a href="https://pubmed.ncbi.nlm.nih.gov/36972070/" class="usa-link">PubMed</a>] [<a href="https://scholar.google.com/scholar_lookup?journal=JAMA&amp;title=AI-generated%20medical%20advice%E2%80%94GPT%20and%20beyond&amp;volume=329&amp;issue=16&amp;publication_year=2023&amp;pages=1349-1350&amp;pmid=36972070&amp;doi=10.1001/jama.2023.5321&amp;" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">Google Scholar</a>]</li>
+<li id="zoi231267r22">
+<span class="label">22.</span><cite>Haemmerli J, Sveikata L, Nouri A, et al. ChatGPT in glioma adjuvant therapy decision making: ready to assume the role of a doctor in the tumour board?
+BMJ Health Care Inform. 2023;30(1):e100775. doi: 10.1136/BMJHCI-2023-100775</cite> [<a href="https://doi.org/10.1136/BMJHCI-2023-100775" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">DOI</a>] [<a href="/articles/PMC10314415/" class="usa-link">PMC free article</a>] [<a href="https://pubmed.ncbi.nlm.nih.gov/37399360/" class="usa-link">PubMed</a>] [<a href="https://scholar.google.com/scholar_lookup?journal=BMJ%20Health%20Care%20Inform&amp;title=ChatGPT%20in%20glioma%20adjuvant%20therapy%20decision%20making:%20ready%20to%20assume%20the%20role%20of%20a%20doctor%20in%20the%20tumour%20board?&amp;volume=30&amp;issue=1&amp;publication_year=2023&amp;pages=e100775&amp;pmid=37399360&amp;doi=10.1136/BMJHCI-2023-100775&amp;" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">Google Scholar</a>]</li>
+<li id="zoi231267r23">
+<span class="label">23.</span><cite>Lukac S, Dayan D, Fink V, et al. Evaluating ChatGPT as an adjunct for the multidisciplinary tumor board decision-making in primary breast cancer cases.
+Arch Gynecol Obstet. 2023;308(6):1831-1844. doi: 10.1007/S00404-023-07130-5</cite> [<a href="https://doi.org/10.1007/S00404-023-07130-5" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">DOI</a>] [<a href="/articles/PMC10579162/" class="usa-link">PMC free article</a>] [<a href="https://pubmed.ncbi.nlm.nih.gov/37458761/" class="usa-link">PubMed</a>] [<a href="https://scholar.google.com/scholar_lookup?journal=Arch%20Gynecol%20Obstet&amp;title=Evaluating%20ChatGPT%20as%20an%20adjunct%20for%20the%20multidisciplinary%20tumor%20board%20decision-making%20in%20primary%20breast%20cancer%20cases.&amp;volume=308&amp;issue=6&amp;publication_year=2023&amp;pages=1831-1844&amp;pmid=37458761&amp;doi=10.1007/S00404-023-07130-5&amp;" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">Google Scholar</a>]</li>
+<li id="zoi231267r24">
+<span class="label">24.</span><cite>Sorin V, Klang E, Sklair-Levy M, et al. Large language model (ChatGPT) as a support tool for breast tumor board. NPJ Breast Cancer. 2023;9(1):44. doi: 10.1038/s41523-023-00557-8</cite> [<a href="https://doi.org/10.1038/s41523-023-00557-8" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">DOI</a>] [<a href="/articles/PMC10229606/" class="usa-link">PMC free article</a>] [<a href="https://pubmed.ncbi.nlm.nih.gov/37253791/" class="usa-link">PubMed</a>] [<a href="https://scholar.google.com/scholar_lookup?journal=NPJ%20Breast%20Cancer&amp;title=Large%20language%20model%20(ChatGPT)%20as%20a%20support%20tool%20for%20breast%20tumor%20board&amp;volume=9&amp;issue=1&amp;publication_year=2023&amp;pages=44&amp;pmid=37253791&amp;doi=10.1038/s41523-023-00557-8&amp;" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">Google Scholar</a>]</li>
+<li id="zoi231267r25">
+<span class="label">25.</span><cite>Brown T, Mann B, Ryder N, et al. Language Models are Few-Shot Learners. In: Advances in Neural Information Processing Systems. Published 2020. Accessed October 11, 2022. <a href="https://papers.nips.cc/paper/2020/hash/1457c0d6bfcb4967418bfb8ac142f64a-Abstract.html" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">https://papers.nips.cc/paper/2020/hash/1457c0d6bfcb4967418bfb8ac142f64a-Abstract.html</a></cite>
+</li>
+<li id="zoi231267r26">
+<span class="label">26.</span><cite>Open AI . GPT-4 technical report. arXiv. Preprint posted online March 27, 2023. doi: 10.48550/arXiv.2303.08774</cite> [<a href="https://doi.org/10.48550/arXiv.2303.08774" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">DOI</a>]</li>
+<li id="zoi231267r27">
+<span class="label">27.</span><cite>Kanjee Z, Crowe B, Rodman A. Accuracy of a generative artificial intelligence model in a complex diagnostic challenge. JAMA. 2023;330(1):78-80. doi: 10.1001/jama.2023.8288</cite> [<a href="https://doi.org/10.1001/jama.2023.8288" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">DOI</a>] [<a href="/articles/PMC10273128/" class="usa-link">PMC free article</a>] [<a href="https://pubmed.ncbi.nlm.nih.gov/37318797/" class="usa-link">PubMed</a>] [<a href="https://scholar.google.com/scholar_lookup?journal=JAMA&amp;title=Accuracy%20of%20a%20generative%20artificial%20intelligence%20model%20in%20a%20complex%20diagnostic%20challenge&amp;volume=330&amp;issue=1&amp;publication_year=2023&amp;pages=78-80&amp;pmid=37318797&amp;doi=10.1001/jama.2023.8288&amp;" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">Google Scholar</a>]</li>
+<li id="zoi231267r28">
+<span class="label">28.</span><cite>Sarraju A, Bruemmer D, Van Iterson E, Cho L, Rodriguez F, Laffin L. Appropriateness of cardiovascular disease prevention recommendations obtained from a popular online chat-based artificial intelligence model. JAMA. 2023;329(10):842-844. doi: 10.1001/jama.2023.1044</cite> [<a href="https://doi.org/10.1001/jama.2023.1044" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">DOI</a>] [<a href="/articles/PMC10015303/" class="usa-link">PMC free article</a>] [<a href="https://pubmed.ncbi.nlm.nih.gov/36735264/" class="usa-link">PubMed</a>] [<a href="https://scholar.google.com/scholar_lookup?journal=JAMA&amp;title=Appropriateness%20of%20cardiovascular%20disease%20prevention%20recommendations%20obtained%20from%20a%20popular%20online%20chat-based%20artificial%20intelligence%20model&amp;volume=329&amp;issue=10&amp;publication_year=2023&amp;pages=842-844&amp;pmid=36735264&amp;doi=10.1001/jama.2023.1044&amp;" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">Google Scholar</a>]</li>
+<li id="zoi231267r29">
+<span class="label">29.</span><cite>Meta . Introducing Llama. Accessed October 23, 2023. <a href="https://ai.meta.com/llama/" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">https://ai.meta.com/llama/</a></cite>
+</li>
+<li id="zoi231267r30">
+<span class="label">30.</span><cite>Google . Bard homepage. Accessed October 23, 2023. <a href="https://bard.google.com/chat" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">https://bard.google.com/chat</a></cite>
+</li>
+<li id="zoi231267r31">
+<span class="label">31.</span><cite>Li T, Shetty S, Kamath A, et al. CancerGPT: few-shot drug pair synergy prediction using large pre-trained language models. arXiv. Preprint posted online April 17, 2023. doi: 10.48550/arXiv.2304.10946</cite> [<a href="https://doi.org/10.48550/arXiv.2304.10946" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">DOI</a>]</li>
+<li id="zoi231267r32">
+<span class="label">32.</span><cite>Petak I, Kamal M, Dirner A, et al. A computational method for prioritizing targeted therapies in precision oncology: performance analysis in the SHIVA01 trial. NPJ Precis Oncol. 2021;5(1):59. doi: 10.1038/s41698-021-00191-2</cite> [<a href="https://doi.org/10.1038/s41698-021-00191-2" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">DOI</a>] [<a href="/articles/PMC8222375/" class="usa-link">PMC free article</a>] [<a href="https://pubmed.ncbi.nlm.nih.gov/34162980/" class="usa-link">PubMed</a>] [<a href="https://scholar.google.com/scholar_lookup?journal=NPJ%20Precis%20Oncol&amp;title=A%20computational%20method%20for%20prioritizing%20targeted%20therapies%20in%20precision%20oncology:%20performance%20analysis%20in%20the%20SHIVA01%20trial&amp;volume=5&amp;issue=1&amp;publication_year=2021&amp;pages=59&amp;pmid=34162980&amp;doi=10.1038/s41698-021-00191-2&amp;" class="usa-link usa-link--external" data-ga-action="click_feat_suppl" target="_blank" rel="noopener noreferrer">Google Scholar</a>]</li>
+</ul></section></section><section id="_ad93_" lang="en" class="associated-data"><h2 class="pmc_sec_title">Associated Data</h2>
+<p class="font-secondary"><em>This section collects any data citations, data availability statements, or supplementary materials included in this article.</em></p>
+<section id="_adsm93_" lang="en" class="supplementary-materials"><h3 class="pmc_sec_title">Supplementary Materials</h3>
+<section class="sm xbox font-sm" id="db_ds_supplementary-material1_reqid_"><div class="caption p">
+<span>Supplement 1.</span><p>
+eMethods.
+</p>
+<p><strong>eTable 1.</strong> Detailed Descriptions of the 10 Mock Patients</p>
+<p><strong>eTable 2.</strong> Comparison of the LLMs Used in This Study</p>
+<p><strong>eTable 3.</strong> Prompt Templates for All LLMs in the Given Study</p>
+<p><strong>eTable 4.</strong> Questions for the Survey</p>
+<p><strong>eFigure 1.</strong> Number of Treatment Options per Prompt Type</p>
+<p><strong>eFigure 2.</strong> Workflow of LLM Prompting</p>
+<p><strong>eFigure 3.</strong> General Workflow of the Analysis</p>
+<p><strong>eFigure 4.</strong> Number of Unique Clinical Trials Suggested by LLMs and the Oncological Experts</p>
+<p><strong>eFigure 5.</strong> Precision, Recall, and F1 Scores for the Structured Databases and LLMs Compared With the Human Criterion Standard</p>
+<p>
+eReferences.
+</p>
+</div>
+<div class="media p"><div class="caption">
+<a href="/articles/instance/10656647/bin/jamanetwopen-e2343689-s001.pdf" data-ga-action="click_feat_suppl" class="usa-link">Click here for additional data file.</a><sup> (471.8KB, pdf) </sup>
+</div></div></section><section class="sm xbox font-sm" id="db_ds_supplementary-material2_reqid_"><div class="caption p">
+<span>Supplement 2.</span><p>
+Data Sharing Statement
+</p>
+</div>
+<div class="media p"><div class="caption">
+<a href="/articles/instance/10656647/bin/jamanetwopen-e2343689-s002.pdf" data-ga-action="click_feat_suppl" class="usa-link">Click here for additional data file.</a><sup> (11.5KB, pdf) </sup>
+</div></div></section></section></section></section><footer class="p courtesy-note font-secondary font-sm text-center"><hr class="headless">
+<p>Articles from JAMA Network Open are provided here courtesy of <strong>American Medical Association</strong></p></footer></section></article>
+
+                      
+
+                    </main>
+                </div>
+            </div>
+        </div>
+
+        
+
+
+
+<!-- Secondary navigation placeholder -->
+<div class="pmc-sidenav desktop:grid-col-4 display-flex">
+    <section class="pmc-sidenav__container" aria-label="Article resources and navigation">
+        <button type="button" class="pmc-sidenav__container__close">
+            <img src="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/img/usa-icons/close.svg" role="img" alt="Close" />
+        </button>
+    <div class="display-none desktop:display-block">
+       <section class="margin-top-4 desktop:margin-top-0">
+              <h2 class="margin-top-0">ACTIONS</h2>
+           <ul class="usa-list usa-list--unstyled usa-list--actions">
+               
+               <li>
+                     <a
+                             href="https://doi.org/10.1001/jamanetworkopen.2023.43689"
+                             class="usa-button usa-button--outline width-24 font-xs display-inline-flex flex-align-center flex-justify-start padding-left-1"
+                             target="_blank"
+                             rel="noreferrer noopener"
+                             data-ga-category="actions"
+                             data-ga-action="click"
+                             data-ga-label="publisher_link_desktop"
+                     >
+                         <img src="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/img/launch.svg" alt="View on publisher site icon" class="usa-icon usa-icon--size-3 usa-icon--link"/>
+                         <span class="display-inline-flex flex-justify-center flex-1 padding-right-2">View on publisher site</span>
+                     </a>
+               </li>
+               
+               
+                
+               <li>
+                   <button role="button" class="usa-button width-24 citation-dialog-trigger display-inline-flex flex-align-center flex-justify-start padding-left-1"
+                        aria-label="Open dialog with citation text in different styles"
+                        data-ga-category="actions"
+                        data-ga-action="open"
+                        data-ga-label="cite_desktop"
+                        data-all-citations-url="/resources/citations/10656647/"
+                        data-citation-style="nlm"
+                        data-download-format-link="/resources/citations/10656647/export/"
+                    >
+                       <img src="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/img/format_quote.svg" alt="Cite icon" class="usa-icon usa-icon--size-3 usa-icon--white"/>
+                       <span class="display-inline-flex flex-justify-center flex-1 button-label">Cite</span>
+                    </button>
+               </li>
+                
+               <li>
+
+                        <button class="usa-button width-24 collections-dialog-trigger collections-button display-inline-flex flex-align-center flex-justify-start padding-left-1 collections-button-empty"
+                              aria-label="Save article in MyNCBI collections."
+                              data-ga-category="actions"
+                              data-ga-action="click"
+                              data-ga-label="collections_button_desktop"
+                              data-collections-open-dialog-enabled="false"
+                              data-collections-open-dialog-url="https://account.ncbi.nlm.nih.gov/?back_url=https%3A%2F%2Fpmc.ncbi.nlm.nih.gov%2Farticles%2FPMC10656647%2F%23open-collections-dialog"
+                              data-in-collections="false">
+                            <img src="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/img/action-bookmark-full.svg" alt="Collections icon" class="usa-icon usa-icon--size-3 usa-icon--white usa-icon--bookmark-full" hidden />
+                            <img src="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/img/action-bookmark-empty.svg" alt="Collections icon" class="usa-icon usa-icon--size-3 usa-icon--white usa-icon--bookmark-empty" hidden />
+                            <span class="display-inline-flex flex-justify-center flex-1">Collections</span>
+                       </button>
+               </li>
+               <li class="pmc-permalink">
+                    <button
+                            type="button"
+                            class="usa-button width-24 display-inline-flex flex-align-center flex-justify padding-left-1 shadow-none"
+                            aria-label="Show article permalink"
+                            aria-expanded="false"
+                            aria-haspopup="true"
+                            data-ga-category="actions"
+                            data-ga-action="open"
+                            data-ga-label="permalink_desktop"
+                    >
+                        <img src="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/img/share.svg" alt="Permalink icon" class="usa-icon usa-icon--size-3 usa-icon--white"/>
+                        <span class="display-inline-flex flex-justify-center flex-1 button-label">Permalink</span>
+                    </button>
+                   
+
+<div class="pmc-permalink__dropdown" hidden>
+    <div class="pmc-permalink__dropdown__container">
+          <h2 class="usa-modal__heading margin-top-0 margin-bottom-2 text-uppercase font-sans-xs">PERMALINK</h2>
+          <div class="pmc-permalink__dropdown__content">
+              <input type="text" class="usa-input" value="https://pmc.ncbi.nlm.nih.gov/articles/PMC10656647/" aria-label="Article permalink">
+              <button class="usa-button display-inline-flex pmc-permalink__dropdown__copy__btn margin-right-0" title="Copy article permalink" data-ga-category="save_share" data-ga-action="link" data-ga-label="copy_link">
+                  <img src="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/img/content_copy.svg" alt="Copy icon" aria-hidden="true" class="usa-icon usa-icon--white" />
+                  <span class="margin-left-1">Copy</span>
+              </button>
+          </div>
+    </div>
+</div>
+               </li>
+           </ul>
+       </section>
+     </div>
+
+        <section class="pmc-resources margin-top-6 desktop:margin-top-4" data-page-path="/articles/PMC10656647/">
+            <h2 class="margin-top-0">RESOURCES</h2>
+            
+                <div class="usa-accordion usa-accordion--multiselectable" data-allow-multiple>
+                    <h3 class="usa-accordion__heading">
+                        <button
+                        type="button"
+                        class="usa-accordion__button"
+                        aria-expanded="false"
+                        aria-controls="resources-similar-articles"
+                        data-ga-category="resources_accordion"
+                        data-ga-action="open_similar_articles"
+                        data-ga-label="/articles/PMC10656647/"
+                        data-action-open="open_similar_articles"
+                        data-action-close="close_similar_articles"
+                        >
+                            Similar articles
+                        </button>
+                    </h3>
+                    <div
+                            id="resources-similar-articles"
+                            class="usa-accordion__content usa-prose"
+                            
+                                data-source-url="/resources/similar-article-links/37976064/"
+                            
+                    >
+                        
+                    </div>
+                    <h3 class="usa-accordion__heading">
+                        <button
+                        type="button"
+                        class="usa-accordion__button"
+                        aria-expanded="false"
+                        aria-controls="resources-cited-by-other-articles"
+                        data-ga-category="resources_accordion"
+                        data-ga-action="open_cited_by"
+                        data-ga-label="/articles/PMC10656647/"
+                        data-action-open="open_cited_by"
+                        data-action-close="close_cited_by"
+                        >
+                             Cited by other articles
+                        </button>
+                    </h3>
+                    <div
+                            id="resources-cited-by-other-articles"
+                            class="usa-accordion__content usa-prose"
+                            
+                                data-source-url="/resources/cited-by-links/37976064/"
+                            
+                    >
+                          
+                    </div>
+                    
+                        <h3 class="usa-accordion__heading">
+                            <button
+                            type="button"
+                            class="usa-accordion__button"
+                            aria-expanded="false"
+                            aria-controls="resources-links-to-ncbi-databases"
+                            data-ga-category="resources_accordion"
+                            data-ga-action="open_NCBI_links"
+                            data-ga-label="/articles/PMC10656647/"
+                            data-action-open="open_NCBI_links"
+                            data-action-close="close_NCBI_link"
+                            >
+                                 Links to NCBI Databases
+                            </button>
+                        </h3>
+                        <div
+                                id="resources-links-to-ncbi-databases"
+                                class="usa-accordion__content usa-prose"
+                                data-source-url="/resources/db-links/10656647/"
+                        >
+                        </div>
+                    
+                    
+                </div>
+            
+        </section>
+
+
+        <section
+        class="usa-in-page-nav usa-in-page-nav--wide margin-top-6 desktop:margin-top-4"
+        data-title-text="On this page"
+        data-title-heading-level="h2"
+        data-scroll-offset="0"
+        data-root-margin="-10% 0px -80% 0px"
+        data-main-content-selector="main"
+        data-threshold="1"
+        hidden
+        ></section>
+    </section>
+</div>
+
+        
+
+<div class="overlay" role="dialog" aria-label="Citation Dialog" hidden>
+    <div class="dialog citation-dialog" aria-hidden="true">
+        <div class="display-inline-flex flex-align-center flex-justify width-full margin-bottom-2">
+            <h2 class="usa-modal__heading margin-0">Cite</h2>
+             <button type="button" class="usa-button usa-button--unstyled close-overlay text-black width-auto"  tabindex="1">
+                 <img src="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/img/close.svg" alt="Close icon" class="usa-icon usa-icon--size-3 usa-icon--button" />
+             </button>
+        </div>
+
+        
+
+<div class="citation-text-block">
+  <div class="citation-text margin-bottom-2"></div>
+  <ul class="usa-list usa-list--unstyled display-inline-flex flex-justify width-full flex-align-center">
+      <li>
+        <button
+          class="usa-button usa-button--unstyled text-no-underline display-flex flex-align-center copy-button dialog-focus"
+          data-ga-category="save_share"
+          data-ga-action="cite"
+          data-ga-label="copy"
+          tabindex="2">
+            <img src="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/img/content_copy.svg" alt="Copy icon" class="usa-icon usa-icon--size-3 usa-icon--link" />
+            <span>Copy</span>
+        </button>
+      </li>
+      <li>
+          <a
+              href="#"
+              role="button"
+              class="usa-button usa-button--unstyled text-no-underline display-flex flex-align-center export-button"
+              data-ga-category="save_share"
+              data-ga-action="cite"
+              data-ga-label="download"
+              title="Download a file for external citation management software"
+              tabindex="3">
+                <img src="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/img/file_download.svg" alt="Download icon" aria-hidden="true" class="usa-icon usa-icon--size-3 usa-icon--link" />
+                <span class="display-none mobile-lg:display-inline">Download .nbib</span>
+                <span class="display-inline mobile-lg:display-none">.nbib</span>
+            </a>
+      </li>
+      <li>
+          
+
+<div class="display-inline-flex flex-align-center">
+  <label class="usa-label margin-top-0">Format:</label>
+  <select aria-label="Format" class="usa-select citation-style-selector padding-1 margin-top-0 border-0 padding-right-4" tabindex="4" >
+    
+      <option data-style-url-name="ama"
+              value="AMA"
+              >
+        AMA
+      </option>
+    
+      <option data-style-url-name="apa"
+              value="APA"
+              >
+        APA
+      </option>
+    
+      <option data-style-url-name="mla"
+              value="MLA"
+              >
+        MLA
+      </option>
+    
+      <option data-style-url-name="nlm"
+              value="NLM"
+              selected="selected">
+        NLM
+      </option>
+    
+  </select>
+</div>
+      </li>
+  </ul>
+</div>
+    </div>
+</div>
+
+        <div class="overlay" role="dialog" hidden>
+  <div id="collections-action-dialog" class="dialog collections-dialog" aria-hidden="true">
+   <div class="display-inline-flex flex-align-center flex-justify width-full margin-bottom-2">
+        <h2 class="usa-modal__heading margin-0">Add to Collections</h2>
+    </div>
+    <div class="collections-action-panel action-panel">
+      
+
+
+<form id="collections-action-dialog-form"
+      class="usa-form maxw-full collections-action-panel-form action-panel-content action-form action-panel-smaller-selectors"
+      data-existing-collections-url="/list-existing-collections/"
+      data-add-to-existing-collection-url="/add-to-existing-collection/"
+      data-create-and-add-to-new-collection-url="/create-and-add-to-new-collection/"
+      data-myncbi-max-collection-name-length="100"
+      data-collections-root-url="https://www.ncbi.nlm.nih.gov/myncbi/collections/">
+
+    <input type="hidden" name="csrfmiddlewaretoken" value="wBkqExLbt7WzSpIU74mF4fFUe6obQrVf32eNKAJtrcpYjwPZlsJb0aQAuEJyw6RD">
+
+    <fieldset class="usa-fieldset margin-bottom-2">
+        <div class="usa-radio">
+            <input type="radio"
+            id="collections-action-dialog-new"
+            class="usa-radio__input usa-radio__input--tile collections-new  margin-top-0"
+            name="collections"
+            value="new"
+            data-ga-category="collections_button"
+            data-ga-action="click"
+            data-ga-label="collections_radio_new" />
+            <label class="usa-radio__label" for="collections-action-dialog-new">Create a new collection</label>
+        </div>
+        <div class="usa-radio">
+            <input type="radio"
+            id="collections-action-dialog-existing"
+            class="usa-radio__input usa-radio__input--tile collections-existing"
+            name="collections"
+            value="existing"
+            checked="true"
+            data-ga-category="collections_button"
+            data-ga-action="click"
+            data-ga-label="collections_radio_existing" />
+            <label class="usa-radio__label" for="collections-action-dialog-existing">Add to an existing collection</label>
+        </div>
+    </fieldset>
+
+    <fieldset class="usa-fieldset margin-bottom-2">
+        <div class="action-panel-control-wrap new-collections-controls">
+           <label for="collections-action-dialog-add-to-new" class="usa-label margin-top-0">
+                Name your collection
+               <abbr title="required" class="usa-hint usa-hint--required text-no-underline">*</abbr>
+          </label>
+          <input
+            type="text"
+            name="add-to-new-collection"
+            id="collections-action-dialog-add-to-new"
+            class="usa-input collections-action-add-to-new"
+            pattern="[^&quot;&amp;=&lt;&gt;/]*" title="The following characters are not allowed in the Name field: &quot;&amp;=&lt;&gt;/"
+            maxlength=""
+            data-ga-category="collections_button"
+            data-ga-action="create_collection"
+            data-ga-label="non_favorties_collection"
+            required
+          />
+        </div>
+        <div class="action-panel-control-wrap existing-collections-controls">
+             <label for="collections-action-dialog-add-to-existing" class="usa-label margin-top-0">
+                Choose a collection
+              </label>
+              <select id="collections-action-dialog-add-to-existing"
+                      class="usa-select collections-action-add-to-existing"
+                      data-ga-category="collections_button"
+                      data-ga-action="select_collection"
+                      data-ga-label="($('.collections-action-add-to-existing').val() === 'Favorites') ? 'Favorites' : 'non_favorites_collection'">
+              </select>
+              <div class="collections-retry-load-on-error usa-input-error-message selection-validation-message">
+                Unable to load your collection due to an error<br>
+                <a href="#">Please try again</a>
+              </div>
+        </div>
+    </fieldset>
+
+    <div class="display-inline-flex">
+        <button class="usa-button margin-top-0 action-panel-submit"
+            type="submit"
+            data-loading-label="Adding..."
+            data-pinger-ignore
+            data-ga-category="collections_button"
+            data-ga-action="click"
+            data-ga-label="add">
+          Add
+        </button>
+        <button class="usa-button usa-button--outline margin-top-0 action-panel-cancel"
+                aria-label="Close 'Add to Collections' panel"
+                ref="linksrc=close_collections_panel"
+                data-ga-category="collections_button"
+                data-ga-action="click"
+                data-ga-label="cancel">
+          Cancel
+        </button>
+    </div>
+</form>
+    </div>
+  </div>
+</div>
+
+        
+
+      </div>
+    </div>
+  </div>
+
+
+
+        
+    
+    
+
+<footer class="ncbi-footer ncbi-dark-background " >
+    
+        <div class="ncbi-footer__icon-section">
+            <div class="ncbi-footer__social-header">
+                Follow NCBI
+            </div>
+
+            <div class="grid-container ncbi-footer__ncbi-social-icons-container">
+                
+                    <a href="https://twitter.com/ncbi"
+                       class="ncbi-footer__social-icon ncbi-footer__social-icon--gray"
+                       target="_blank"
+                       rel="noreferrer noopener">
+                        <svg width="40"
+                             height="40"
+                             viewBox="0 0 40 40"
+                             fill="none"
+                             xmlns="http://www.w3.org/2000/svg"
+                             focusable="false"
+                             aria-hidden="true">
+                            <path d="m6.067 8 10.81 13.9L6 33.2h4.2l8.4-9.1 7.068 9.1H34L22.8 18.5 31.9 8h-3.5l-7.7 8.4L14.401 8H6.067Zm3.6 1.734h3.266l16.8 21.732H26.57L9.668 9.734Z">
+                            </path>
+                        </svg>
+                        <span class="usa-sr-only">NCBI on X (formerly known as Twitter)</span>
+                    </a>
+                
+
+                
+                    <a href="https://www.facebook.com/ncbi.nlm"
+                       class="ncbi-footer__social-icon ncbi-footer__social-icon--gray"
+                       target="_blank"
+                       rel="noreferrer noopener">
+                        <svg width="16"
+                             height="29"
+                             focusable="false"
+                             aria-hidden="true"
+                             viewBox="0 0 16 29"
+                             fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.8809 21.4002C3.8809 19.0932 3.8809 16.7876 3.8809 14.478C3.8809 14.2117 3.80103 14.1452 3.54278 14.1492C2.53372 14.1638 1.52334 14.1492 0.514288 14.1598C0.302626 14.1598 0.248047 14.0972 0.248047 13.8936C0.256034 12.4585 0.256034 11.0239 0.248047 9.58978C0.248047 9.37013 0.302626 9.30224 0.528931 9.3049C1.53798 9.31688 2.54837 9.3049 3.55742 9.31555C3.80103 9.31555 3.8809 9.26097 3.87957 9.00272C3.87158 8.00565 3.85428 7.00592 3.90753 6.00884C3.97142 4.83339 4.31487 3.73115 5.04437 2.78467C5.93095 1.63318 7.15699 1.09005 8.56141 0.967577C10.5582 0.79319 12.555 0.982221 14.5518 0.927641C14.7102 0.927641 14.7462 0.99287 14.7449 1.13664C14.7449 2.581 14.7449 4.02668 14.7449 5.47104C14.7449 5.67604 14.6517 5.68669 14.4946 5.68669C13.4523 5.68669 12.4113 5.68669 11.3703 5.68669C10.3506 5.68669 9.92057 6.10868 9.90593 7.13904C9.89661 7.7647 9.91525 8.39303 9.89794 9.01869C9.88995 9.26364 9.96583 9.31822 10.2015 9.31688C11.7204 9.30623 13.2393 9.31688 14.7595 9.3049C15.0257 9.3049 15.0723 9.3728 15.0444 9.62439C14.89 10.9849 14.7515 12.3467 14.6144 13.7085C14.5691 14.1571 14.5785 14.1585 14.1458 14.1585C12.8386 14.1585 11.5313 14.1665 10.2254 14.1518C9.95119 14.1518 9.89794 14.2317 9.89794 14.4899C9.90593 19.0799 9.89794 23.6752 9.91125 28.2612C9.91125 28.5674 9.8407 28.646 9.53186 28.6433C7.77866 28.6273 6.02414 28.6366 4.27094 28.634C3.82499 28.634 3.87158 28.6992 3.87158 28.22C3.87602 25.9472 3.87913 23.6739 3.8809 21.4002Z">
+                            </path>
+                        </svg>
+                        <span class="usa-sr-only">NCBI on Facebook</span>
+                    </a>
+                
+
+                
+                    <a href="https://www.linkedin.com/company/ncbinlm"
+                       class="ncbi-footer__social-icon ncbi-footer__social-icon--gray"
+                       target="_blank"
+                       rel="noreferrer noopener">
+                        <svg width="25"
+                             height="23"
+                             viewBox="0 0 26 24"
+                             fill="none"
+                             xmlns="http://www.w3.org/2000/svg"
+                             focusable="false"
+                             aria-hidden="true">
+                            <path d="M14.6983 9.98423C15.6302 9.24808 16.5926 8.74754 17.6762 8.51991C19.673 8.09126 21.554 8.30824 23.1262 9.7526C24.2351 10.7723 24.7529 12.1115 25.0165 13.5612C25.1486 14.3363 25.2105 15.1218 25.2015 15.9081C25.2015 18.3043 25.2015 20.6898 25.2082 23.0806C25.2082 23.3468 25.1549 23.444 24.8621 23.4414C23.1297 23.4272 21.3992 23.4272 19.6704 23.4414C19.4041 23.4414 19.3429 23.3588 19.3442 23.1019C19.3535 20.5194 19.3442 17.9368 19.3442 15.3543C19.3442 14.0005 18.3258 12.9448 17.0266 12.9488C15.7273 12.9528 14.6983 14.0071 14.6983 15.361C14.6983 17.9328 14.6917 20.5047 14.6983 23.0753C14.6983 23.3708 14.6198 23.444 14.3296 23.4427C12.6185 23.4294 10.9079 23.4294 9.19779 23.4427C8.93155 23.4427 8.86099 23.3735 8.86232 23.1086C8.8783 19.7619 8.88628 16.4144 8.88628 13.066C8.88628 11.5688 8.87874 10.0708 8.86365 8.57182C8.86365 8.3575 8.90758 8.27896 9.14054 8.28029C10.9048 8.29094 12.6687 8.29094 14.4321 8.28029C14.6464 8.28029 14.6983 8.34818 14.6983 8.54653C14.6903 9.00047 14.6983 9.45441 14.6983 9.98423Z">
+                            </path>
+                            <path d="M6.55316 15.8443C6.55316 18.2564 6.55316 20.6699 6.55316 23.082C6.55316 23.3629 6.48127 23.4388 6.19906 23.4374C4.47737 23.4241 2.75568 23.4241 1.03399 23.4374C0.767751 23.4374 0.69986 23.3629 0.701191 23.1006C0.709178 18.2648 0.709178 13.4281 0.701191 8.59053C0.701191 8.34026 0.765089 8.27237 1.01669 8.2737C2.74991 8.28435 4.48048 8.28435 6.20838 8.2737C6.47462 8.2737 6.5465 8.33627 6.54517 8.6065C6.54783 11.0186 6.55316 13.4308 6.55316 15.8443Z">
+                            </path>
+                            <path d="M3.65878 0.243898C5.36804 0.243898 6.58743 1.45529 6.58743 3.1406C6.58743 4.75801 5.32145 5.95742 3.60819 5.96807C3.22177 5.97614 2.83768 5.90639 2.47877 5.76299C2.11985 5.61959 1.79344 5.40546 1.51897 5.13334C1.24449 4.86123 1.02755 4.53668 0.881058 4.17902C0.734563 3.82136 0.661505 3.43788 0.666231 3.05141C0.67555 1.42601 1.9362 0.242566 3.65878 0.243898Z">
+                            </path>
+                        </svg>
+                        <span class="usa-sr-only">NCBI on LinkedIn</span>
+                    </a>
+                
+
+                
+                    <a href="https://github.com/ncbi"
+                       class="ncbi-footer__social-icon ncbi-footer__social-icon--gray"
+                       target="_blank"
+                       rel="noreferrer noopener">
+                        <svg width="28"
+                             height="27"
+                             viewBox="0 0 28 28"
+                             fill="none"
+                             xmlns="http://www.w3.org/2000/svg"
+                             focusable="false"
+                             aria-hidden="true">
+                            <path d="M16.7228 20.6334C17.5057 20.5527 18.2786 20.3944 19.0301 20.1608C21.3108 19.4193 22.5822 17.8259 22.963 15.4909C23.1228 14.5112 23.1814 13.5287 22.9883 12.5437C22.8106 11.6423 22.4013 10.8028 21.8007 10.1076C21.7526 10.0605 21.7197 10 21.7064 9.934C21.6931 9.86799 21.7 9.79952 21.7262 9.73748C22.0856 8.6206 21.9711 7.51969 21.601 6.42677C21.582 6.3497 21.5345 6.2827 21.468 6.23923C21.4016 6.19577 21.3211 6.17906 21.2429 6.19248C20.7329 6.21649 20.2313 6.33051 19.7611 6.52928C19.1103 6.7908 18.4899 7.12198 17.9104 7.51703C17.84 7.56996 17.7581 7.60551 17.6713 7.62078C17.5846 7.63605 17.4954 7.6306 17.4112 7.60489C15.2596 7.05882 13.0054 7.06203 10.8554 7.61421C10.7806 7.63586 10.7018 7.63967 10.6253 7.62534C10.5487 7.611 10.4766 7.57892 10.4148 7.53167C9.64788 7.03247 8.85171 6.58918 7.96368 6.33359C7.65781 6.24338 7.34123 6.19458 7.02239 6.18849C6.94879 6.17986 6.87462 6.19893 6.81432 6.242C6.75402 6.28507 6.71191 6.34904 6.69621 6.42145C6.32342 7.51437 6.2209 8.61527 6.56307 9.73348C6.59635 9.84264 6.64694 9.93316 6.54177 10.0516C5.47666 11.2604 5.09988 12.6834 5.19574 14.2676C5.2663 15.4244 5.46201 16.5466 6.01454 17.5769C6.84399 19.1171 8.21664 19.9119 9.85158 20.3352C10.3938 20.4706 10.9444 20.5698 11.4998 20.632C11.5384 20.7492 11.4506 20.7798 11.408 20.8291C11.1734 21.1179 10.9894 21.4441 10.8634 21.7942C10.7622 22.0458 10.8315 22.4039 10.6065 22.5516C10.263 22.7766 9.83827 22.8485 9.42421 22.8871C8.17936 23.0056 7.26471 22.4877 6.6283 21.4348C6.25552 20.8184 5.76956 20.3325 5.08523 20.0663C4.76981 19.9325 4.42139 19.8967 4.08537 19.9638C3.7898 20.029 3.73788 20.1901 3.93891 20.4111C4.03639 20.5234 4.14989 20.6207 4.27575 20.6999C4.9796 21.1318 5.51717 21.7884 5.80152 22.5636C6.37002 23.9973 7.48039 24.5697 8.93825 24.6323C9.43741 24.6575 9.93768 24.615 10.4254 24.5058C10.5892 24.4672 10.6531 24.4872 10.6517 24.6762C10.6451 25.4936 10.6637 26.3123 10.6517 27.131C10.6517 27.6635 10.1684 27.9297 9.58663 27.7393C8.17396 27.2671 6.84977 26.5631 5.66838 25.656C2.59555 23.2891 0.720966 20.1861 0.217704 16.3376C-0.357453 11.9127 0.911353 8.00824 3.98551 4.73881C6.11909 2.42656 8.99932 0.939975 12.1203 0.540191C16.5351 -0.0601815 20.4347 1.14323 23.7232 4.16373C26.2449 6.47869 27.724 9.37672 28.1048 12.7726C28.5828 17.0325 27.3686 20.7945 24.4768 23.9827C22.9762 25.6323 21.0956 26.8908 18.9982 27.6488C18.8783 27.6927 18.7585 27.738 18.636 27.7726C18.0356 27.9404 17.6189 27.6395 17.6189 27.0098C17.6189 25.7452 17.6308 24.4806 17.6295 23.2159C17.6329 22.9506 17.6128 22.6856 17.5696 22.4238C17.4325 21.6664 17.3419 21.484 16.7228 20.6334Z">
+                            </path>
+                        </svg>
+                        <span class="usa-sr-only">NCBI on GitHub</span>
+                    </a>
+                
+
+                
+                    <a href="https://ncbiinsights.ncbi.nlm.nih.gov/"
+                       class="ncbi-footer__social-icon ncbi-footer__social-icon--gray"
+                       target="_blank"
+                       rel="noreferrer noopener">
+                        <svg width="26"
+                             height="26"
+                             viewBox="0 0 27 27"
+                             fill="none"
+                             xmlns="http://www.w3.org/2000/svg"
+                             focusable="false"
+                             aria-hidden="true">
+                            <path d="M23.7778 26.4574C23.1354 26.3913 22.0856 26.8024 21.636 26.3087C21.212 25.8444 21.4359 24.8111 21.324 24.0347C19.9933 14.8323 14.8727 8.80132 6.09057 5.85008C4.37689 5.28406 2.58381 4.99533 0.779072 4.99481C0.202773 4.99481 -0.0229751 4.83146 0.00455514 4.21479C0.0660406 3.08627 0.0660406 1.95525 0.00455514 0.826734C-0.0413285 0.0815827 0.259669 -0.0193618 0.896534 0.00266238C6.96236 0.222904 12.3693 2.24179 16.9889 6.16209C22.9794 11.2478 26.1271 17.7688 26.4372 25.648C26.4629 26.294 26.3179 26.5271 25.6609 26.4684C25.0827 26.417 24.4991 26.4574 23.7778 26.4574Z">
+                            </path>
+                            <path d="M14.8265 26.441C14.0924 26.441 13.2371 26.6795 12.6626 26.3786C12.0092 26.0372 12.3781 25.0644 12.246 24.378C11.1154 18.5324 6.6849 14.5497 0.74755 14.1001C0.217135 14.0615 -0.0104482 13.9422 0.0134113 13.3659C0.0519536 12.1454 0.0482829 10.9213 0.0134113 9.69524C-0.00127145 9.14464 0.196946 9.03268 0.703502 9.04736C9.21217 9.27128 16.5994 16.2511 17.2804 24.7231C17.418 26.4446 17.418 26.4446 15.6579 26.4446H14.832L14.8265 26.441Z">
+                            </path>
+                            <path d="M3.58928 26.4555C2.64447 26.4618 1.73584 26.0925 1.06329 25.4289C0.39073 24.7653 0.00933763 23.8617 0.0030097 22.9169C-0.00331824 21.9721 0.365937 21.0635 1.02954 20.3909C1.69315 19.7184 2.59675 19.337 3.54156 19.3306C4.48637 19.3243 5.39499 19.6936 6.06755 20.3572C6.7401 21.0208 7.1215 21.9244 7.12782 22.8692C7.13415 23.814 6.7649 24.7226 6.10129 25.3952C5.43768 26.0677 4.53409 26.4491 3.58928 26.4555Z">
+                            </path>
+                        </svg>
+                        <span class="usa-sr-only">NCBI RSS feed</span>
+                    </a>
+                
+            </div>
+        </div>
+    
+
+    <div data-testid="gridContainer"
+         class="grid-container ncbi-footer__container">
+        <div class="grid-row ncbi-footer__main-content-container"
+             data-testid="grid">
+            
+                <div class="ncbi-footer__column">
+                    
+                        <p class="ncbi-footer__circled-icons-heading">
+                            Connect with NLM
+                        </p>
+                    
+
+                    <div class="ncbi-footer__circled-icons-list">
+                        
+                            <a href=https://twitter.com/nlm_nih class="ncbi-footer__social-icon ncbi-footer__social-icon--circled" target="_blank" rel="noreferrer noopener">
+                                <svg width="32"
+                                     height="32"
+                                     viewBox="0 0 40 40"
+                                     fill="none"
+                                     xmlns="http://www.w3.org/2000/svg"
+                                     focusable="false"
+                                     aria-hidden="true">
+                                    <path d="m6.067 8 10.81 13.9L6 33.2h4.2l8.4-9.1 7.068 9.1H34L22.8 18.5 31.9 8h-3.5l-7.7 8.4L14.401 8H6.067Zm3.6 1.734h3.266l16.8 21.732H26.57L9.668 9.734Z">
+                                    </path>
+                                </svg>
+                                <span class="usa-sr-only">NLM on X (formerly known as Twitter)</span>
+                            </a>
+                        
+
+                        
+                            <a href=https://www.facebook.com/nationallibraryofmedicine class="ncbi-footer__social-icon ncbi-footer__social-icon--circled" target="_blank" rel="noreferrer noopener">
+                                <svg width="13"
+                                     height="24"
+                                     viewBox="0 0 13 24"
+                                     fill="none"
+                                     xmlns="http://www.w3.org/2000/svg"
+                                     focusable="false"
+                                     aria-hidden="true">
+                                    <path d="M4.11371 23.1369C4.11371 23.082 4.11371 23.0294 4.11371 22.9745V12.9411H0.817305C0.6709 12.9411 0.670898 12.9411 0.670898 12.8016C0.670898 11.564 0.670898 10.3287 0.670898 9.09341C0.670898 8.97903 0.705213 8.95158 0.815017 8.95158C1.8673 8.95158 2.91959 8.95158 3.97417 8.95158H4.12057V8.83263C4.12057 7.8055 4.12057 6.7738 4.12057 5.74897C4.1264 4.92595 4.31387 4.11437 4.66959 3.37217C5.12916 2.38246 5.94651 1.60353 6.95717 1.1921C7.64827 0.905008 8.3913 0.764035 9.13953 0.778051C10.0019 0.791777 10.8644 0.830666 11.7268 0.860404C11.8869 0.860404 12.047 0.894717 12.2072 0.90158C12.2964 0.90158 12.3261 0.940469 12.3261 1.02968C12.3261 1.5421 12.3261 2.05452 12.3261 2.56465C12.3261 3.16857 12.3261 3.7725 12.3261 4.37642C12.3261 4.48165 12.2964 4.51367 12.1912 4.51138C11.5369 4.51138 10.8804 4.51138 10.2261 4.51138C9.92772 4.51814 9.63058 4.5526 9.33855 4.61433C9.08125 4.6617 8.84537 4.78881 8.66431 4.97766C8.48326 5.16652 8.3662 5.40755 8.32972 5.66661C8.28476 5.89271 8.26027 6.1224 8.25652 6.35289C8.25652 7.19014 8.25652 8.02969 8.25652 8.86923C8.25652 8.89439 8.25652 8.91955 8.25652 8.95615H12.0219C12.1797 8.95615 12.182 8.95616 12.1614 9.10714C12.0768 9.76596 11.9876 10.4248 11.9029 11.0813C11.8312 11.6319 11.7626 12.1824 11.697 12.733C11.6719 12.9434 11.6787 12.9434 11.4683 12.9434H8.26338V22.899C8.26338 22.979 8.26338 23.0591 8.26338 23.1392L4.11371 23.1369Z">
+                                    </path>
+                                </svg>
+                                <span class="usa-sr-only">NLM on Facebook</span>
+                            </a>
+                        
+
+                        
+                            <a href=https://www.youtube.com/user/NLMNIH class="ncbi-footer__social-icon ncbi-footer__social-icon--circled" target="_blank" rel="noreferrer noopener">
+                                <svg width="21"
+                                     height="15"
+                                     viewBox="0 0 21 15"
+                                     fill="none"
+                                     xmlns="http://www.w3.org/2000/svg"
+                                     focusable="false"
+                                     aria-hidden="true">
+                                    <path d="M19.2561 1.47914C18.9016 1.15888 18.5699 0.957569 17.2271 0.834039C15.5503 0.678484 13.2787 0.655608 11.563 0.65332H9.43556C7.71987 0.65332 5.4483 0.678484 3.77151 0.834039C2.43098 0.957569 2.097 1.15888 1.74242 1.47914C0.813665 2.32097 0.619221 4.62685 0.598633 6.89384C0.598633 7.31781 0.598633 7.74101 0.598633 8.16345C0.626084 10.4121 0.827391 12.686 1.74242 13.521C2.097 13.8412 2.4287 14.0425 3.77151 14.1661C5.4483 14.3216 7.71987 14.3445 9.43556 14.3468H11.563C13.2787 14.3468 15.5503 14.3216 17.2271 14.1661C18.5676 14.0425 18.9016 13.8412 19.2561 13.521C20.1712 12.6929 20.3725 10.451 20.3999 8.22064C20.3999 7.74025 20.3999 7.25986 20.3999 6.77946C20.3725 4.54907 20.1689 2.30724 19.2561 1.47914ZM8.55942 10.5311V4.65201L13.5601 7.50005L8.55942 10.5311Z"
+                                          fill="white" />
+                                </svg>
+                                <span class="usa-sr-only">NLM on YouTube</span>
+                            </a>
+                        
+                    </div>
+                </div>
+            
+
+            
+                <address class="ncbi-footer__address ncbi-footer__column">
+                    
+        <p>
+            <a class="usa-link usa-link--external"
+            href="https://www.google.com/maps/place/8600+Rockville+Pike,+Bethesda,+MD+20894/%4038.9959508,
+            -77.101021,17z/data%3D!3m1!4b1!4m5!3m4!1s0x89b7c95e25765ddb%3A0x19156f88b27635b8!8m2!3d38.9959508!
+            4d-77.0988323"
+            rel="noopener noreferrer" target="_blank">National Library of Medicine
+            <br/> 8600 Rockville Pike<br/> Bethesda, MD 20894</a>
+        </p>
+    
+                </address>
+            
+
+            
+                <ul class="usa-list usa-list--unstyled ncbi-footer__vertical-list ncbi-footer__column">
+                    
+                        <li class="ncbi-footer__vertical-list-item">
+                            
+
+
+
+
+
+
+
+
+
+    <a href="https://www.nlm.nih.gov/web_policies.html" class="usa-link  usa-link--alt ncbi-footer__link"  >
+        
+
+        
+            Web Policies
+        
+
+        
+    </a>
+
+
+                        </li>
+                    
+                        <li class="ncbi-footer__vertical-list-item">
+                            
+
+
+
+
+
+
+
+
+
+    <a href="https://www.nih.gov/institutes-nih/nih-office-director/office-communications-public-liaison/freedom-information-act-office" class="usa-link  usa-link--alt ncbi-footer__link"  >
+        
+
+        
+            FOIA
+        
+
+        
+    </a>
+
+
+                        </li>
+                    
+                        <li class="ncbi-footer__vertical-list-item">
+                            
+
+
+
+
+
+
+
+
+
+    <a href="https://www.hhs.gov/vulnerability-disclosure-policy/index.html" class="usa-link usa-link--external usa-link--alt ncbi-footer__link" rel="noreferrer noopener" target='_blank' >
+        
+
+        
+            HHS Vulnerability Disclosure
+        
+
+        
+    </a>
+
+
+                        </li>
+                    
+                </ul>
+            
+
+            
+                <ul class="usa-list usa-list--unstyled ncbi-footer__vertical-list ncbi-footer__column">
+                    
+                        <li class="ncbi-footer__vertical-list-item">
+                            
+
+
+
+
+
+
+
+
+
+    <a href="https://support.nlm.nih.gov/" class="usa-link  usa-link--alt ncbi-footer__link"  >
+        
+
+        
+            Help
+        
+
+        
+    </a>
+
+
+                        </li>
+                    
+                        <li class="ncbi-footer__vertical-list-item">
+                            
+
+
+
+
+
+
+
+
+
+    <a href="https://www.nlm.nih.gov/accessibility.html" class="usa-link  usa-link--alt ncbi-footer__link"  >
+        
+
+        
+            Accessibility
+        
+
+        
+    </a>
+
+
+                        </li>
+                    
+                        <li class="ncbi-footer__vertical-list-item">
+                            
+
+
+
+
+
+
+
+
+
+    <a href="https://www.nlm.nih.gov/careers/careers.html" class="usa-link  usa-link--alt ncbi-footer__link"  >
+        
+
+        
+            Careers
+        
+
+        
+    </a>
+
+
+                        </li>
+                    
+                </ul>
+            
+        </div>
+
+        
+            <div class="grid-row grid-col-12" data-testid="grid">
+                <ul class="ncbi-footer__bottom-links-list">
+                    
+                        <li class="ncbi-footer__bottom-list-item">
+                            
+
+
+
+
+
+
+
+
+
+    <a href="https://www.nlm.nih.gov/" class="usa-link  usa-link--alt ncbi-footer__link"  >
+        
+
+        
+            NLM
+        
+
+        
+    </a>
+
+
+                        </li>
+                    
+                        <li class="ncbi-footer__bottom-list-item">
+                            
+
+
+
+
+
+
+
+
+
+    <a href="https://www.nih.gov/" class="usa-link  usa-link--alt ncbi-footer__link"  >
+        
+
+        
+            NIH
+        
+
+        
+    </a>
+
+
+                        </li>
+                    
+                        <li class="ncbi-footer__bottom-list-item">
+                            
+
+
+
+
+
+
+
+
+
+    <a href="https://www.hhs.gov/" class="usa-link usa-link--external usa-link--alt ncbi-footer__link" rel="noreferrer noopener" target='_blank' >
+        
+
+        
+            HHS
+        
+
+        
+    </a>
+
+
+                        </li>
+                    
+                        <li class="ncbi-footer__bottom-list-item">
+                            
+
+
+
+
+
+
+
+
+
+    <a href="https://www.usa.gov/" class="usa-link usa-link--external usa-link--alt ncbi-footer__link" rel="noreferrer noopener" target='_blank' >
+        
+
+        
+            USA.gov
+        
+
+        
+    </a>
+
+
+                        </li>
+                    
+                </ul>
+            </div>
+        
+    </div>
+</footer>
+
+    
+
+
+        
+        
+    
+  <script  type="text/javascript" src="https://cdn.ncbi.nlm.nih.gov/core/pinger/pinger.js"> </script>
+
+
+    
+        
+
+<button class="back-to-top" data-ga-category="pagination" data-ga-action="back_to_top">
+    <label>Back to Top</label>
+    <img src="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/img/arrow_upward.svg" alt="back to top icon" class="usa-icon usa-icon--size-3 order-0 usa-icon--white" />
+</button>
+    
+
+
+        
+    
+    <div id="icon-container" style="display: none;"></div>
+    
+    
+        
+    <script type="application/javascript">
+    window.ncbi = window.ncbi || {};
+    window.ncbi.pmc = window.ncbi.pmc || {};
+    window.ncbi.pmc.options = {
+        logLevel: 'INFO',
+        
+        staticEndpoint: 'https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/',
+        
+        citeCookieName: 'pmc-cf',
+    };
+</script>
+    <script type="module" crossorigin="" src="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/assets/base-Cp_Il6gk.js"></script>
+<link href="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/assets/vendor-Co8Vdmw2.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+    
+    <script type="text/javascript" src="https://cdn.ncbi.nlm.nih.gov/core/jquery/jquery-3.6.0.min.js">&#xA0;</script>
+    <script type="text/javascript">
+        jQuery.getScript("https://cdn.ncbi.nlm.nih.gov/core/alerts/alerts.js", function () {
+            galert(['div.nav_and_browser', 'div.header', '#universal_header', '.usa-banner', 'body > *:nth-child(1)'])
+        });
+    </script>
+
+
+    <script type="text/javascript">var exports = {};</script>
+     <script src="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/CACHE/js/output.4e25b6297b38.js"></script>
+
+    <script type="module" crossorigin="" src="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/assets/article-BxyWTbsj.js"></script>
+<link href="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/assets/vendor-Co8Vdmw2.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/assets/index-DXSA0fsx.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+<link href="https://cdn.ncbi.nlm.nih.gov/pmc/pd-medc-pmc-cloudpmc-viewer/production/674d4f95/var/data/static/assets/secure-cookie-Br6x5jtB.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script" />
+    
+    
+
+    </body>
+</html>

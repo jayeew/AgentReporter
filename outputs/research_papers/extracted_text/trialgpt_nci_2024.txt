@@ -1,0 +1,88 @@
+
+TrialGPT - NLM/NIH Skip to main page content 
+An official website of the United States government 
+Here's how you know 
+The .gov means it鈥檚 official. Federal government websites often end in .gov or .mil. Before
+ sharing sensitive information, make sure you鈥檙e on a federal
+ government site. 
+
+The site is secure. The https:// ensures that you are connecting to the
+ official website and that any information you provide is encrypted
+ and transmitted securely. 
+Log in Menu 
+Home 
+
+Demo 
+
+FAQ 
+
+Code & Data 
+
+About 
+
+TrialGPT 
+
+An AI Powered Tool for Matching Patients to Clinical Trials 
+
+Latest News 
+
+Our TrialGPT Paper is Ranked in the Health Science Top 25 of 2024 
+
+Nature Communications highlights our article in their collection of the most downloaded 
+ papers in health science published in 2024. 
+Read More 
+Our TrialGPT Paper is Highlighted by Nature Communications 
+
+Nature Communications chose to feature our article in their dedicated Editors' 
+ Highlights of recent published research on "AI and machine learning". 
+Read More 
+NIH-developed AI Algorithm Matches Potential Volunteers to Clinical Trials 
+
+Researchers from the National Institutes of Health (NIH) have developed an AI algorithm to speed up 
+ matching potential volunteers to relevant clinical research trials. 
+Read More 
+Dr. Zhiyong Lu Received 2024 NLM Regents Award 
+
+Dr. Zhiyong Lu was honored at the 2024 NLM Regents meeting for his leadership in developing TrialGPT. 
+
+TrialGPT 2.0 Selected for NIH Director's Challenge Innovation Awards 
+
+We have developed a proof-of-concept system named TrialGPT 
+ that utilizes LLMs to efficiently match patients with suitable clinical trials. 
+Read More 
+Highlights 
+
+An end-to-end framework for zero-shot patient-to-trial matching with LLM 
+
+Comprises three modules: TrialGPT-Retrieval, TrialGPT-Matching, and TrialGPT-Ranking 
+
+Achieves an accuracy of 87.3% with faithful explanations, close to the expert performance 
+
+Reduces the screening time by 42.6% in patient recruitment 
+
+Learn more 
+
+Cite TrialGPT 
+Nature Communications 2024 Matching Patients to Clinical Trials with Large Language Models Qiao Jin, Zifeng Wang, Charalampos S. Floudas, Fangyuan Chen, 
+ Changlin Gong, Dara Bracken-Clarke, Elisabetta Xue, Yifan Yang, Jimeng Sun, Zhiyong Lu 
+Contacts 
+
+Zhiyong Lu, PhD FACMI FIAHSI Senior Investigator Division of Intramural Research, NLM, NIH 
+
+Yin Fang, PhD Postdoc Fellow Division of Intramural Research, NLM, NIH 
+
+Connect with NLM 
+
+National Library of Medicine 8600 Rockville Pike Bethesda, MD 20894 
+
+Web Policies FOIA HHS Vulnerability Disclosure 
+
+Help Accessibility Careers 
+
+NLM 
+
+NIH 
+
+HHS 
+
+USA.gov 

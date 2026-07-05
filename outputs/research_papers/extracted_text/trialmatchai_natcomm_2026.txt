@@ -1,0 +1,1643 @@
+
+
+--- PAGE 1 ---
+Article https://doi.org/10.1038/s41467-026-70509-w
+TrialMatchAI: an end-to-end AI-powered
+clinical trial recommendation system to
+streamline patient-to-trial matching
+Majd Abdallah 1,2 , Sigve Nakken 3,4,5, Mikaël Georges1,2, Mariska Bierkens6,
+Johanna Galvis 1,2,A l e x i sG r o p p i1,2,S l i mK a r k a r1,2,L a n aM e i q a r i6,
+Maria Alexandra Rujano7, Steve Canham7, Rodrigo Dienstmann8,9,
+Remond Fijneman 6, Eivind Hovig 3,5, Gerrit Meijer 6 & Macha Nikolski 1,2
+Patient recruitment remains a major bottleneck in clinical trials, calling for
+scalable and automated solutions. We present TrialMatchAI, an AI-powered
+recommendation system that automates patient-to-trial matching by proces-
+sing heterogeneous clinical data, including structured records and unstruc-
+tured physician notes. Built onﬁne-tuned, open-source large language models
+(LLMs) within a retrieval-augmentedgeneration framework, TrialMatchAI
+ensures transparency and reproducibility and maintains a lightweight
+deployment footprint suitable for clinical environments. The system nor-
+malizes biomedical entities, retrieves relevant trials using a hybrid search
+strategy combining lexical and semantic similarity, re-ranks results, and per-
+forms criterion-level eligibility assessments using medical Chain-of-Thought
+reasoning. This pipeline delivers explainable outputs with traceable decision
+rationales. In real-world validation,92% of oncology patients had at least one
+relevant trial retrieved within the top20 recommendations. Evaluation across
+synthetic and real clinical datasets conﬁrmed state-of-the-art performance,
+with expert assessment validating over90% accuracy in criterion-level elig-
+ibility classiﬁcation - particularly excelling in biomarker-driven matches.
+Designed for modularity and privacy, TrialMatchAI supports Phenopackets-
+standardized data, enables secure local deployment, and allows seamless
+replacement of LLM components as more advanced models emerge. By
+enhancing efﬁciency, interpretability and offering lightweight, open-source
+deployment, TrialMatchAI provides a scalable solution for AI-driven clinical
+trial matching in precision medicine.
+The advancement of personalized medicine relies heavily on clinical
+trials, which rigorously evaluate the efﬁcacy and safety of novel ther-
+apeutic strategies and validate actionable biomarkers1,2. Yet, a critical
+bottleneck persists: the timely and ef ﬁcient recruitment of eligible
+patients. This challenge not only delays access to potentially life-saving
+treatments but also leads to signi ﬁcant resource inef ﬁciencies,
+hindering the translation of research into clinical practice 3.F u r t h e r -
+more, only a small fraction of eligible patients are enrolled in clinical
+trials, despite the potential beneﬁts. Addressing this problem requires
+scalable and efﬁcient patient-trial matching solutions to accelerate trial
+completion and ensure that researchﬁndings are approved for clinical
+practice in a timely manner
+4.
+Received: 26 March 2025
+Accepted: 27 February 2026
+Check for updates
+A full list of af ﬁliations appears at the end of the paper. e-mail: abdallahmajd7@gmail.com; macha.nikolski@u-bordeaux.fr
+Nature Communications|         (2026) 17:4472 1
+1234567890():,;
+1234567890():,;
+
+
+--- PAGE 2 ---
+Traditionally, patient-trial matching relies on a labor-intensive
+manual review of patient records and trial eligibility criteria, often
+performed by multidisciplinary teams
+5,6. Such manual screening is a
+major operational bottleneck and studies report tens of minutes to
+multiple hours per patient, and 3.4 –8.8 h per enrolled patient when
+end-to-end screening/enrollment tasks are counted7. Complex criteria
+reviews can take 10 min to >2 h per trial –per–patient. This process is
+inefﬁcient, unscalable, and prone to missed enrollment opportunities,
+particularly in high-stakes areas like pediatric oncology, where timely
+trial access is critical
+8. The unstructured nature and considerable
+volume of trial eligibility criteria further exacerbate these challenges,
+making manual approaches increasingly unsustainable and under-
+scoring the urgent need for efﬁcient automation
+9–12.
+Early automation efforts relied on rule-based logic and probabil-
+istic systems, which, while effective for structured scenarios, struggled
+with the semantic diversity and contextual nuances of clinical text.
+Deep learning approaches have addressed some of these limitations by
+improving feature extraction and handling sequential dependencies
+inherent in clinical texts text
+13–18. However, these models often rely on
+large, well-annotated datasets, which are scarce in the biomedical
+domain, limiting their scalability and generalizability
+19,20. For example,
+structured rule/ontology-based systems such as MatchMiner21 encode
+eligibility logic explicitly (especially genomic criteria), while neural
+embedding/entailment approaches such as COMPOSE
+13 and
+DeepEnroll15 learn patient-trial representations from text; these famil-
+ies respectively trade precision in structured settings against broader
+language coverage, but both remain limited by manual schema main-
+tenance or the need for large labeled datasets.
+Recent advances in natural language processing (NLP), particu-
+larly through Large Language Models (LLMs), have opened new ave-
+nues for processing and interpreting complex clinical texts. Pre-
+trained LLMs excel at capturing long-range dependencies and con-
+textual relationships, allowing for the generation of clinically mean-
+ingful embeddings
+22–27. LLMs have even shown impressive ability to
+match patients to clinical trials without being explicitly trained for this
+task, achieving results comparable to human experts
+12,22,28,29. However,
+most existing LLM-based trial matching systems, such as TrialGPT 12,
+rely heavily on proprietary, API-driven models, creating barriers rela-
+ted to cost, accessibility, reproducibility, and, critically, patient data
+privacy and regulatory compliance (e.g., GDPR, HIPAA
+30). The depen-
+dence on black-box, closed-source solutions also hinders transparency
+and prevents other researchers from building upon or adapting these
+models for speci ﬁc clinical needs. In parallel, open or hybrid LLM
+approaches, such as LLM-Match
+31 and Panacea32, aim to retain strong
+semantic matching while improving reproducibility and transparency.
+Yet, most LLM-based approaches remain domain-constrained or task-
+speciﬁc rather than fully end-to-end systems: for example, TrialGPT
+12
+primarily targets trial ranking, LLM-Match 31 focuses on pairwise
+patient-trial eligibility classiﬁcation, and Panacea32 evaluates classiﬁer-
+style matching on curated pairs. This leaves local deployment,
+criterion-level explanations for clinical review, and reproducible
+benchmarking under matched candidate pools insufﬁciently addres-
+sed in a single work ﬂow. We further discuss these limitations in the
+Supplementary Note 1 and present a qualitative and quantitative
+comparisons of LLM-based methods in Supplementary Data 1–3.
+To address these limitations, we introduce TrialMatchAI, a fully
+open-source, locally deployable general-purpose clinical trial recom-
+mendation system designed to ensure transparency, security, and
+unrestricted research accessibility while eliminating reliance on pro-
+prietary LLMs. This ensures compliance with regulatory frameworks,
+promotes interpretability in patient-trial matching decisions, and
+supports continuous model improvement as new data becomes
+available. Unlike previous systems that target a single sub-task (e.g.,
+ranking or classiﬁcation) or require external API-based models, Trial-
+MatchAI enables complete control over the trial-matching process,
+ensuring compliance with stringent data privacy regulations. Our
+evaluation of performance and validation includes standard bench-
+marks and a real-world oncology cohort with documented trial
+orientations.
+Built on a Retrieval-Augmented Generation (RAG) framework
+33
+and ﬁne-tuned for medical reasoning, TrialMatchAI combines con-
+textual understanding and explainability in eligibility classi ﬁcation,
+overcoming the limitations of existing rules-based and machine
+learning-based trial matching solutions. Importantly, the system
+demonstrated strong applicability in oncology, where patient-trial
+matching is often complicated by the need to integrate and interpret
+diverse clinical, molecular, and genetic data, including biomarker
+expression proﬁles and genomic mutations. This is made possible by a
+dedicated LLM-driven data processing module that extracts, nor-
+malizes, and standardizes biomolecular information, such as genes,
+proteins, and mutations from both patients records and clinical trial
+eligibility criteria. Furthermore, TrialMatchAI is designed for inter-
+operability, seamlessly integrating with electronic health record (EHR)
+systems via standardized data exchange formats such as
+Phenopackets
+34. Finally, the modular design enables easy adaptation to
+new LLM architectures and domain-speciﬁc ﬁne-tuning, ensuring that
+the system remains up to date with the latest biomedical
+advancements.
+The framework was evaluated using synthetic datasets, compris-
+ing the commonly-used benchmarks from the TREC clinical trials
+challenge
+35,36 (years 2021 and 2022), and a custom-built “Ideal Candi-
+dates” dataset. Moreover, we leveraged a real-world cohort of 52
+cancer patients from the Netherlands Cancer Institute (NKI) 37.
+Although this real-world evaluation was performed for oncology trial
+orientation, the architecture is disease-agnostic. Expert assessments
+were also conducted on 1050 patient-criterion pairs, validating the
+system’s high accuracy in criterion-level eligibility classi ﬁcation. Our
+results on the synthetic TREC datasets demonstrate that TrialMatchAI
+retrieves >90% of relevant trials within the top-ranked 3% of a broad
+search space containing >26,000 trials in each dataset. Results on the
+real cancer patients dataset further support these results, showing that
+92% of patients had a relevant trial retrieved within the top 20
+recommendations. Finally, expert evaluation of criterion-level match-
+ing on both synthetic and real patient datasets shows that Trial-
+MatchAI’s medical Chain-of-Thought (CoT) model
+38 achieves over 90%
+accuracy in criterion-level classiﬁcation and explanation generation.
+These results show that TrialMatchAI, outperforming existing AI-based
+tools that rely on signi ﬁcantly larger, proprietary Generative Pre-
+trained Transformer (GPT) models.
+In summary, TrialMatchAI is a scalable, privacy-preserving
+patient-trial matching system, showing high performance in oncol-
+ogy settings while remaining disease-agnostic by design. It integrates
+multi-modal data, supports local deployment, and leverages ﬁne-
+tuned LLMs within a RAG framework to improve recruitment. The
+system provides clinical decision support and could potentially be
+integrated with existing clinical decision support systems, offering
+ranked recommendations for investigator review. This paper details its
+architecture, evaluation, and performance in real-world and synthetic
+benchmark settings.
+Results
+TrialMatchAI: a modular AI system for patient-trial matching
+Clinical trial eligibility criteria are complex and often formatted as
+unstructured free texts, requiring a system that can efﬁciently process
+heterogeneous and semantically-rich patient data. TrialMatchAI
+addresses this challenge by leveraging a suite of open-source andﬁne-
+tuned, LLMs within a RAG framework
+33. RAG enables the system to
+anchor its reasoning in retrieved trial information, improving both
+accuracy and transparency in patient-trial matching. TrialMatchAI ’s
+modular design allows for ef ﬁcient text parsing, embedding,
+Article https://doi.org/10.1038/s41467-026-70509-w
+Nature Communications|         (2026) 17:4472 2
+
+
+--- PAGE 3 ---
+classiﬁcation, and re-ranking, ensuring accurate and context-aware
+matching. Moreover, the ﬂexible design of TrialMatchAI enables
+seamless integration of new models and optimization strategies,
+ensuring adaptability to evolving clinical needs.
+TrialMatchAI is designed to handle heterogeneous clinical data,
+including structured attributes (e.g., age, sex, primary diagnosis, lab
+results) and unstructured sources (e.g., prior treatments, physician
+notes, pathology reports). To ensure interoperability with hospital
+systems and external research databases, the system adopts the Phe-
+nopackets exchange format
+34, enabling standardized representation of
+patient data across diverse sources. Notice that this does not ensure
+full operational EHR interoperability and healthcare sites would need
+to use a local adapter (e.g., from FHIR
+39) to produce Phenopackets with
+the relevant patient information (see e.g., this implementation guide34
+for technical details). However, Phenopackets has the capacity to
+integrate both structured and unstructured data, which seamlessly
+integrates with LLM-based semantic processing of clinical narratives.
+To identify relevant clinical trials for a patient, TrialMatchAI
+employs a hybrid search and retrieval strategy, combining lexical
+search
+40,41 for keyword-based matching with vector search 42 using
+dense embeddings to capture deeper semantic relationships. Follow-
+ing initial retrieval, LLM-based re-ranking reﬁnes the list by prioritizing
+trials based on criterion-level relevance. Aﬁne-tuned re-ranking LLM
+43
+assesses the relevance of candidate trials ’ eligibility criteria to the
+patient on a criterion-by-criterion basis and aggregates the criterion-
+level scores to trial-level scores, ultimately re-ranking the trials from
+the most to least applicable to the patient ’sp r oﬁle. Finally, precise
+eligibility classiﬁcation is performed using aﬁne-tuned CoT reasoning
+model
+38,44, which classi ﬁes inclusion and exclusion criteria and gen-
+erates a justi ﬁcation for each decision. This structured pipeline (see
+Fig. 1) optimizes patient-trial matching while maintaining explain-
+ability in decision-making and consists of four key levels:
+1. Data Ingestion and Preprocessing: Both structured trial metadata
+(e.g., ClinicalTrials.gov XML ﬁles) and patient records are pro-
+cessed, and terminology is standardized through Named Entity
+Recognition (NER) and entity normalization
+45–49 followed by vec-
+tor embedding to enable semantic search50.
+2. Candidate Trial Retrieval: For a given patient, a broad pool of
+relevant trials is obtained using a combination of BM25 lexical
+search with k-NN vector search (semantic retrieval) via
+Elasticsearch
+40,41,51.
+3. Re-Ranking for Criterion-Level Relevance: Trial prioritization is
+performed by a ﬁne-tuned Gemma-2-2b43 model based on the
+applicability and relevance of eligibility criteria for the patient ’s
+proﬁle.
+4. Eligibility Classi ﬁcation and Final Ranking: A ﬁne-tuned Phi-4
+model performs criterion-level classi ﬁcation using medical
+CoT38,44 reasoning, generating explanations for inclusion and
+exclusion decisions. Aﬁnal scoring step prioritizes trials that best
+satisfy inclusion criteria while minimizing exclusion violations.
+5. Table 1 provides an overview of the core components and their
+roles in the system; further details on model ﬁne-tuning, candi-
+date retrieval mechanisms, re-ranking, and criterion-level elig-
+ibility assessment are provided in the “Materials” and “Methods”
+section, as well as in the Supplementary Methods Sections 2–5.
+Because TrialMatchAI is intended to support real-world trial
+screening, we next report its end-to-end runtime and place it in the
+context of the typical manual workﬂow. Patient-trial matching is typi-
+cally an iterative, manual work ﬂow
+52,53: (i) a clinician or coordinator
+ﬂags a candidate patient; (ii) relevant EHR data are compiled (diag-
+nosis, biomarkers, prior treatment, comorbidities); (iii) trial registries
+and institutional lists are searched using keywords and ﬁlters; (iv)
+obvious mismatches are discarded in a ﬁrst-pass triage; (v) eligibility
+criteria are read in detail and rationales documented; and (vi) shortlists
+are reviewed in multidisciplinary meetings and screening
+documentation is completed (see Supplementary Methods for addi-
+tional details).
+On our test hardware, TrialMatchAI generates a ranked shortlist
+with criterion-level rationales in ~4.6 min per patient on average (mean:
+2.7 s ﬁrst-level retrieval, 92.7 s second-level retrieval + re-ranking,
+180.7 s CoT reasoning). Manual eligibility screening typically requires
+10 min to >2 h per trial
+8, and clinicians may review ~42 trials per patient
+to reproduce historical matches 9, with ~32% of coordinator time
+devoted to eligibility screening tasks (reported in a pediatric ED time-
+and-motion study
+54). By producing a ready-to-review top-K shortlist
+with explanations in minutes, TrialMatchAI is expected to reduce time
+spent on search, ﬁrst-pass triage, and initial eligibility review, shifting
+effort toward conﬁrming a smaller set of candidates. Exact time sav-
+ings remain site-speciﬁc and should be quantiﬁed prospectively during
+deployment. Supplementary Methods section 8 (“Eligibility Screening:
+Practice Overview and TrialMatchAI Runtime”)i d e n t iﬁes where Trial-
+MatchAI may reduce investigator effort in a typical site-agnostic
+workﬂow.
+TrialMatchAI achieves high recall and accurate ranking on syn-
+thetic benchmarks
+To evaluate TrialMatchAI, we utilized a comprehensive dataset com-
+prising both in-house and publicly available resources. The in-house
+dataset (“Ideal Candidates” dataset) consists of synthetic patient pro-
+ﬁles generated from a randomly sampled set of cancer-related clinical
+trials, speciﬁcally focusing on trials with long and complex eligibility
+criteria. The publicly available dataset includes synthetic summaries
+from the Clinical Trials (CT) tracks of the Text Retrieval Conference
+(TREC) for the years 2021
+35 and 202236, both widely used benchmarks
+for assessing patient-trial matching systems12. Additionally, an expert
+evaluation was conducted to assess TrialMatchAI ’sc r i t e r i o n - l e v e l
+eligibility classiﬁcation and its generated explanations. Performance
+was measured using multiple metrics, including accuracy, recall, nor-
+malized discounted cumulative gain (nDCG) at top-k (ndcg@5,
+ndcg@10, ndcg@20), and precision at top-k (p@5, p@10, p@20). See
+Supplementary Methods section 5 for metrics deﬁnitions.
+We additionally benchmarked TrialMatchAI against LLM-Match
+31
+and Panacea32 under matched conditions (Supplementary Methods
+Section 9). TrialMatchAI outperformed the non-ﬁne-tuned LLM-Match
+baseline on TREC2021/2022 (e.g., TREC2022 nDCG@10 0.75 vs 0.40)
+and showed moderate agreement on Panacea’s shared pairwise subset
+after label mapping (Supplementary Fig. 4). These comparisons aim to
+showcase the advantages of TrialMatchAI’s architecture and modelling
+in both retrieval accuracy and robustness across benchmark settings,
+highlighting its ability to generalize beyond benchmark-speciﬁct u n i n g
+and maintain superior precision–ranking balance under varying label
+distributions.
+The “Ideal Candidates” dataset (see “Materials” and “Methods”,
+section “Ethical compliance”) serves as an initial proof of concept,
+demonstrating TrialMatchAI’s ability to accurately align patients with
+their optimal clinical trial, assuming a perfect match exists. Figure 2
+illustrates the distribution of ground truth trial rankings for the 100
+ideal candidates. The vast majority (95%) had their assigned clinical
+trial ranked within the top two matches, with 92 out of 100 patients
+having their ground truth trial among the highest-ranked recommen-
+dations. A small subset (5%) had their ground truth trial ranked lower;
+however, no trial fell beyond the 9th position. This ranking dis-
+crepancy likely stems from the eligibility of some synthetic patients for
+multiple highly relevant trials beyond their designated ground truth
+trial. In such cases, TrialMatchAI identiﬁed additional trials that were
+equally or even more suitable based on patient characteristics, leading
+to slight variations in rankings. Rather than signaling a failure, this
+outcome highlights TrialMatchAI’s potential to surface not only the
+expected match, but also a broader set of viable trial options: an ability
+that could be valuable in real-world clinical decision-making. The
+Article https://doi.org/10.1038/s41467-026-70509-w
+Nature Communications|         (2026) 17:4472 3
+
+
+--- PAGE 4 ---
+KNNBM25
+Indexing
+Personalized List of Trial Recommendations
++
+Criterion-level Eligibility Assessment 
+Clinical Trials Meta-data and  
+Eligibility Criteria 
+Patient Data
+Fine-tuned Reasoning LLM
+Embedding
+LLM-based Re-Ranking
+Aggregati on to Trial-Level Scores
+Candidate Trials
+Text Parsing 
+Embedding
+Text Parsing 
+1
+2
+3
+4
+Fine-tuned Reranking LLM
+Phenopackets Format
+Refined-List of 
+Candidate Trials
+1
+3
+2
+XMLXMLXMLXML
+0.6 ... 0.3 0.9
+0.8 ... 0.5 0.3
+0.4 ... 0.2 0.9
+0.6 ... 0.3 0.9
+0.8 ... 0.5 0.3
+0.4 ... 0.2 0.9
+Fig. 1 | TrialMatchAI workﬂow for automated patient-to-trial matching. 1
+Clinical trial metadata, including eligibility criteria, are extracted from structured
+sources (XML formats) and processed through a text parsing module that includes
+named entity recognition, entity normalization, and synonym enrichment. The
+parsed and original texts are embedded into numerical representations using an
+embedding model (e.g., BGE-M3) and indexed using Elasticsearch for efﬁcient
+retrieval. 2 Patient data, encompassing clinical and molecular information in Phe-
+nopackets exchange format (JSON), undergo a similar text parsing process,
+including named entity recognition, entity normalization, query expansion, and
+synonym enrichment, followed by embedding transformation to generate query
+vectors. 3 An initial list of candidate trials is retrieved using a hybrid approach that
+combines BM25 text-based retrieval with k-nearest neighbors (KNN) search on
+embedded representations. The list is further reﬁned via criterion-level relevance
+assessment using a large language model (LLM) ﬁne-tuned for biomedical text re-
+ranking (Gemma-2-2B). The relevant trials are subsequently assessed for criterion-
+by-criterion eligibility using aﬁnal LLM (Phi-4)ﬁne-tuned for biomedical reasoning.
+The model generates concise and interpretable explanations for each criterion-
+level classiﬁcation, ensuring the explainability of AI-driven decision-making.4
+Finally, criterion-level matching scores are aggregated into trial-level overall elig-
+ibility scores, producing a personalized ranked list of clinical trial recommenda-
+tions for the given patient. Icons are from Bootstrap Icons (MIT License) and Font
+Awesome Free (CC BY 4.0), with minor adaptations in some cases.
+Table 1 | Summary of TrialMatchAI components
+Component Role(s) Models/tools used
+Entity recognition Extract entities from unstructured text BioBERT*, RoBERTa-large*, GLiNER
+Entity normalization Normalize entities to knowledge bases, enrich data with synonyms Rules-based methods, BioSyn
+Text embedding Convert text into numerical representations BGE-M3
+Candidate retrieval Perform ﬁrst-stage text and semantic-based searches Elasticsearch BM25/KNN
+Neural re-ranking Reﬁnes candidate trials relevance at the criterion level Gemma-2-2B*
+Recommendation engine Criterion-level eligibility assessment, keyword, and text generation for trial recommendations Phi-4*
+Asterisk (*) denotes a ﬁne-tuned version of the model.
+Article https://doi.org/10.1038/s41467-026-70509-w
+Nature Communications|         (2026) 17:4472 4
+
+
+--- PAGE 5 ---
+ground truth trial assignments and the top 10 ranked trials for each
+ideal candidate are provided in Supplementary Data 4.
+To assess TrialMatchAI ’s robustness in handling diverse and
+complex patient cases, we evaluated its performance on the TREC 2021
+and 2022 Clinical Trials (CT) datasets
+35,36. These datasets contain syn-
+thetic patient case descriptions resembling those found in admission
+notes. TREC2021 consists of 75 patient cases, while TREC2022 includes
+50 patient cases. Each patient is associated with a list of trials labeled as
+“Irrelevant” (unrelated to the patient),“Excluded”/“Ineligible” (patient
+has the condition, but does not qualify), or“Eligible” (patient qualiﬁes
+for enrollment).
+TrialMatchAI’s hybrid retrieval approach ef ﬁciently retrieves an
+initial subset of candidate trials from over 26,000 in each TREC
+dataset, reducing the search space for ranking and ﬁnal eligibility
+assessment by more than 95% and achieving over 90% recall at just 3%
+of the total documents for both TREC2021 and TREC2022. This means
+that the majority of relevant trials for most patients are retrieved early,
+reducing the risk of missing eligible matches.
+Figure 3A presents the recall performance of TrialMatchAI
+across varying retrieval sizes on the TREC datasets. Recall improves
+with an increasing number of retrieved trials, stabilizing around
+90% at approximately 500 retrieved trials. This suggests that a cut-
+off at this retrieval size balances high recall with computational
+efﬁciency. The consistent recall performance across datasets high-
+lights the model ’s robustness in generalizing across different
+patient cohorts.
+Fig. 2 | Distribution of ground truth trial rankings assigned to 100 synthetic
+patient proﬁles by TrialMatchAI. A Synthetic patient generation workﬂow: GPT-
+4o-mini is used to generate patients that closely match real clinical trials, using trial
+metadata from XMLﬁles, followed by manual curation.B Percentage of patients by
+rank position of the ground-truth trial. The x-axis shows the rank of the ground-
+truth clinical trial, and the y-axis shows the percentage of patients whose ground-
+truth trial was assigned that rank. 95% of patients had their ground-truth trial
+ranked in the top two, indicating high precision in patient-trial matching. Icons are
+from Bootstrap Icons (MIT License) and Font Awesome Free (CC BY 4.0), with
+minor adaptations in some cases. Source data are provided as a Source Data ﬁle.
+Fig. 3 | Performance evaluation of TrialMatchAI on the TREC clinical trial
+datasets. A Recall vs. retrieval size for patient-trial matching on TREC2021 and
+TREC2022 datasets, showing increasing recall with larger retrieval sizes.B Expert
+evaluation results on 950 patient-criterion pairs, measuring the percentage of
+correct model decisions for inclusion and exclusion criteria.C Evaluation metrics
+(nDCG and precision at 5, 10, and 20) across TREC2021 patients, illustrating ranking
+performance.D Evaluation metrics across TREC2022 patients, demonstrating
+consistent model performance. These results validate the effectiveness of the
+system in retrieving relevant trials and correctly assessing eligibility criteria. In each
+box plot, the solid horizontal line denotes the median, while the dotted horizontal
+line denotes the mean. The lower and upper bounds of the box correspond to the
+25th and 75th percentiles (interquartile range, IQR); whiskers extend to the mini-
+mum and maximum values within 1.5 × IQR from the box; points beyond the
+whiskers represent individual observations.n = number of independent benchmark
+topics (synthetic patient cases): TREC2021n = 75; TREC2022n = 50. Source data are
+provided as a Source Data ﬁle.
+Article https://doi.org/10.1038/s41467-026-70509-w
+Nature Communications|         (2026) 17:4472 5
+
+
+--- PAGE 6 ---
+Figure 3C, D illustrate TrialMatchAI’s ranking performance on the
+TREC2021 and TREC2022 datasets. Ranking quality is evaluated using
+nDCG and Precision (P) at 5, 10, and 20 trials. We interpret recall@K as
+exhaustiveness (coverage of relevant trials) and Precision@K/
+nDCG@K as appropriateness (prioritization quality), re ﬂecting the
+clinical need to keep coverage high while surfacing the most suitable
+trials ﬁrst. Across both TREC datasets, TrialMatchAI achieves a median
+nDCG@5 of 0.74 (TREC2021) and 0.82 (TREC2022) and a median
+nDCG@10 and nDCG@20 of 0.75 (both), meaning the system con-
+sistently ranks the most relevant trials closer to the top. Similarly,
+median precision scores remained relatively high across different cut-
+off points. The tool achieves a median p@5 of 0.8 (for both TREC2021
+and 2022), median p@10 of 0.77 (TREC2021) and 0.72 (TREC2022),
+and median p@20 of 0.7 (TREC2021) and 0.62 (TREC2022). The con-
+sistency between TREC2021 and TREC2022 results underscores the
+model’s robustness across different patient distributions.
+While the metrics reported by other LLM-based solutions, notably
+TrialGPT
+12, differ slightly in how they are aggregated, benchmark
+comparisons indicate that TrialMatchAI achieves highly competitive
+performance using signi ﬁcantly smaller, open-source models.
+TrialGPT’s highest aggregated average nDCG@10 is 0.7275 and p@10
+is 0.6688 across all its evaluated datasets. In comparison, TrialMatchAI
+achieves an average nDCG@10 of 0.7232 and a higher average p@10 of
+0.6865 across the TREC2021 and 2022 benchmarks (with even stron-
+ger performance reﬂected in median values, see hereinabove). Addi-
+tionally, TrialMatchAI outperforms all previously top-ranked systems
+from the of ﬁcial TREC2021 and 2022 challenges. The top-ranking
+model in TREC2021, TD-MINER, achieved a mean nDCG@10 of 0.715
+and a mean p@10 of 0.5760, whereas the top-ranking model in
+TREC2022, h2oloo, achieved a mean nDCG@10 of 0.6125 and a mean
+p@10 of 0.5080.
+TrialMatchAI successfully matches real cancer patients to
+biomarker-driven trials
+Unlike general clinical trial matching, this evaluation focuses on
+biomarker-driven oncology trial selection, where cancer patient elig-
+ibility depends on clinical characteristics and the identi ﬁed bio-
+markers. We incorporate real-world data from a metastatic cancer
+cohort derived from the Whole Genome Sequencing Implementation
+in Standard Diagnostics for Every Cancer Patient study (WIDE) con-
+ducted by the NKI
+37.S e eF i g .4 for baseline statistics of the selected
+sub-cohort of 52 patients, which had a mean age of 63.6 years ( ± 10.3)
+and a sex distribution of 46.2% male and 53.8% female.
+Table 2 presents the evaluation results, demonstrating Trial-
+MatchAI’s effectiveness in retrieving and ranking relevant clinical trials
+for cancer patients. Overall Recall, representing the percentage of
+Fig. 4 | Summary statistics of the selected subset of 52 cancer patients enrolled
+in the WIDE study at the NKI. A The Primary Cancer Type Distribution illustrates
+the distribution of primary cancer types in the cohort, with colorectal, lung, and
+breast cancer being the most prevalent. B The Treatment and Mutation Presence
+displays the proportions of patients who have undergone systemic chemotherapy
+and radiotherapy, along with the percentage of patients whose Molecular Tumor
+Board (MTB) report discusses actionable mutations.C The Actionable Biomarkers
+Prevalence presents the distribution of actionable genes identiﬁed in the MTB
+reports, with percentages indicating the proportion of patients harboring each
+mutated gene. 100% of patients have metastatic cancer, provided written informed
+consent, and have been allocated to clinical trials.
+Article https://doi.org/10.1038/s41467-026-70509-w
+Nature Communications|         (2026) 17:4472 6
+
+
+--- PAGE 7 ---
+patients for whom at least one relevant trial was identiﬁed, increased
+from 84.6% within the top ﬁve recommendations (Top-5) to 92.3%
+within the top twenty (Top-20). This demonstrates TrialMatchAI ’s
+ability to consistently retrieve relevant trials while ensuring that the
+number of suggested trials remains clinically practical for review by
+oncologists.
+Beyond recall, we assessed how well TrialMatchAI prioritizes
+relevant trials. The Mean Reciprocal Rank (MRR) measures how highly
+the ﬁrst correct trial is ranked, with higher values indicating that
+relevant trials appear near the top of the recommendation list. The
+Mean Average Rank reﬂects the typical rank position of relevant trials
+across all retrieved trials. TrialMatchAI ’s consistent MRR across dif-
+ferent top-k values indicates that when a relevant trial is retrieved, it is
+accurately prioritized near the top of the recommendation list. This
+ensures that oncologists can identify the most promising trials quickly,
+reducing manual screening time and expediting patient enrollment.
+Expert evaluation of criterion-level eligibility classiﬁcation
+To assess TrialMatchAI’s accuracy in evaluating individual eligibility
+criteria, we conducted an expert review of 950 randomly selected
+patient-criterion pairs derived from synthetic patients in the TREC
+2021 and 2022 datasets. The ﬁne-tuned Phi-4 CoT reasoning model
+correctly classiﬁed 88.8% of inclusion criteria as “Met” and 91.1% as
+“Not Met ”. Additionally, it accurately identi ﬁed 94.2% of “Unclear”
+criteria and 97.4% of “Irrelevant” criteria. For exclusion criteria, the
+model achieved an 89.7% accuracy in detecting “Violated” criteria
+while correctly classifying 96.9% of“Not Violated”,9 8 . 2 %o f“Unclear”,
+and 97.3% of “Irrelevant” cases.
+Building on our evaluation with synthetic TREC data, we further
+assessed the system ’s performance in a real-world clinical setting,
+focusing on molecular biomarker-driven eligibility criteria in oncology.
+To this end, we conducted an expert review of 100 biomarker-related
+inclusion criteria classiﬁed as “Met” by the model. These criteria were
+drawn from the top 20 trials recommended by TrialMatchAI for
+patients in the WIDE cohort. To evaluate the system’s ability to match
+molecular biomarker criteria, we constructed patient-criterion pairs.
+The criterion component consisted of the selected biomarker-related
+inclusion criteria from these top trials. The patient component was a
+semi-synthetic proﬁle incorporating biomarker details derived from
+the WIDE cohort. Speciﬁcally, molecular biomarker data were extrac-
+ted from original Molecular Tumor Board (MTB) reports, then com-
+pletely rephrased into new, decontextualized statements using the Phi-
+4 model. This process removed all identifying information (e.g.,
+patient ID, age, sex) while preserving evaluative utility. This approach
+generated patient pro ﬁles that accurately re ﬂected real molecular
+characteristics while ensuring data privacy. TrialMatchAI correctly
+classiﬁed 91% of these biomarker-driven inclusion criteria as “Met”,
+demonstrating its effectiveness in capturing biomolecular eligibility
+constraints. Full results of criterion-level expert evaluations are pro-
+vided in Fig. 3B and Supplementary Data 5 and 6.
+Component contributions: hybrid retrieval, re-ranking, and CoT
+improve precision (ablation study)
+To assess the individual contributions of each component within
+TrialMatchAI and to separate architectural effects from base-model
+capability, we conducted an ablation study evaluating the impact of
+retrieval, reranking, and reasoning modules on overall trial-matching
+performance. The analysis involved either modifying or completely
+removing one or more of the core components and re-running the
+matching on the TREC 2021 dataset, namely:
+ Named entity recognition and normalization (NER)
+ Data retrieval method (BM25 text-based or vector search instead
+of a hybrid search approach),
+ LLM-based re-ranking,
+ CoT reasoning.
+Figure 5A, B report precision and nDCG at cutoffs 5, 10, and 20
+across ablation conﬁgurations. In the precision panel (top), the Full
+pipeline shows its clearest gains at broader cutoffs: p@10 and p@20
+improve most, with the largest drops observed when removing the
+LLM-based reranker or NER, underscoring their role in elevating rele-
+vant trials deeper in the ranked list. Removing CoT produces smaller
+but consistent declines, suggesting a re ﬁnement effect rather than a
+primary driver of precision. At p@5, effects are attenuated, and several
+variants approach the full pipeline, consistent with a pattern of top-slot
+saturation across different variations of TrialMatchAI’s pipeline.
+In the nDCG panel, performance is largely stable across ablations.
+At nDCG@5 and nDCG@10, several variants show slightly higher
+central tendency than the Full con ﬁguration, but none of these dif-
+ferences reach statistical signi ﬁcance. For nDCG@20, differences
+remain modest but trend in favor of the Full pipeline; removing the
+reranker or NER yields small, sometimes statistically signi ﬁcant
+declines (p < 0.05), whereas other ablations remain broadly compar-
+able and within variance. Across ablations, Precision@k drops most
+when removing the re-ranker or NER; CoT removals show smaller but
+consistent decreases. By contrast, nDCG@k remains largely stable at
+k = 5,10 and shows only modest declines atk = 20 when the re-ranker or
+NER are removed (some p < 0.05 at nDCG@20).
+For nDCG@20, differences remain modest but trend in favor of
+the Full pipeline; removing the reranker or NER yields small, some-
+times statistically signi ﬁcant declines (for example, nDCG@20 (No
+Rerank) = 0.591 ± 0.233, p = 1e-3, two-sided Mann –Whitney test,
+p-value adjusted by False Discovery Rate), whereas other ablations
+remain broadly comparable and within variance. Across ablations,
+Precision@k drops most when removing the re-ranker or NER; CoT
+removals show smaller but consistent decreases. By contrast, nDCG@k
+remains largely stable at k = 5,10 and shows only modest declines at
+k =2 0w h e nt h er e - r a n k e ro rN E Ra r er e m o v e d .
+Discussion
+Clinical trial recruitment remains a major bottleneck in the develop-
+ment of new therapies. Patients, particularly those with rare or com-
+plex cancers, often struggle to ﬁnd suitable trials. To address this, we
+developed TrialMatchAI, an open-source, modular system leveraging
+ﬁne-tuned open-source LLMs for precise patient-trial matching. The
+system’s ultimate function is in clinical decision support, providing
+ranked recommendations to assist investigators. Our evaluations
+demonstrate state-of-the-art performance, comparable to systems that
+rely on GPT-based proprietary models such as TrialGPT
+12,w h i l e
+addressing their limitations in terms of cost, transparency, and privacy.
+Notably, TrialMatchAI achieves this level of performance using light-
+weight, open-source models, a signi ﬁcant advancement given the
+computational demands and expense typically associated with high-
+performance LLMs. Unlike API-dependent systems, which require
+external data transfer, TrialMatchAI is designed for secure operation
+via local deployment within hospital infrastructures. Its modular,
+Table 2 | Performance metrics for top-k retrieval
+Metric Top 5 Top 10 Top 20
+Overall recall 0.8462 0.8846 0.9231
+Mean recipro-
+cal rank
+(MRR) ± Std
+0.4824 ± 0.2952 0.4880 ± 0.2873 0.4904 ± 0.2835
+Mean average
+rank ± Std
+2.0341 ± 0.7568 2.2500 ± 1.2716 2.8438 ± 3.1493
+Overall Recall represents the fraction of patients with at least one ground-truth trial retrieved
+within the top-k trials (k = 5, 10, 20). The Mean Reciprocal Rank (MRR) evaluates how well the
+system ranks the ﬁrst ground-truth trial across all patients. MRR ranges from 0 to 1, with 1
+indicating that a ground truth trial is always ranked at the top (rank 1) for every patient, and 0
+indicating that no ground-truth trials were retrieved within the top-k for any patient. The Mean
+Average Rank is the average rank of all retrieved ground-truth trials across all patients.
+Article https://doi.org/10.1038/s41467-026-70509-w
+Nature Communications|         (2026) 17:4472 7
+
+
+--- PAGE 8 ---
+open-source architecture makes it a strong candidate for real-world
+clinical integration, offering a lightweight and privacy-preserving
+alternative to proprietary systems for patient-trial matching.
+TrialMatchAI’s architecture is designed for scalability, explain-
+ability, and interoperability, and for local deployment to ensure reg-
+ulatory compliance with the European Health Data Space (EHDS),
+GDPR, and HIPAA
+30. In production and deployment settings, Trial-
+MatchAI would need to implement periodic corpus updates to seam-
+lessly incorporate new trials and status updates. Notice also that
+details of interoperability with production EHRs (e.g., FHIR workﬂows)
+are not yet considered in the scope of the TrialMatchAI project and
+should be handled by hospital-speci ﬁc adapters to Phenopackets.
+Expert validation on over 1000 patient-criterion pairs, including
+molecularly-driven cases, conﬁrmed an average accuracy exceeding
+90% in eligibility assessments, demonstrating the system’sr o b u s tA I -
+driven reasoning. The model also achieves over 90% recall within the
+top 3% of trials in TREC datasets, effectively prioritizing relevant
+options whileﬁltering out irrelevant ones. A hybrid retrieval approach,
+integrating LLM-based re-ranking and medical CoT reasoning, ensures
+accurate candidate selection, with nDCG and precision at top-k metrics
+indicating state-of-the-art performance. Finally, a real-world evaluation
+on biomarker-driven data from 52 metastatic cancer patients of the
+WIDE study demonstrated that 92% of patients had relevant trials
+successfully retrieved within the top 20 results (Table 2), validating
+TrialMatchAI’s practical utility. The top 20 threshold is clinically
+meaningful, aligning with the oncologists’ workﬂows, where reviewing
+a manageable number of trials is crucial for informed decision-making.
+Despite integrating a ﬁne-tuned CoT model within a RAG frame-
+work, TrialMatchAI, like all systems based on LLMs, can be susceptible
+to confabulations (i.e., hallucinations) and misclassiﬁcations. However,
+based on the expert evaluation of criterion-level classi ﬁcations and
+explanations, confabulation occurred in less than 1% (9 out of 950
+pairs, see Supplementary Data 2) cases, where the reasoning model
+generated an explanation that did not correspond to the provided
+patient’s information. To address this, future work should focus on
+developing robust ﬂagging and monitoring mechanisms that allow
+clinicians to review AI-generated recommendations and report mis-
+classiﬁcations, enabling continuous system improvement. Addition-
+ally, integrating an Agentic Workﬂows architecture
+55 where AI agents
+dynamically collaborate to verify and reﬁne outputs, could provide an
+extra layer of oversight. This approach may help reduce hallucinations,
+offer more contextual information to the reasoning model, and ulti-
+mately enhance trustworthiness. Another challenge is balancing
+computational efﬁciency with model size, as proprietary GPT-based
+models still outperform open-source alternatives in inference speed.
+One potential solution is knowledge distillation
+56,57, where smaller,
+optimized models are trained to retain the accuracy of larger models
+while improving computational efﬁciency. Finally, incomplete patient
+records can impact accuracy. To mitigate this, collaborative ﬁltering
+techniques
+58, which leverage insights from patients with similar clinical
+and molecular proﬁles, could helpﬁll gaps in missing data and improve
+recommendation reliability.
+While general LLM capabilities have advanced since earlier TREC
+benchmarks, our ablation analysis shows that TrialMatchAI’s gains are
+not simply due to a stronger backbone model. The specialized mod-
+ules (hybrid retrieval, ﬁne-tuned reranking, chain of thought reason-
+ing) consistently improved Precision@k, while nDCG@k remained
+largely unchanged. Taken together, the ablations indicate an
+Groups Median Mean
+A
+ndcg@5
+B
+ndcg@10
+C
+ndcg@20
+D
+p@5
+E
+p@10
+F
+p@20
+Fig. 5 | Ablation analysis of TrialMatchAI pipeline components across ranking
+and precision metrics.Boxplots show per-patient scores (n = 75) for each ablation
+conﬁguration; the Full pipeline (leftmost) includes NER, medical chain-of-thought
+(CoT), multi-stage retrieval (BM25 + vector fusion), and LLM reranking. The top row
+reports nDCG@k and the bottom row reports Precision@k at k =5 ,1 0 ,a n d2 0 :
+A nDCG@5,B nDCG@10,C nDCG@20,D P@5, E P@10, F P@20. Conﬁgurations (x-
+axis) include Full; BM25 + vector with second-stage retrieval, CoT, and NER
+removed; BM25 Full; single-component removals (No 2nd Level, No CoT, No NER,
+No Rerank); and VECTOR Full. Horizontal brackets indicate pairwise comparisons
+versus Full (two-sided Mann–Whitney U tests) with FDR correction across Full-vs-
+ablation tests within each panel (*P <0 . 0 5 ,* *P < 0.01, ***P < 0.001). Boxes show the
+interquartile range (25th–75th percentiles); the median is the solid line and the
+mean the dashed line. Whiskers extend to 1.5 × IQR, with outliers plotted as points;
+overlaid points represent individual patients. The long dashed horizontal line
+marks the Full pipeline median in each panel. Source data are provided in the
+Source Data ﬁle.
+Article https://doi.org/10.1038/s41467-026-70509-w
+Nature Communications|         (2026) 17:4472 8
+
+
+--- PAGE 9 ---
+architectural separation of roles: re-ranking mainly governs relative
+ordering (nDCG shifts when it is removed), whereas NER/CoT primarily
+reduce false positives, lifting Precision@k. In other words, upstream
+ﬁltering cleans the candidate set, and the re-ranker preserves ordering
+among remaining items. Although a stronger reasoning LLM may raise
+position-sensitive metrics such as nDCG, the ablations isolate concrete
+module contributions that bring more relevant trials into view. Future
+work will pair these modules with larger LLMs to evaluate potential
+nDCG gains. Taken together, the ablations indicate that biomedical
+NER-powered retrieval and the LLM-based reranker are the primary
+drivers of precision, i.e., the pipeline design adds clinical relevance
+beyond the base model alone (see Fig. 5).
+At present, TrialMatchAI supports only the patient-to-trial work-
+ﬂow. The pipeline’s components are, however, bidirectionally applic-
+able. Training and validating a trial-to-patients mode would require
+large, labeled patient cohorts. Unlike trials (readily sourced from
+ClinicalTrials.gov), patient-level corpora are scarce: public bench-
+marks like TREC are small, and institutional data are private and gov-
+erned. We therefore leave this for future work under appropriate on-
+site datasets and oversight. Looking ahead, the EHDS, under suitable
+governance, may facilitate access to larger on-site or federated patient
+cohorts suitable for developing and validating a trial-to-patients mode.
+Overall, TrialMatchAI has the potential to signiﬁcantly advance AI-
+driven personalized medicine by streamlining patient recruitment to
+clinical trials. By combining high accuracy, interpretability, and
+privacy-preserving local deployment, TrialMatchAI sets a new standard
+for AI-driven clinical trial matching, enabling real-world clinical adop-
+tion within secure hospital environments and research institutions.
+Methods
+Ethical compliance
+All analyses were performed on de-identiﬁed data and in accordance
+with relevant ethical regulations. The WIDE study (NKI) was approved
+by the Medical Ethical Committee of the Antoni van Leeuwenhoek/NKI,
+Amsterdam (approval NL68609.031.18; 10 April 2019), and all partici-
+pants provided written informed consent. Sex and gender were not
+considered as factors in the study design or analyses; where recorded,
+sex was used only as part of the patient pro ﬁle input/descriptive
+metadata and no sex- or gender-stratiﬁed analyses were performed.
+Materials
+To support patient-trial matching, we utilized publicly available
+metadata from ClinicalTrials.gov, the largest registry of clinical trials.
+This dataset includes eligibility criteria, study condition(s), study
+design, and intervention details. Our database included over 100,000
+clinical trials spanning from 1998 to 2024, ensuring a comprehensive
+and up-to-date resource for matching patients with relevant trials (all
+trial identiﬁers are provided in the Supplementary Data 7).
+From this corpus, we retained interventional oncology trials with
+non-empty eligibility sections, forming the global cancer panel used
+across most TrialMatchAI experiments. To identify cancer-relevant
+trials, we mapped the condition terms from ClinicaTtrials.gov records
+to a controlled vocabulary of cancer phenotypes. This vocabulary was
+constructed using the OncoTree ontology (v2021_02)
+59 as a starting
+point and expanded with additional terms from the phenOncoX pro-
+ject (https://github.com/sigven/phenOncoX). Trials were classiﬁed as
+cancer-related if they included at least one condition term matching
+this curated list. Additionally, a small subset of the cancer-related trials
+(n = 136) was obtained solely from the Dutch public repository Cen-
+trale Commissie Mensgebonden Onderzoek (CCMO)
+60,w h i c hp r o v i d e s
+information on medical research involving human subjects in the
+Netherlands.
+For TREC-based evaluation, we utilized 26,149 trials for TREC2021
+dataset and 26,581 trials for TREC2022 dataset (see Table 3). For the
+‘Ideal Candidates’ evaluation, the complete trials corpus included
+61,731 interventional oncology trials. For the real-world cohort at the
+NKI, the search space consisted of 217 predeﬁned, molecularly driven
+Dutch oncology trials.
+Supplementary Figs. 1 and 2 (In Supplementary Methods) provide
+descriptive statistics for the curated and parsed cancer-related clinical
+trials in our dataset, including the distributions of cancer types, trial
+phases, intervention categories, recruitment status, and geographical
+locations.
+In order to assess the model ’s ability to uncover relevant trials
+assuming that a perfect match exists for a given trial, we generated the
+“Ideal Candidates” dataset. It comprises 100 synthetic cancer patient
+proﬁles, each generated using the GPT-4o-mini model
+61 and manually
+curated for accuracy. Each patient was generated from a randomly
+selected clinical trial from our trial database based on speciﬁcc r i t e r i a :
+the trial had to be cancer-related, interventional, fairly recent (starting
+after 2014), and include an eligibility criteria section exceeding 500
+words to ensure sufﬁcient complexity and comprehensiveness. These
+selected trials were then processed via an API request to GPT-4o-mini
+(see Supplementary Methods section 3.4 for the prompt that was
+used), which was instructed to generate a perfectly matching patient
+proﬁle for each trial —fully satisfying all inclusion criteria while expli-
+citly avoiding any exclusion criteria. Check the “Code and Data Avail-
+ability” section for information on accessing the supplementary data
+dedicated for the generated patient summaries and the patient-trial
+matching results.
+The second synthetic dataset consists of patient summaries from
+the TREC2021 and TREC2022 Clinical Trials (CT) tracks
+35,36], which
+include 75 and 50 cases, respectively. These summaries mimic real-
+world admission notes. For each patient, clinical trials in these datasets
+are categorized into three groups depending on the eligibility of the
+patient to this trial: “Irrelevant” (no connection to the trial), “Exclu-
+ded”/“Ineligible” (has the targeted condition but fails exclusion cri-
+teria), and “Eligible” (meets all enrollment requirements). Summary
+statistics of the TREC datasets are provided in Table3. The distribution
+of primary disease categories across the TREC2021 and TREC2022
+topics is shown in Fig. 6.
+These datasets allow for rigorous evaluation using standard
+ranking metrics such as nDCG@k, Precision@k, and Recall@k (see
+Supplementary Methods section 5 for evaluation metrics deﬁnitions).
+Table 3 summarizes their characteristics, including age distributions,
+note lengths, and trial eligibility distributions.
+Building on strong benchmark results (see “Results” section for
+synthetic patients), we further validated TrialMatchAI’s practical utility
+using real-world clinical data. For real-world validation, we used data
+Table 3 | Summary of cohort characteristics for TREC2021 CT
+and TREC2022 CT
+Metric TREC 2021 CT TREC 2022 CT
+N (Number of patients) 75 50
+Age (years, mean ± std) 41.6 ± 19.4 35.3 ± 20.2
+Sex (Male/Female) 38/37 28/22
+Topic length (words) 156.2 ± 45.4 109.9 ± 21.6
+Eligible trials per patient 74.3 ± 49.0 78.8 ± 67.3
+Excluded trials per
+patient
+80.3 ± 60.3 60.7 ± 65.5
+Irrelevant trials per
+patient
+323.2 ± 93.2 568.4 ± 164.1
+Initial trials 26,149 26,581
+The reported baseline statistics comprise the following: total number of patients (N); average
+age along with standard deviation (in years); sex distribution (ratio of male to female); average
+length of patient notes (measured in words); mean and standard deviation of eligible trials per
+patient; mean and standard deviation of excluded trials per patient; average number of irrelevant
+trials per patient; and the total number of initial trials within the search space, as classiﬁed by
+TREC judges.
+Article https://doi.org/10.1038/s41467-026-70509-w
+Nature Communications|         (2026) 17:4472 9
+
+
+--- PAGE 10 ---
+from 52 metastatic cancer patients selected from the Whole Genome
+Sequencing Implementation in Standard Diagnostics for Every Cancer
+Patient (WIDE) study
+37 conducted at the NKI. The WIDE study collected
+essential patient information, including age, biological sex, informed
+consent status, biopsy feasibility, cancer type, both primary and
+metastatic tumor sites, and whether the patient underwent che-
+motherapy and radiotherapy. Notably, 94% of patients had undergone
+prior systemic chemotherapy and/or radiotherapy. Importantly, the
+study recorded the clinical trials to which each patient had been
+assigned, as well as unstructured descriptions of actionable molecular
+biomarkers, extracted from each patient ’sM o l e c u l a rT u m o rB o a r d
+report. In all, the WIDE study collected the followingﬁelds relevant for
+clinical trial matching:
+ A de-identiﬁed unique patient ID assigned to each participant,
+ Year and month of birth,
+ Biological sex (M/F),
+ Written informed consent (Yes/No),
+ Biopsy feasibility—whether a histological biopsy can be safely
+obtained during routine diagnostic procedures (Yes/No),
+ Presence or suspicion of metastatic disease from solid tumors
+(Yes/No),
+ Prior systemic chemotherapy (Yes/No)
+ Prior radiation therapy (Yes/No),
+ Tumor type classiﬁcation (Text),
+ Primary and metastatic tumor locations (Text),
+ IDs of clinical trials to which the patient has been oriented,
+ The molecular tumor board conclusion report contains action-
+able mutations and potential beneﬁcial treatments (Text).
+While the WIDE dataset provides key attributes for 947 patients, it
+lacks many detailed clinical parameters essential for precise trial elig-
+ibility assessment, including functional imaging, organ function
+metrics, and comprehensive comorbidity records. Thus, the global
+dataset presented limited overlap between theﬁelds recorded in this
+study and the comprehensive information in EHRs, which were used
+for the original orientation of patients to their respective trials.
+Moreover, some patient-trial pairs lacked any matching criteria
+beyond the main condition and basic demographics, limiting their
+utility for evaluation.
+To ensure meaningful evaluation, we selected a sub-cohort of 52
+patients from the WIDE study whose information in the provided study
+ﬁelds had a suf ﬁcient intersection with the eligibility criteria of their
+assigned ground-truth trials, as determined by the Molecular Tumor
+Board based on full EHR data. Speciﬁcally, for a patient-trial pair to be
+included in the selected sub-cohort, at least 75% of the available patient
+information in the WIDE dataset had to correspond to criteria listed in
+the ground-truth trials. See Fig. 4 in the Results section for baseline
+statistics of the sub-cohort of 52 patients.
+Within this selected dataset, each patient was assigned at least one
+ground-truth trial, with some having up to three trials they were con-
+sidered for. Two hundred seventeen clinical trials were included in this
+evaluation, and trial retrieval was conducted from this predeﬁned pool.
+The actionable biomarkers identiﬁed through Molecular Tumor Board
+(MTB) reports were a key component of the data, making this dataset
+particularly relevant for biomarker-driven precision oncology trials.
+Data ingestion and preprocessing
+To facilitate patient-trial matching, TrialMatchAI processes both struc-
+tured and unstructured data from diverse sources, converting this
+heterogeneous information into a standardized format optimized for
+efﬁcient retrieval and accurate ranking, ensuring compatibility across
+varied clinical data types. At the end of this preprocessing pipeline, both
+patient records and clinical trial eligibility criteria are converted into
+dense embeddings, ensuring semantic compatibility for downstream
+retrieval and ranking. TrialMatchAI assumes patient data is provided in
+the Phenopackets exchange format
+34, a standardized schema that
+facilitates semantic interoperability and consistent data representation.
+Users are expected to convert data from their native formats (e.g.,
+FHIR
+34,39 or OMOP62) into Phenopackets to enable compatibility with the
+system. However, direct harmonization between TrialMatchAI and EHR
+systems is an envisioned future development. See Supplementary
+Methods section 7 for additional details on Phenopackets and a sample
+Phenopackets template (in JSON format).
+Before invoking the LLM-based pipeline, we apply deterministic
+registryﬁlters to attributes that do not require LLM inference (e.g., age
+range, sex, and country/region/site availability). Clinical trial data
+undergoes preprocessing before downstream language processing.
+Data from ClinicalTrials.gov and CCMO is originally provided in XML
+format, from which key ﬁelds are extracted, including:
+ NCT ID, brief title, ofﬁcial title
+ Summary and detailed descriptions
+ Study start/end dates, trial locations
+ Minimum/maximum age, sex
+ Eligibility criteria (most critical for patient-trial matching)
+Fig. 6 | Distribution of primary disease categories across TREC-2021 and TREC-
+2022. Proportional representation (%) of primary diagnostic domains among
+patient topics in the TREC 2021 (n = 75) and TREC 2022 (n = 50) Clinical Trials
+tracks. The taxonomy spans ﬁfteen clinically interpretable categories; the
+Complex/Multimorbid group includes patients with multiple coexisting main
+chronic conditions (e.g., concurrent cardiovascular, metabolic, and renal disease)
+lacking a single dominant pathology. Source data are provided as a Source Dataﬁle.
+Article https://doi.org/10.1038/s41467-026-70509-w
+Nature Communications|         (2026) 17:4472 10
+
+
+--- PAGE 11 ---
+Each ﬁeld undergoes standard preprocessing, including low-
+ercasing, whitespace normalization, special character removal, and
+punctuation cleaning. Eligibility criteria require additional processing
+due to their importance in clinical trial matching. These undergo text
+splitting to extract individual inclusion and exclusion criteria, follow-
+ing a methodology adapted from the European Clinical Research
+Infrastructure Network Clinical Research Metadata Repository
+63
+(detailed in Supplementary Methods section 1).
+TrialMatchAI applies a two-step process to extract and standar-
+dize biomedical entities from both patient data and clinical trial
+records:
+1. NER extracts molecular biomarkers (genes, proteins, mutations),
+diseases, drugs, procedures, diagnostic tests, and clinical signs. It
+uses ﬁn e - t u n e dB E R T - b a s e dm o d e l s :B i o B E R T
+24, RoBERTa-large-
+PM-M3-Voc47, and GliNER48 (zero-shot NER).
+2. Entity Normalization maps extracted entities to biomedical
+vocabularies: MeSH, OMIM, ChEBI, Cell Ontology, NCBI Gene, and
+UMLS
+61,64–68.I tu s e sB i o S y n46, a BERT-based entity normalization
+framework optimized for synonym handling. Moreover, it ensures
+that correct synonyms rank among top candidates when linking,
+improving entity disambiguation.
+Additionally, for patient data, the original Phi-4 model
+44 is used for
+zero-shot data augmentation (i.e, query expansion) by generating
+rephrasings, synonyms, and keyword expansions. Notably, a ﬁne-
+tuned version of this model is primarily employed for eligibility clas-
+siﬁcation (see section “Candidate trial retrieval”). This augmentation
+enhances query versatility, enabling a broader yet precise search space
+for relevant clinical trials. Details on the prompt used for data aug-
+mentation are provided in the Supplementary Methods section 3.3.
+To enable semantic search, TrialMatchAI converts textual data
+into high-dimensional dense embeddings, facilitating similarity-based
+retrieval. For clinical trials, eligibility criteria are embedded using BGE-
+M3
+50, a biomedical transformer model optimized for medical text
+understanding. For patient records, structured and unstructured
+patient descriptions in Phenopackets format are embedded using the
+same model to ensure alignment with trial eligibility criteria. BGE-M3
+transforms clinical data into dense vector representations, enabling
+efﬁcient similarity-based retrieval. The BGE-M3 model has shown
+remarkable performance on multiple benchmarks and supports long-
+form text inputs up to 8102 tokens.
+Candidate trial retrieval
+To efﬁciently retrieve relevant clinical trials for a given patient, Trial-
+MatchAI employs a hybrid search strategy that integrates both lexical
+and semantic retrieval. This two-pronged approach ensures that trials
+are matched based on both exact textual overlap and deep semantic
+similarity, improving the system’s ability to identify the most relevant
+options even when eligibility criteria are expressed in different ways.
+The result of this stage is an initial list of k candidate clinical trials
+(k = 500 was used in our evaluations) that are passed on to the
+reranking stage.
+Clinical trial metadata and eligibility criteria are indexed using
+Elasticsearch, enabling rapid retrieval and ranking of candidate trials.
+Each trial is indexed at two levels to optimize search performance:
+1. Trial-Level Index: Includes structured ﬁelds such as NCT ID, title,
+summary, study design, locations, and overall trial status.
+2. Criterion-Level Index: Each inclusion and exclusion criterion is
+stored as an independent document, linked to the corresponding
+trial. Thisﬁne-grained indexing strategy allows for precise ranking
+based on individual eligibility conditions rather than relying solely
+on trial-wide metadata.
+To further enhance retrieval effectiveness, indexed documents
+are enriched with named entities and their synonyms, extracted and
+normalized during preprocessing. This structured representation
+ensures better alignment between patient proﬁles and trial eligibility
+requirements.
+Before executing the hybrid search, an initial ﬁltering step is
+applied to reduce computational overhead and eliminate obviously
+ineligible trials. Thisﬁltering considers:
+ Demographic factors, such as age, sex, and geographic location.
+ Trial recruitment status, excluding closed or withdrawn trials.
+ Basic eligibility requirements, such as broad inclusion criteria that
+clearly rule out certain patient populations (e.g., pediatric vs.
+adult-only trials).
+By removing non-matching trials early in the pipeline, thisﬁltering
+process improves both retrieval ef ﬁciency and ranking precision,
+ensuring that only clinically relevant trials are considered in the sub-
+sequent ranking and eligibility assessment steps.
+TrialMatchAI retrieves candidate trials using a dual-ranking
+strategy that combines BM25 lexical search and KNN-based semantic
+similarity search:
+ BM25 (Lexical Search)
+40,41: A probabilistic ranking function that
+prioritizes documents containing query terms based on their
+frequency and importance. Optimized with parameters k
+1 = 1.2,
+b = 0.75, BM25 provides strong keyword-based matching, making
+it effective for retrieving trials that explicitly mention key patient
+attributes.
+ K-Nearest Neighbor (KNN) Vector Search: A semantic retrieval
+mechanism based on dense embeddings generated by BGE-M3, a
+transformer model optimized for biomedical text. TrialMatchAI
+implements Hierarchical Navigable Small World indexing
+42,w h i c h
+allows for efﬁcient approximate nearest-neighbor search in high-
+dimensional vector space.
+These two retrieval methods operate in parallel via the Elas-
+ticsearch querying mechanism, ensuring that both textually rele-
+vant and conceptually similar trials are surfaced. By integrating
+lexical and semantic search, TrialMatchAI is able to retrieve trials
+that a purely keyword-based or embedding-based system might
+overlook.
+LLM-based re-ranking of trials and eligibility assessment
+After candidate retrieval, TrialMatchAI utilizes a two-stage process to
+reﬁne and precisely rank clinical trial recommendations:
+1. LLM-based Re-ranking: trials are prioritized based on the
+relevance of their eligibility criteria to the patient’s clinical proﬁle.
+2. Criterion-level Eligibility Assessment: a detailed, criterion-by-
+criterion analysis assesses the exact alignment between patient
+characteristics and individual trial eligibility requirements.
+This structured approach ensures that recommended clinical
+trials are not only relevant but also precisely tailored to each patient’s
+unique clinical proﬁle. Below is a detailed explanation of the two-stage
+process.
+To reﬁne candidate trials, a Gemma-2-2b model,ﬁne-tuned on an
+augmented medical natural language inference dataset (see section
+“Final ranking procedure”), assesses the relevance of individual elig-
+ibility criteria to the patient pro ﬁle. This criterion-level re-ranking,
+unlike initial trial retrieval, prioritizes trials with the most pertinent
+criteria for subsequent eligibility assessment. The process starts with a
+second-level hybrid search (BM25 + vector search) to retrieve relevant
+eligibility criteria for each patient query. These query-criterion pairs
+are then input into the Gemma-2-2b model, which determines if the
+patient query (Statement A) suf ﬁciently addresses the clinical trial
+criterion (Statement B). The model outputs a binary relevance deci-
+sion, converted into a 0 –1c o nﬁdence score, where higher values
+indicate stronger relevance.
+Article https://doi.org/10.1038/s41467-026-70509-w
+Nature Communications|         (2026) 17:4472 11
+
+
+--- PAGE 12 ---
+Trial-level relevance is computed by aggregating criterion scores
+using methods such as maximum score, mean, square-root normal-
+ization, logarithmic normalization, or a weighted combination (e.g.,
+70% sqrt-normalized sum, 30% max score), balancing trials with vary-
+ing numbers of relevant criteria. These aggregated scores are com-
+bined with the initial trial-level retrieval score to produce a ﬁnal
+ranking for eligibility assessment.
+The core module of TrialMatchAI is criterion-level eligibility
+assessment, which serves as theﬁnal step in a RAG pipeline
+33.T h eP h i - 4
+model, ﬁne-tuned on a medical CoT dataset 33,69, classiﬁes each inclu-
+sion and exclusion criterion of a given clinical trial based on the
+retrieved relevant information and provided patient data within its
+context window. For inclusion criteria, the possible classiﬁcations are
+“Met”, “Not Met”, “Unclear”,a n d “Irrelevant”, while for exclusion cri-
+teria, the model assigns one of“Violated”, “Not Violated”, “Unclear”,o r
+“Irrelevant”. Crucially, each classi ﬁcation must be accompanied by a
+detailed justiﬁcation, relying exclusively on the explicitly provided
+patient information and the retrieved context from the RAG pipeline.
+The model’s ﬁnal output is structured as a JSON object, where each
+criterion is represented as a nested ﬁeld containing its original text,
+assigned classiﬁcation, and the model’sj u s t iﬁcation, with references to
+the retrieved knowledge that supported its decision. The complete
+prompt used for instructing the Phi-4 model is provided in Supple-
+mentary Methods Section 3.3.
+Final ranking procedure
+The ﬁnal ranking stage in TrialMatchAI assigns a composite score to
+each clinical trial based on the alignment between the trial’s eligibility
+criteria and the patient’s information. The scoring mechanism prior-
+itizes trials with more satis ﬁed inclusion criteria and fewer violated
+exclusion criteria while treating ambiguous cases neutrally. Criteria
+classiﬁed as “Unclear” or “Irrelevant” are excluded from the score
+computation to ensure strict adherence to the available patient data.
+The inclusion and exclusion scores are computed as follows:
+S
+inc =
+PN
+i =1 wi
+N , Sexc =
+PM
+j =1 wj
+M
+ð1Þ
+where N and M are the total valid inclusion and exclusion criteria,
+respectively, and wi wj represent weighted contributions based on
+classiﬁcation (positive for “Met”/“Not Violated ”,n e g a t i v ef o r“Not
+Met”/“Violated”).
+The ﬁnal composite score for ranking is given by:
+S = ðSinc + SexcÞ
+2
+ð2Þ
+where higher scores indicate better trial relevance. The trials are then
+sorted in descending order based on S.
+Fine-tuning of LLMs for different tasks
+TrialMatchAI’s core modules utilize multipleﬁne-tuned LLMs primarily
+for biomedical entity recognition, relevance-based re-ranking, and
+eligibility criteria evaluation.
+For NER, BioBERT and RoBERTa-large-PM-M3-Voc wereﬁne-tuned
+to identify a wide range of biomedical entities using datasets such as
+BC2GM
+70, BC4CHEMD 71, MACCROBAT 2018 and 2020 72,J N L P B A73,
+BC5CDR74, tmVar75, and NCBI-disease 76.T h e ﬁne-tuning process was
+designed to support a multi-task NER framework, similar to Biomedical
+Entity Recognition and Normalization 2 (BERN2)
+45.M u l t i - t a s kN E R
+models enable the simultaneous recognition of multiple entity types in
+a single inference pass, signiﬁcantly improving efﬁciency by reducing
+both computational overhead and memory consumption compared to
+single-task NER models, which require separate models for each entity
+type. Comprehensive evaluation results from ﬁne-tuning on multiple
+benchmark datasets are provided in the Supplementary Methods
+section 4.
+A 4-bit quantized Gemma-2-2B model
+43 was ﬁne-tuned for trial re-
+ranking using Quantized Low-Rank Adaptation (QLoRA)77.I n s t r u c t i o n
+tuning, aimed at enhancing the model ’s ability to interpret task-
+speciﬁc instructions, was performed using an augmented MedNLI
+dataset78. This dataset combined original MedNLI examples with
+approximately 30,000 synthetic instances generated by GPT-4o-mini.
+Synthetic data was created by paraphrasing and expanding randomly
+sampled clinical trial eligibility criteria, then generating related and
+unrelated patient descriptions to ensure training diversity.
+QLoRA ﬁne-tuning parameters were set as follows: rank = 16,
+α = 32, warmup ratio = 0.1, learning rate = 2 × 10
+−4 (with scheduler), and
+1 training epoch, adhering to established best practices 79. In QLoRA,
+rank (r) determines adaptation capacity, and α scales LoRA updates.
+Given that relevance detection is a binary classi ﬁcation task, a mod-
+erate rank r = 16 was chosen to balance performance and computa-
+tional efﬁciency, as higher ranks provide diminishing returns for this
+task’s complexity. The ﬁne-tuned Gemma-2-2b model achieves the
+following evaluation results on the MedNLI test set: precision =
+0.8804, recall = 0.8594, F1-score = 0.8672.
+QLoRA was also used toﬁne-tune the Phi-4 model44 with a medical
+CoT training dataset for criterion-level eligibility assessment, incor-
+porating instruction-input-output triplets. This dataset is designed
+to enhance an LLM’s ability to engage in multi-step reasoning, allowing
+it to consider multiple reasoning paths before reaching a ﬁnal
+decision
+69.
+Originally developed for complex Medical Question Answering,
+the dataset contains over 25,000 English-language examples aimed at
+improving LLMs’ medical reasoning capabilities. However, in this task,
+the focus is on criterion-level patient eligibility assessment, where the
+model evaluates each eligibility criterion individually rather than
+answering general medical questions. The objective was to equip Phi-4
+with CoT reasoning rather than simply expanding its medical knowl-
+edge base. The QLoRA ﬁne-tuning hyper-parameters for this task are:
+rank = 32, α = 64, warm-up ratio = 0.1, learning rate (with a
+scheduler) = 2 × 10
+−4, and training epochs = 1. The higher rank (32) and
+alpha (64) were chosen for this task to accommodate the greater
+complexity of CoT reasoning, as multi-step logical inference requires a
+more expressive adaptation capacity than binary relevance classiﬁca-
+tion. The ﬁne-tuned Phi-4 model achieves the following evaluation
+results on the test set: precision = 0.8678, recall = 0.8805, F1-
+score = 0.8741.
+Statistics and reproducibility
+No statistical method was used to predetermine sample size. Sample
+sizes were determined by the availability of benchmark datasets
+(TREC2021n = 75 topics; TREC2022n = 50 topics), synthetic evaluation
+cohorts (“Ideal Candidates”, n = 100), and the restricted-access real-
+world cohort derived from WIDE (n =5 2 ) .
+No data were excluded from the analyses except where explicitly
+required by the study design (e.g., selection of the WIDE sub-cohort
+based on evaluability of trial orientation with the available ﬁelds).
+Ranking and retrieval metrics were computed per patient/topic and
+summarized using medians (boxplots) and/or means ± s.d., as indi-
+cated. For the ablation study, statistical differences versus the full
+conﬁguration were assessed using paired comparisons across patients,
+with false discovery rate (FDR) adjustment for multiple testing; sig-
+niﬁcance was deﬁned at p <0 . 0 5( F i g .5).
+The experiments were not randomized. The investigators were
+not blinded to allocation during experiments and outcome
+assessment.
+Reproducibility is supported through public release of the source
+code, con ﬁgurations, prompts, and evaluation outputs ( “Data and
+Code Availability”).
+Article https://doi.org/10.1038/s41467-026-70509-w
+Nature Communications|         (2026) 17:4472 12
+
+
+--- PAGE 13 ---
+Reporting summary
+Further information on research design is available in the Nature
+Portfolio Reporting Summary linked to this article.
+Data availability
+The data generated in this study have been deposited in the Zenodo
+repository dedicated to TrialMatchAI under accession code 15045515:
+https://zenodo.org/records/15045515. These include the ﬁne-tuned
+models (low rank adapter format), the “Ideal Candidates” synthetic
+patient dataset and matching results, the expert-examined patient-
+criterion pairs, the curated and parsed clinical trial database, the
+results on the TREC benchmarks, and the dictionaries used for entity
+normalization. Source data are provided as a Source File with this
+paper. The synthetic datasets used in this study for the TREC 2021 and
+2022 Clinical Trials tracks are available at https://www.trec-cds.org/
+2021.htmland http://www.trec-cds.org/2022.html. The lists of publicly
+accessible clinical trial identi ﬁers used in the evaluation (Clinical-
+Trials.gov and CCMO) are provided in the Source Data ﬁle. The WIDE
+study data from the Netherlands Cancer Institute (NKI) are available
+under restricted access because they contain patient-level clinical
+information subject to privacy and institutional governance require-
+ments. Access can be obtained by submitting a request through the
+Ofﬁce Manager Knowledge Transfer & Contracting (KT&C) at NKI and
+completing the required data transfer/use agreements; requests are
+reviewed on a case-by-case basis. The expected response timeframe is
+approximately 3–6 months, and access is typically granted for one year
+(extensions may be requested). Source data are provided with
+this paper.
+Code availability
+The TrialMatchAI source code is available under the MIT Licence on
+GitHub at https://github.com/cbib/TrialMatchAI. A citable archived
+release is available on Zenodo
+80.
+References
+1. Garraway, L. A., Verweij, J. & Ballman, K. V. Precision oncology: an
+overview. J. Clin. Oncol. 31, 1803–1805 (2013).
+2. Dienstmann, R., Jang, I. S., Bot, B., Friend, S. & Guinney, J. Database
+of genomic biomarkers for cancer drugs and clinical targetability in
+solid tumors. Cancer Discov. 5, 118–123 (2015).
+3. Briel, M. et al. A systematic review of discontinued trials suggested
+that most reasons for recruitment failure were preventable.J. Clin.
+Epidemiol.80,8 –15 (2016).
+4. Fogel, D. B. Factors associated with clinical trials that fail and
+opportunities for improving the likelihood of success: a review.
+Contemp. Clin. Trials Commun.11,1 5 6–164 (2018).
+5. Luchini, C., Lawlor, R. T., Milella, M. & Scarpa, A. Molecular tumor
+boards in clinical practice.Trends Cancer 6,7 3 8–744 (2020).
+6 . M a l o n e ,E .R . ,O l i v a ,M . ,S a b a t i n i ,P .J .B . ,S t o c k l e y ,T .L .&S i u ,L .L .
+Molecular proﬁling for precision cancer therapies.Genome Med.
+12,8( 2 0 2 0 ) .
+7. Penberthy, L. T., Dahman, B. A., Petkov, V. I. & DeShazo, J. P. Effort
+required in eligibility screening for clinical trials.J. Oncol. Pract. 8,
+365–370 (2012).
+8. Meystre, S. M. et al. Piloting an automated clinical trial eligibility
+surveillance and provider alert system based on artiﬁcial intelli-
+gence and standard data models. BMC Med. Res. Methodol. 23,
+88 (2023).
+9 . N i ,Y .e ta l .I n c r e a s i n gt h ee fﬁciency of trial-patient matching:
+automated clinical trial eligibility pre-screening for pediatric
+oncology patients.BMC Med. Inform. Decis. Mak. 15,2 8( 2 0 1 5 ) .
+1 0 . H a s s a n z a d e h ,H . ,K a r i m i ,S .&N g u y e n ,A .M a t c h i n gp a t i e n t st o
+clinical trials using semantically enriched document representa-
+tion. J. Biomed. Inform. 105, 103406 (2020).
+11. Weng, C. et al. An integrated model for patient care and clinical
+trials (IMPACT) to support clinicalresearch visit scheduling work-
+ﬂow for future learning health systems.J. Biomed. Inform. 46,
+642–652 (2013).
+12. Jin, Q. et al. Matching patients to clinical trials with large language
+models. Nat. Commun. 15, 9074 (2024).
+1 3 . G a o ,J . ,X i a o ,C . ,G l a s s ,L .M .&S u n ,J .C O M P O S E :c r o s s - m o d a l
+pseudo-Siamese network for patient trial matching. InProceedings
+of the 26th ACM SIGKDD International Conference on Knowledge
+Discovery & Data Mining,8 0 3–812 (ACM, 2020).
+14. Thadani, S. R., Weng, C., Bigger, J. T., Ennever, J. F. & Wajngurt, D.
+Electronic screening improves efﬁciency in clinical trial recruit-
+ment.
+J .A m .M e d .I n f o r m .A s s o c .16,8 6 9–873 (2009).
+15. Zhang, X., Xiao, C., Glass, L. M. & Sun, J. DeepEnroll: patient-trial
+matching with deep embedding and entailment prediction. In
+Proceedings of The Web Conference 2020,1 0 2 9–1037 (Association
+for Computing Machinery, 2020).
+16. Weng, C. et al. EliXR: an approach to eligibility criteria extraction
+and representation.J. Am. Med. Inform. Assoc. 18, i116–i124 (2011).
+17. Yuan, C. et al. Criteria2Query: a natural language interface to clin-
+ical databases for cohort deﬁnition. J. Am. Med. Inform. Assoc. 26,
+294–305 (2019).
+1 8 . S h i ,J . ,G r a v e s ,K .&H u r d l e ,J .F .Ag e n e r i cr u l e - b a s e ds y s t e mf o r
+clinical trial patient selection. Preprint athttps://doi.org/10.48550/
+arXiv.1907.06860(2019).
+19. O ’Regan, P. et al. Digital ECMT cancer trial matching tool: an open
+source research application to support oncologists in the identiﬁ-
+cation of precision medicine clinical trials.JCO Clin. Cancer Inform.
+7, e2200137 (2023).
+20. Alzubaidi, L. et al. Review of deep learning: concepts, CNN archi-
+tectures, challenges, applications, future directions.J. Big Data 8,
+53 (2021).
+21. Klein, H. et al. MatchMiner: an open-source platform for cancer
+precision medicine.Npj Precis. Oncol. 6, 69 (2022).
+22. Rybinski, M., Kusa, W., Karimi, S. & Hanbury, A. Learning to match
+patients to clinical trials using large language models. J. Biomed.
+Inform. 159,1 0 4 7 3 4( 2 0 2 4 ) .
+23. Vaswani, A. et al. Attention is all you need. Preprint at https://doi.
+org/10.48550/arXiv.1706.03762(2023).
+24. Lee, J. et al. BioBERT: a pre-trained biomedical language repre-
+sentation model for biomedical text mining.Bioinformatics36,
+1234–1240 (2020).
+25. Devlin, J., Chang, M.-W., Lee, K. & Toutanova, K. BERT: pre-training
+of deep bidirectional transformers for language understanding.
+Preprint at https://doi.org/10.48550/arXiv.1810.04805(2019).
+26. Brown, T. et al. Language models are few-shot learners.Adv. Neural
+Inf. Process. Syst. 33,1 8 7 7–1901 (2020).
+27. Meng, X. et al. The application of large language models in medi-
+cine: a scoping review. iScience 27,1 0 9 7 1 3( 2 0 2 4 ) .
+28. Kaskovich, S. et al. Automated matching of patients to clinical trials:
+a patient-centric natural language processing approach for pedia-
+tric leukemia. JCO Clin. Cancer Inform. 7, e2300009 (2023).
+2 9 . G u e g u e n ,L .e ta l .Ap r o s p e c t i v ep r a g m a t i ce v a l u a t i o no fa u t o m a t i c
+trial matching tools in a molecular tumor board.Npj Precis. Oncol.
+9
+, 28 (2025).
+30. de Kok, J. W. T. M. et al. A guide to sharing open healthcare data
+under the General Data Protection Regulation.Sci. Data 10,
+404 (2023).
+31. Li, X. et al. LLM-Match: an open- sourced patient matching model
+based on large language models and retrieval-augmented gen-
+eration. Preprint at https://doi.org/10.48550/arXiv.2503.
+13281 (2025).
+32. Lin, J., Xu, H., Wang, Z., Wang, S. & Sun, J. Panacea: a foundation
+model for clinical trial search, summarization, design, and
+Article https://doi.org/10.1038/s41467-026-70509-w
+Nature Communications|         (2026) 17:4472 13
+
+
+--- PAGE 14 ---
+recruitment. Preprint athttps://doi.org/10.48550/arXiv.2407.
+11007 (2024).
+33. Lewis, P. et al. Retrieval-aug mented generation for knowledge-
+intensive NLP tasks. Preprint athttps://doi.org/10.48550/arXiv.
+2005.11401(2021).
+34. Jacobsen, J. O. B. et al. The GA4GH Phenopacket schema deﬁnes a
+computable representation of clinical data.Nat. Biotechnol.40,
+817–820 (2022).
+35. Roberts, K., Demner-Fushman, D., Voorhees, E. M., Bedrick, S. &
+Hersh, W. R. Overview of the TREC 2021 Clinical Trials Track. InProc.
+30th Text REtrieval Conference(TREC, 2021).
+36. Roberts, K., Demner-Fushman, D., Voorhees, E. M., Bedrick, S. &
+Hersh, W. R. Overview of the TREC 2022 Clinical Trials Track. In
+Proc. 31sr Text REtrieval Conference(TREC, 2022).
+37. Samsom, K. G. et al. Study protocol: whole genome sequencing
+implementation in standard diagnostics for every cancer patient
+(WIDE). BMC Med. Genomics 13,1 6 9( 2 0 2 0 ) .
+38. Wei, J. et al. Chain-of-thought prompting elicits reasoning in large
+language models.Adv. Neural Inf. Process. Syst. 35,2 4 8 2 4–24837
+(2022).
+39. Ayaz, M., Pasha, M. F., Alzahrani, M. Y., Budiarto, R. & Stiawan, D. The
+fast health interoperability resources (FHIR) standard: systematic
+literature review of implementations, applications, challenges and
+opportunities.JMIR Med. Inform. 9, e21929 (2021).
+40. Robertson, S. E., Walker, S., Jones, S., Hancock-Beaulieu, M. M. &
+Gatford, M. Okapi at TREC-3. In Proc. Third Text REtrieval Con-
+ference (TREC-3), NIST Spec. Publ. 500-225, 109–126 (1995).
+41. Robertson, S. & Zaragoza, H. The probabilistic relevance frame-
+work: BM25 and beyond. Found. Trends Inf. Retr. 3,
+333–389 (2009).
+42. Malkov, Y. A. & Yashunin, D. A. Ef ﬁcient and robust approximate
+nearest neighbor search using hierarchical navigable small world
+graphs. IEEE Trans. Pattern Anal. Mach. Intell.42,8 2 4–836
+(2020).
+43. Team, G. et al. Gemma 2: improving open language models at a
+practical size. Preprint athttps://doi.org/10.48550/arXiv.2408.
+00118 (2024).
+44. Abdin, M. et al. Phi-4 technical report. Preprint athttps://doi.org/10.
+48550/arXiv.2412.08905(2024).
+45. Sung, M. et al. BERN2: an advanced neural biomedical named entity
+recognition and normalization tool.Bioinformatics38,
+4837–4839 (2022).
+46. Sung, M., Jeon, H., Lee, J. & Kang, J. Biomedical entity representa-
+tions with synonym marginalization. InProceedings of the 58th
+Annual Meeting of the Association for Computational Linguistics
+(eds Jurafsky, D. et al.) 3641–3650 https://doi.org/10.18653/v1/
+2020.acl-main.335(Association for Computational Linguistics,
+Online, 2020).
+47. Lewis, P., Ott, M., Du, J. & Stoyanov, V. Pretrained language models
+for biomedical and clinical tasks: understanding and extending the
+state-of-the-art. InProceedings of the 3rd Clinical Natural Language
+Processing Workshop(eds Rumshisky, A. et al.) 146–157 https://doi.
+org/10.18653/v1/2020.clinicalnlp-1.17(Association for Computa-
+tional Linguistics, Online, 2020).
+48. Zaratiana, U., Tomeh, N., Holat, P. & Charnois, T. GLiNER: generalist
+model for named entity recognition using bidirectional transformer.
+In Proc. Conf. North Am. Chapter Assoc. Comput. Linguist. Hum.
+Lang. Technol. 1,5 3 6 4–5376 (2024).
+49. Peng, H. et al. Biomedical named entity normalization via
+interaction-based synonym marginalization.J. Biomed. Inform.136,
+104238 (2022).
+50. Chen, J. et al. M3-embedding: multi -linguality, multi-functionality,
+multi-granularity text embeddings through self-knowledge dis-
+tillation. Findings of the Association for Computational Linguistics,
+2318–2335 (ACL, 2024).
+5 1 . G o r m l e y ,C .&T o n g ,Z .Elasticsearch: The Deﬁnitive Guide (O’Reilly
+Media, Inc., 2015).
+52. Durden, K. et al. Provider motivations and barriers to cancer clinical
+trial screening, referral, and operations:ﬁndings from a survey.
+Cancer 130,6 8–76 (2024).
+53. Davis, S. ICH GCP E6 has arrived: are we ready? Perspect. Clin. Res.
+16,1 7 1–172 (2025).
+54. Dexheimer, J. W. et al. A time-and-motion study of clinical trial
+eligibility screening in a pediatric emergency department.Pediatr.
+Emerg. Care 35,8 6 8–873 (2019).
+55. Yu, C. et al. A survey on agent work ﬂow - status and future. In2025
+8th International Conference on Artiﬁcial Intelligence and Big Data
+(ICAIBD) 770–781 https://doi.org/10.1109/ICAIBD64986.2025.
+11082076 (2025).
+56. Xu, X. et al. A survey on knowledge distillation of large language
+models. Preprint at https://doi.org/10.48550/arXiv.2402.
+13116 (2024).
+57. Nievas, M., Basu, A., Wang, Y. & Singh, H. Distilling large language
+models for matching patients to clinical trials.J. Am. Med. Inform.
+Assoc. 31,1 9 5 3–1963 (2024).
+5 8 . S c h a f e r ,J .B . ,F r a n k o w s k i ,D . ,H e r l o c k e r ,J .&S e n ,S .C o l l a b o r a t i v e
+Filtering Recommender Systems. InThe Adaptive Web: Methods
+and Strategies of Web Personalization
+(eds Brusilovsky, P. et al.)
+291–324 https://doi.org/10.1007/978-3-540-72079-9_9(Springer,
+Berlin, Heidelberg, 2007).
+59. Kundra, R. et al. OncoTree: a cancer classi ﬁcation system for pre-
+cision oncology.JCO Clin. Cancer Inform. 5, 221–230 (2021).
+60. Huiskens, J. et al. From registration to publication: a study on Dutch
+academic randomized controlled trials.Res. Synth. Methods 11,
+218–226 (2020).
+61. Gallifant, J. et al. Peer review of GPT-4 technical report and systems
+card. PLoS Digit. Health 3, e0000417 (2024).
+62. Biedermann, P. et al. Standardizing registry data to the OMOP
+Common Data Model: experience from three pulmonary hyper-
+tension databases.BMC Med. Res. Methodol. 21,2 3 8( 2 0 2 1 ) .
+63. Canham, S. & Ohmann, C. A metadata schema for data objects in
+clinical research.Trials 17, 557 (2016).
+64. Hamosh, A., Scott, A. F., Amberger, J., Valle, D. & McKusick, V. A.
+Online mendelian inheritance in man (OMIM).Hum. Mutat. 15,
+57–61 (2000).
+65. Degtyarenko, K. et al. ChEBI: a database and ontology for chemical
+entities of biological interest.Nucleic Acids Res. 36,
+D344–D350 (2008).
+66. Meehan, T. F. et al. Logical development of the cell ontology. BMC
+Bioinforma.12, 6 (2011).
+67. Brown, G. R. et al. Gene: a gene-c entered information resource at
+NCBI. Nucleic Acids Res. 43,D 3 6–D42 (2015).
+68. Bodenreider, O. The uni ﬁed medical language system (UMLS):
+integrating biomedical terminology.Nucleic Acids Res. 32,
+D267–D270 (2004).
+69. Chen, J. et al. Towards medical complex reasoning with LLMs
+through veriﬁable medical problems.Findings of the Association for
+Computational Linguistics, 14558–14575 (ACL, 2025).
+70. Smith, L. et al. Overview of BioCreative II gene mention recognition.
+Genome Biol. 9,S 2( 2 0 0 8 ) .
+71. Krallinger, M. et al. The CHEMDNER corpus of chemicals and drugs
+and its annotation principles.J. Cheminform. 7,S 2( 2 0 1 5 ) .
+72. Cau ﬁeld, J. H. et al. A reference set of curated biomedical data and
+metadata from clinical case reports.Sci. Data 5, 180258 (2018).
+73. Kim, J.-D., Ohta, T., Tsuruoka, Y., Tateisi, Y. & Collier, N. Introduction
+to the bio-entity recognition task at JNLPBA. In Proceedings of the
+International Joint Workshop on Natural Language Processing in
+Biomedicine and its Applications - JNLPBA’04 70 https://doi.org/10.
+3115/1567594.1567610(Association for Computational Linguistics,
+Geneva, Switzerland, 2004).
+Article https://doi.org/10.1038/s41467-026-70509-w
+Nature Communications|         (2026) 17:4472 14
+
+
+--- PAGE 15 ---
+74. Li, J. et al. BioCreative V CDR task corpus: a resource for chemical
+disease relation extraction.Database J. Biol. Databases Curation
+2016,b a w 0 6 8( 2 0 1 6 ) .
+75. Wei, C.-H. et al. tmVar 2.0: integrating genomic variant information
+from literature with dbSNP and ClinVar for precision medicine.
+Bioinforma. Oxf. Engl.34,8 0–87 (2018).
+76. Do ğan, R. I., Leaman, R. & Lu, Z. NCBI disease corpus: a resource for
+disease name recognition and concept normalization.J. Biomed.
+Inform. 47,1 –10 (2014).
+77. Dettmers, T., Pagnoni, A., Holtzman, A. & Zettlemoyer, L. QLoRA:
+efﬁcient ﬁnetuning of quantized LLMs.Adv. Neural Inf. Process.
+Syst. 36 (2023).
+78. Romanov, A. & Shivade, C. Lessons from natural language inference
+in the clinical domain. Preprint at https://doi.org/10.48550/arXiv.
+1808.06752(2018).
+79. Parthasarathy, V. B., Zafar, A., Khan, A. & Shahid, A. The ultimate
+guide to ﬁne-tuning LLMs from basics to breakthroughs: an
+exhaustive review of technologies, research, best practices,
+applied research challenges and opportunities. Preprint athttps://
+doi.org/10.48550/arXiv.2408.13296(2024).
+80. Abdallah, M., Georges, M. & Nikolski, M. TrialMatchAI: an end-to-
+end AI-powered clinical trial recommendation system to streamline
+patient-to-trial matching. cbib/TrialMatchAI.https://doi.org/10.
+5281/zenodo.18329084(2026).
+Acknowledgements
+This work was supported by the European Union under the EOSC4-
+Cancer project, funded by the European Research Executive Agency
+(REA) under the European Union’s Horizon Europe program (grant
+agreement ID:101058427; M.A., M.G., M.A.R., S.C., S.N., M.N., R.D., R.F.,
+G.M., M.B., L.M., E.H., J.G., A.G., and S.K.). The grant supported research
+costs and personnel, including M.A. This work also beneﬁted from
+access to the computing resources of the“CALI 3” cluster. This cluster is
+operated and hosted by the University of Limoges. It is part of the HPC
+network in the Nouvelle-Aquitaine Region in France, funded by the
+French government and the Region.
+Author contributions
+M.A. developed the TrialMatchAI system and performed the main
+experiments. M.A. and M.G. conducted the benchmarking analyses.
+M.A.R. and S.C. designed the inclusion/exclusion criteria splitting
+methodology. M.A., S.N., and M.N. performed data analysis and inter-
+pretation. M.A., M.N., R.D., R.F., and G.M. contributed to the analysis and
+interpretation of the real patient’s cohort data, with M.B. and L.M. sup-
+porting curation and clinical context. J.G. assessed the clinical
+plausibility of the generated eligibility rationales. A.G. and S.K. con-
+tributed to system design choices andimplementation discussions. E.H.
+contributed to scientiﬁc discussion and project oversight. M.N. super-
+vised and directed the project. M.A. and M.N. wrote the manuscript. All
+authors reviewed and approved theﬁnal manuscript.
+Competing interests
+The authors declare no competing interests.
+Additional information
+Supplementary informationThe online version contains
+supplementary material available at
+https://doi.org/10.1038/s41467-026-70509-w.
+Correspondenceand requests for materials should be addressed to
+Majd Abdallah or Macha Nikolski.
+Peer review informationNature Communicationsthanks Kirk Roberts,
+and the other, anonymous, reviewer(s)for their contribution to the peer
+review of this work. A peer review ﬁle is available.
+Reprints and permissions informationis available at
+http://www.nature.com/reprints
+Publisher’s note Springer Nature remains neutral with regard to jur-
+isdictional claims in published maps and institutional afﬁliations.
+Open Access This article is licensed under a Creative Commons
+Attribution-NonCommercial-NoDerivatives 4.0 International License,
+which permits any non-commercial use, sharing, distribution and
+reproduction in any medium or format, as long as you give appropriate
+credit to the original author(s) and the source, provide a link to the
+Creative Commons licence, and indicate if you modiﬁed the licensed
+material. You do not have permission under this licence to share adapted
+material derived from this article or parts of it. The images or other third
+party material in this article are included in the article’s Creative
+Commons licence, unless indicatedotherwise in a credit line to the
+material. If material is not included in the article’s Creative Commons
+licence and your intended use is not permitted by statutory regulation or
+exceeds the permitted use, you will need to obtain permission directly
+from the copyright holder. To view a copy of this licence, visit http://
+creativecommons.org/licenses/by-nc-nd/4.0/.
+© The Author(s) 2026
+1University of Bordeaux, CNRS, IBGC UMR 5095, Bordeaux, France.2University of Bordeaux, Bordeaux Bioinformatics Center, Bordeaux, France.3Department
+of Tumor Biology, Institute of Cancer Research, The Norwegian Radium Hospital, Oslo University Hospital, Oslo, Norway.4Centre for Cancer Cell Repro-
+gramming, Institute of Clinical Medicine, Faculty of Medicine, University of Oslo, Oslo, Norway.5Department of Informatics, University of Oslo, Oslo, Norway.
+6Department of Pathology, The Netherlands Cancer Institute, Amsterdam, The Netherlands.7European Clinical Research Infrastructure Network (ECRIN),
+Boulevard Saint Jacques 30, Paris, France.8Oncology Data Science (ODysSey) Group, Vall d’Hebron Institute of Oncology (VHIO), Barcelona, Spain.9Uni-
+versity of Vic - Central University of Catalonia, Barcelona, Spain. e-mail: abdallahmajd7@gmail.com; macha.nikolski@u-bordeaux.fr
+Article https://doi.org/10.1038/s41467-026-70509-w
+Nature Communications|         (2026) 17:4472 15

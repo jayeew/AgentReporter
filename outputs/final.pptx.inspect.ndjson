@@ -1,0 +1,76 @@
+{"kind":"deck","id":"pr/u2h8b5","name":"Deck"}
+{"kind":"layout","layoutId":"/ppt/slideMasters/slideMaster1.xml","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout1.xml","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/2x4nap4r","slide":1,"title":"Slide 1","textShapes":0}
+{"kind":"image","id":"im/mhk3q5o7","slide":1,"name":"图片 1","bbox":[0.34,0,1279.32,720]}
+{"kind":"notes","id":"nt/2x4nap4r","slide":1,"text":"各位老师好，我今天汇报的题目是《智能体在肿瘤学中的应用现状与未来方向》。\n\n\n这次汇报我不准备泛泛介绍 ChatGPT，也不会讨论 AI 替代医生。我的重点是一个更具体、也更贴近肿瘤学工作流程的问题：当一个病例同时涉及病历、影像、病理、分子检测、指南、论文和临床试验时，智能体能不能帮助我们把这些分散证据组织成更清晰、可追踪、可复核的工作流。"}
+{"kind":"slide","id":"sl/pg3ex0nu","slide":2,"title":"Slide 2","textShapes":0}
+{"kind":"image","id":"im/bi9s36hc","slide":2,"name":"图片 1","bbox":[0.34,0,1279.32,720]}
+{"kind":"notes","id":"nt/pg3ex0nu","slide":2,"text":"肿瘤学的复杂性，很多时候不在于某一个问题本身有多难，而在于证据来源非常分散。\n\n\n一个病例进入讨论时，我们往往要同时看既往治疗、影像进展、病理类型、NGS 或 IHC 结果、指南推荐、最新论文以及临床试验。也就是说，医生面对的不是一个孤立答案，而是一条需要不断核对的证据链。\n\n\n所以在这个场景下，Agent 的价值不是替医生做决定，而是把这些分散信息整理起来，让医生和 MDT 更快看到：已有依据是什么、还缺什么信息、哪些结论需要进一步复核。"}
+{"kind":"slide","id":"sl/s72x4nap","slide":3,"title":"Slide 3","textShapes":0}
+{"kind":"image","id":"im/epkzupwb","slide":3,"name":"图片 1","bbox":[0.34,0,1279.32,720]}
+{"kind":"notes","id":"nt/s72x4nap","slide":3,"text":"这里先做一个概念区分。\n\n\nLLM 本身主要负责生成文本，Chatbot 是把这种生成能力包装成对话界面。而 Agent 更进一步，它不是只回答一句话，而是把模型放进一个流程里：先拆解任务，再检索资料，必要时调用数据库或工具，最后按固定格式输出结果。\n\n\n因此在医学场景里，我更倾向于把 Agent 理解为一种受约束的证据整理流程，而不是一个更像医生的聊天框。"}
+{"kind":"slide","id":"sl/val87ed8","slide":4,"title":"Slide 4","textShapes":0}
+{"kind":"image","id":"im/87ed8bat","slide":4,"name":"图片 1","bbox":[0.34,0,1279.32,720]}
+{"kind":"notes","id":"nt/val87ed8","slide":4,"text":"医学场景里最重要的不是模型说得是否流畅，而是它能不能把回答绑定到可靠来源。\n\n\n一个相对安全的医学 Agent，应该先检索证据，再做归纳；先给出引用，再解释意义；最后把不确定性和待复核项交给医生。这样设计并不是说可以完全消灭风险，而是让风险能够被看见、被追踪、被复核。\n\n\n所以后面所有应用场景，我都会围绕这条底线来讲：先证据，后生成；先引用，后解释；最终由医生复核。"}
+{"kind":"slide","id":"sl/mlkjm1cf","slide":5,"title":"Slide 5","textShapes":0}
+{"kind":"image","id":"im/al87ed8b","slide":5,"name":"图片 1","bbox":[0.34,0,1279.32,720]}
+{"kind":"notes","id":"nt/mlkjm1cf","slide":5,"text":"基于这个逻辑，我们可以把肿瘤学 Agent 的应用方向放在一张图里看。\n\n\n这张图没有直接比较不同论文里的准确率，因为这些研究的任务、样本和评价指标并不相同，简单横向比较容易造成误解。这里我更想强调两个维度：一是临床风险，二是流程是否容易验证和复核。\n\n\n从这个角度看，指南检索和临床试验预筛相对更适合先讲，因为输出更容易追踪和复核。分子报告解释和 MDT 会前准备价值很高，但边界必须非常清楚。多模态肿瘤学则代表未来方向，但并不是本次演示的重点。"}
+{"kind":"slide","id":"sl/58z25kb6","slide":6,"title":"Slide 6","textShapes":0}
+{"kind":"image","id":"im/czed8v6p","slide":6,"name":"图片 1","bbox":[0.34,0,1279.32,720]}
+{"kind":"notes","id":"nt/58z25kb6","slide":6,"text":"接下来我先把文献调研压缩成三点启示。\n\n\n第一，裸 LLM 直接进入临床决策还不稳。系统综述和精准肿瘤学研究都提示，模型回答可以有帮助，但一致性、可靠性和可复核性还不够。\n\n\n第二，加入检索、工具调用和引用约束之后，回答会更容易被核验。也就是说，关键不只是模型本身多强，而是它有没有被放进一个证据流程里。\n\n\n第三，最接近落地的方向不是让 AI 直接诊疗，而是把任务拆小，例如证据摘要、试验预筛和 MDT 会前准备。综合现有证据，更适合讨论的不是“AI 替代诊疗”，而是“AI 如何嵌入可复核、可追踪的肿瘤学工作流”。"}
+{"kind":"slide","id":"sl/0z61032l","slide":7,"title":"Slide 7","textShapes":0}
+{"kind":"image","id":"im/32lszqtc","slide":7,"name":"图片 1","bbox":[0.34,0,1279.32,720]}
+{"kind":"notes","id":"nt/0z61032l","slide":7,"text":"第一个场景是指南与证据检索。\n\n\n这个场景的工作流比较清楚：先把临床问题结构化，再从指南、PubMed、药品标签和知识库中检索证据，最后输出一个带引用的 Evidence Brief。\n\n\nAlmanac 的研究中，大约 91% 的临床回答引用被评估为正确可信。这个数字说明，RAG 的价值不只是让回答更长，而是让回答更容易追踪来源。\n\n\n当然，RAG 不等于事实保证。真正决定输出质量的，仍然是检索库质量、更新时间、证据适用人群，以及最后的医生复核。"}
+{"kind":"slide","id":"sl/fu18jqh0","slide":8,"title":"Slide 8","textShapes":0}
+{"kind":"image","id":"im/czed8v6p","slide":8,"name":"图片 1","bbox":[0.34,0,1279.32,720]}
+{"kind":"notes","id":"nt/fu18jqh0","slide":8,"text":"第二个场景是临床试验匹配。\n\n\n这个方向很适合用 Agent，因为它本来就是一个可以拆解的流程：先根据患者特征检索候选试验，再对入组和排除标准逐条判断，最后排序并解释为什么可能匹配，或者为什么需要排除。\n\n\nTrialGPT 的研究显示，用不到 6% 的候选试验就能召回超过 90% 的相关试验，这意味着它可以先帮助缩小搜索范围；入排标准判断准确率约 87.3%，说明它可以辅助逐条解释患者是否符合入组或排除标准；用户研究中筛选时间减少约 42.6%，提示它有减轻人工预筛负担的潜力。类似地，TrialMatchAI 在真实肿瘤患者数据中，前 20 个候选试验覆盖约 92% 患者，也支持“候选试验预筛”这个方向的可行性。\n\n\n所以这里的定位不是替研究者决定患者能否入组，而是做临床试验预筛和解释。"}
+{"kind":"slide","id":"sl/qh0fepkz","slide":9,"title":"Slide 9","textShapes":0}
+{"kind":"image","id":"im/e1w7mp0b","slide":9,"name":"图片 1","bbox":[0.34,0,1279.32,720]}
+{"kind":"notes","id":"nt/qh0fepkz","slide":9,"text":"第三个场景是精准医学和分子报告解释。\n\n\n这个方向非常有吸引力，但也最容易被误讲成“AI 根据突变直接推荐用药”。Benary 等人的研究给了我们一个很重要的提醒：裸 LLM 可以生成很多治疗选项，但与专家方案的一致性较低，单个模型的 F1 只有 0.04 到 0.19；即使合并多个模型，F1 也只有约 0.29。\n\n\n更需要注意的是，研究中有一个模型生成了 85 个 NCT 编号，其中 27 个并不存在。这说明在精准医学场景里，引用核验不是锦上添花，而是底线。\n\n\n因此这个场景更合理的定位，是帮助医生整理变异意义、证据等级、适用条件、试验线索和不确定性，而不是自动形成治疗处方。"}
+{"kind":"slide","id":"sl/29gr2p8n","slide":10,"title":"Slide 10","textShapes":0}
+{"kind":"image","id":"im/36hcrmhk","slide":10,"name":"图片 1","bbox":[0.34,0,1279.32,720]}
+{"kind":"notes","id":"nt/29gr2p8n","slide":10,"text":"第四个场景是 MDT 会前证据整合。\n\n\n这里我建议用非常谨慎的表达：不是“AI 帮 MDT 做决策”，而是“AI 把 MDT 会前材料整理好”。\n\n\n在 RCC MDT pilot 研究中，AI 与 MDT 决策的一致率约为 62.1%。这个结果提示它有辅助参照价值，但也说明它距离替代 MDT 还很远。另一项 Nature Cancer 的工具增强 Agent 研究也提示，检索和工具调用可以提升复杂病例分析表现，不过这部分我只作为背景补充，不放在主画面里。\n\n\n把这两类证据放在一起，更稳妥的转译是：Agent 用于准备病例摘要、缺失信息、证据依据、试验线索和 MDT 讨论清单。最终判断仍然由 MDT 完成。"}
+{"kind":"slide","id":"sl/re1w7mp0","slide":11,"title":"Slide 11","textShapes":0}
+{"kind":"image","id":"im/szqtcj6t","slide":11,"name":"图片 1","bbox":[0.34,0,1279.32,720]}
+{"kind":"notes","id":"nt/re1w7mp0","slide":11,"text":"第五个场景是多模态肿瘤学。\n\n\n这是一个更偏未来方向的场景。Nature Cancer 的研究展示了一个重要趋势：Agent 不只是读文本，还可以调用影像、病理、基因组和检索工具，把不同模态的信息组织到同一个分析流程里。\n\n\n在这项研究中，工具选择准确率约为 87.5%；决策准确率从单独 GPT-4 的约 30.3% 提升到约 87.2%；但指南引用准确率约为 75.5%，说明引用仍然是薄弱环节。\n\n\n所以这一页我想传达的是：多模态 Agent 很有前景，但目前更适合作为研究探索和未来方向。真实临床应用前，还需要更大样本、外部验证、跨模态冲突处理和清晰的责任边界。"}
+{"kind":"slide","id":"sl/4fu18jqh","slide":12,"title":"Slide 12","textShapes":0}
+{"kind":"image","id":"im/2t83itgf","slide":12,"name":"图片 1","bbox":[0.34,0,1279.32,720]}
+{"kind":"notes","id":"nt/4fu18jqh","slide":12,"text":"前面讲了 5 个方向，但这并不意味着现场要演示 5 个系统。\n\n\n从安全性、可解释性和汇报时间来看，我建议把演示收束到一个低风险工作流：Onco-MDT Evidence Brief。这个演示使用模拟病例，不使用真实患者数据；输出的是证据摘要、待核实问题和 MDT 讨论清单，而不是治疗医嘱。\n\n\n这样既能展示 Agent 在肿瘤学中的实际价值，也不会越过临床决策边界。"}
+{"kind":"slide","id":"sl/lwval87e","slide":13,"title":"Slide 13","textShapes":0}
+{"kind":"image","id":"im/7y1kre1w","slide":13,"name":"图片 1","bbox":[0.34,0,1279.32,720]}
+{"kind":"notes","id":"nt/lwval87e","slide":13,"text":"接下来我会切换到网站工作流演示。\n\n\n这部分我建议大家带着三个观察任务来看。第一，看它如何把一个模拟黑色素瘤病例拆成关键临床问题。第二，看它如何给出处，把指南、文献和试验线索组织成可追踪证据。第三，看它如何暴露不确定性，包括缺失信息、待核实项和 MDT 讨论清单。\n\n\n也就是说，我们不是看它能不能直接给出治疗方案，而是看它能不能把 MDT 讨论前的证据准备工作做得更清楚、更可复核。"}
+{"kind":"slide","id":"sl/25kb6xkf","slide":14,"title":"未来展望：从工具展示走向可验证的临床流程","textShapes":15}
+{"kind":"shape","id":"sh/kre1w7mp","slide":14,"bbox":[0,552,1280,168]}
+{"kind":"shape","id":"sh/dcbulwva","slide":14,"bbox":[76,566,1128,0]}
+{"kind":"textbox","id":"sh/2x4nap4r","slide":14,"text":"未来展望：从工具展示走向可验证的临床流程","textPreview":"未来展望：从工具展示走向可验证的临床流程","textChars":20,"textLines":1,"bbox":[76,576,980,30]}
+{"kind":"textbox","id":"sh/vixczed8","slide":14,"text":"下一步不是扩大自动化口号，而是把证据、复核和验证指标写进真实流程。","textPreview":"下一步不是扩大自动化口号，而是把证据、复核和验证指标写进真实流程。","textChars":33,"textLines":1,"bbox":[782,581,420,22]}
+{"kind":"shape","id":"sh/k3q5o7qp","slide":14,"bbox":[76,618,350,70]}
+{"kind":"shape","id":"sh/donyd0z6","slide":14,"bbox":[94,634,5,38]}
+{"kind":"textbox","id":"sh/29gr2p8n","slide":14,"text":"可复核证据链","textPreview":"可复核证据链","textChars":6,"textLines":1,"bbox":[112,628,292,22]}
+{"kind":"textbox","id":"sh/vu9knih4","slide":14,"text":"来源、版本、适用条件、复核记录","textPreview":"来源、版本、适用条件、复核记录","textChars":15,"textLines":1,"bbox":[112,654,296,24]}
+{"kind":"shape","id":"sh/3ylc7u54","slide":14,"bbox":[465,618,350,70]}
+{"kind":"shape","id":"sh/adsji5sn","slide":14,"bbox":[483,634,5,38]}
+{"kind":"textbox","id":"sh/h4byhgn2","slide":14,"text":"多模态协同","textPreview":"多模态协同","textChars":5,"textLines":1,"bbox":[501,628,292,22]}
+{"kind":"textbox","id":"sh/sji5snel","slide":14,"text":"指南、试验、影像、病理、分子信息联动","textPreview":"指南、试验、影像、病理、分子信息联动","textChars":18,"textLines":1,"bbox":[501,654,296,24]}
+{"kind":"shape","id":"sh/3m94fu18","slide":14,"bbox":[854,618,350,70]}
+{"kind":"shape","id":"sh/a5gbq1or","slide":14,"bbox":[872,634,5,38]}
+{"kind":"textbox","id":"sh/lszqtcj6","slide":14,"text":"真实世界验证","textPreview":"真实世界验证","textChars":6,"textLines":1,"bbox":[890,628,292,22]}
+{"kind":"textbox","id":"sh/s72x4nap","slide":14,"text":"以安全性、效率、采纳率作为评价终点","textPreview":"以安全性、效率、采纳率作为评价终点","textChars":17,"textLines":1,"bbox":[890,654,296,24]}
+{"kind":"shape","id":"sh/a1gvy90j","slide":14,"bbox":[0,552,1280,168]}
+{"kind":"shape","id":"sh/ylc7u54z","slide":14,"bbox":[76,566,1128,0]}
+{"kind":"textbox","id":"sh/r65wjudg","slide":14,"text":"未来展望：从工具展示走向可验证的临床流程","textPreview":"未来展望：从工具展示走向可验证的临床流程","textChars":20,"textLines":1,"bbox":[76,576,980,30]}
+{"kind":"shape","id":"sh/gr2p8nqx","slide":14,"bbox":[76,618,350,70]}
+{"kind":"shape","id":"sh/9cvixcze","slide":14,"bbox":[94,634,5,38]}
+{"kind":"textbox","id":"sh/yxobm58z","slide":14,"text":"可复核证据链","textPreview":"可复核证据链","textChars":6,"textLines":1,"bbox":[112,628,292,22]}
+{"kind":"textbox","id":"sh/nih4byhg","slide":14,"text":"来源、版本、适用条件、复核记录","textPreview":"来源、版本、适用条件、复核记录","textChars":15,"textLines":1,"bbox":[112,654,296,24]}
+{"kind":"shape","id":"sh/g3ex0nux","slide":14,"bbox":[465,618,350,70]}
+{"kind":"shape","id":"sh/5o7qpg3e","slide":14,"bbox":[483,634,5,38]}
+{"kind":"textbox","id":"sh/y1kre1w7","slide":14,"text":"多模态协同","textPreview":"多模态协同","textChars":5,"textLines":1,"bbox":[501,628,292,22]}
+{"kind":"textbox","id":"sh/rmhk3q5o","slide":14,"text":"指南、影像、病理、分子信息联动","textPreview":"指南、影像、病理、分子信息联动","textChars":15,"textLines":1,"bbox":[501,654,296,24]}
+{"kind":"shape","id":"sh/dsji5sne","slide":14,"bbox":[854,618,350,70]}
+{"kind":"shape","id":"sh/o7qpg3ex","slide":14,"bbox":[872,634,5,38]}
+{"kind":"textbox","id":"sh/vmtwra5g","slide":14,"text":"真实世界验证","textPreview":"真实世界验证","textChars":6,"textLines":1,"bbox":[890,628,292,22]}
+{"kind":"textbox","id":"sh/61032lsz","slide":14,"text":"安全性、效率、采纳率作为终点","textPreview":"安全性、效率、采纳率作为终点","textChars":14,"textLines":1,"bbox":[890,654,296,24]}
+{"kind":"image","id":"im/sfil0rqd","slide":14,"name":"图片 1","bbox":[0.34,0,1279.32,720]}
+{"kind":"notes","id":"nt/25kb6xkf","slide":14,"text":"最后我用三句话总结，并把未来展望放在同一页。"}

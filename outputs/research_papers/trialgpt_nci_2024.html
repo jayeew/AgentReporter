@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en" >
+<head >
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile properties -->
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+    <!-- Stylesheets -->
+    
+    <link href="/research/trialgpt/static/django_uswds/uswds/css/uswds.css" rel="stylesheet" />
+    
+  
+  
+    <link rel="stylesheet" href="/research/trialgpt/static/nwds/css/nwds.css" />
+    <link rel="stylesheet" href="/research/trialgpt/static/nwds/css/header.css" />
+    <link rel="stylesheet" href="/research/trialgpt/static/nwds/css/footer.css" />
+    <link rel="stylesheet" href="/research/trialgpt/static/nwds/css/form.css" />
+  
+
+  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+  
+
+  
+    <link rel="stylesheet" href="/research/trialgpt/static/main/css/styles.css"/>
+  
+
+
+    <title>TrialGPT - NLM/NIH</title>
+
+  
+  <!-- Favicons -->
+  <link rel="shortcut icon" type="image/ico" href="https://cdn.ncbi.nlm.nih.gov/coreutils/nwds/img/favicons/favicon.ico" />
+  <link rel="icon" type="image/png" href="https://cdn.ncbi.nlm.nih.gov/coreutils/nwds/img/favicons/favicon.png" />
+
+  <!-- 192x192, as recommended for Android
+  http://updates.html5rocks.com/2014/11/Support-for-theme-color-in-Chrome-39-for-Android
+  -->
+  <link rel="icon" type="image/png" sizes="192x192" href="https://cdn.ncbi.nlm.nih.gov/coreutils/nwds/img/favicons/favicon-192.png" />
+
+  <!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+  <link rel="apple-touch-icon-precomposed" href="https://cdn.ncbi.nlm.nih.gov/coreutils/nwds/img/favicons/favicon-57.png">
+  <!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://cdn.ncbi.nlm.nih.gov/coreutils/nwds/img/favicons/favicon-72.png">
+  <!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://cdn.ncbi.nlm.nih.gov/coreutils/nwds/img/favicons/favicon-114.png">
+  <!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://cdn.ncbi.nlm.nih.gov/coreutils/nwds/img/favicons/favicon-144.png">
+
+
+  
+    <meta name="robots" content="index, follow"/>
+    <meta name="google-site-verification" content="iCMo85IH9lnJfVT9AlenEwbwc1BAkJToy4Gy1UgOa8Y"/>
+    <meta name="description"
+      content="TrialGPT is an AI powered tool for matching patients to clinical trials">
+    <!-- Logging params: Pinger defaults -->
+
+<meta name="ncbi_app" content="cbb-research-trialgpt" />
+
+<meta name="ncbi_pdid" content="home" />
+
+<meta name="ncbi_phid" content="1D33DB9F5AC4AA05000048458ADF8557.1.m_1" />
+
+
+  
+    <meta name="ncbi_page" content="home"/>
+    <meta name="ncbi_op" content="page_view"/>
+
+    <meta name="description" content="Django project trialgpt"/>
+
+
+
+</head>
+<body >
+
+  
+  <a class="usa-skipnav" href="#main_content">Skip to main page content</a>
+
+  <!-- ========== BEGIN HEADER ========== -->
+<section class="usa-banner">
+  <div class="usa-accordion">
+    <header class="usa-banner-header">
+      <div class="usa-grid usa-banner-inner">
+        <img src="https://www.ncbi.nlm.nih.gov/coreutils/uswds/img/favicons/favicon-57.png" alt="U.S. flag" />
+        <p>An official website of the United States government</p>
+        <button class="usa-accordion-button usa-banner-button" aria-expanded="false" aria-controls="gov-banner-top">
+          <span class="usa-banner-button-text">Here's how you know</span>
+        </button>
+      </div>
+    </header>
+    <div class="usa-banner-content usa-grid usa-accordion-content" id="gov-banner-top">
+      <div class="usa-banner-guidance-gov usa-width-one-half">
+        <img class="usa-banner-icon usa-media_block-img"
+          src="https://www.ncbi.nlm.nih.gov/coreutils/uswds/img/icon-dot-gov.svg" alt="Dot gov" />
+        <div class="usa-media_block-body">
+          <p>
+            <strong>The .gov means it’s official.</strong>
+            <br />
+            Federal government websites often end in .gov or .mil. Before
+            sharing sensitive information, make sure you’re on a federal
+            government site.
+          </p>
+        </div>
+      </div>
+      <div class="usa-banner-guidance-ssl usa-width-one-half">
+        <img class="usa-banner-icon usa-media_block-img"
+          src="https://www.ncbi.nlm.nih.gov/coreutils/uswds/img/icon-https.svg" alt="Https" />
+        <div class="usa-media_block-body">
+          <p>
+            <strong>The site is secure.</strong>
+            <br />
+            The <strong>https://</strong> ensures that you are connecting to the
+            official website and that any information you provide is encrypted
+            and transmitted securely.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="usa-overlay"></div>
+<header class="ncbi-header" role="banner" data-section="Header">
+
+  <div class="usa-grid">
+    <div class="usa-width-one-whole">
+
+      <div class="ncbi-header__logo">
+        <a href="https://www.nlm.nih.gov/" class="logo" aria-label="NLM Logo" data-ga-action="click_image"
+          data-ga-label="NIH NLM Logo" target="_blank">
+          <img src="https://assets.nlm.nih.gov/uswds/img/NLM_White.png" alt="NIH NLM Logo" />
+          <!-- <img src="https://www.ncbi.nlm.nih.gov/coreutils/nwds/img/logos/AgencyLogo.svg" alt="NIH NLM Logo" /> -->
+        </a>
+      </div>
+
+      
+      <div class="ncbi-header__account">
+        <a id="account_login" href="/research/trialgpt/login/" class="usa-button header-button" style="display:none"
+          data-ga-action="open_menu" data-ga-label="account_menu">Log in</a>
+      </div>
+      
+
+      <!-- <div class="ncbi-popup-anchor">
+				<div class="ncbi-popup account-popup" id="account_popup" aria-hidden="true">
+					<div class="ncbi-popup-head">
+						<button class="ncbi-close-button" data-ga-action="close_menu" data-ga-label="account_menu"><span class="fa fa-times"></span><span class="usa-sr-only">Close</span></button>
+						<h4>Account</h4>
+					</div>
+					<div class="account-user-info">
+						Logged in as:<br/>
+						<b><span class="username" id="uname_long">username</span></b>
+					</div>
+					<div class="account-links">
+						<ul class="usa-unstyled-list">
+							<li><a id="account_myncbi" href="/myncbi/" class="set-base-url" data-ga-action="click_menu_item" data-ga-label="account_myncbi">Dashboard</a></li>
+							<li><a id="account_pubs" href="/myncbi/collections/bibliography/" class="set-base-url" data-ga-action="click_menu_item" data-ga-label="account_pubs">Publications</a></li>
+							<li><a id="account_settings" href="/account/settings/" class="set-base-url" data-ga-action="click_menu_item" data-ga-label="account_settings">Account settings</a></li>
+							<li><a id="account_logout" href="/account/signout/" class="set-base-url" data-ga-action="click_menu_item" data-ga-label="account_logout">Log out</a></li>
+						</ul>
+					</div>
+				</div>
+			</div> -->
+
+    </div>
+  </div>
+</header>
+<!-- <div role="navigation" aria-label="access keys">
+<a id="nws_header_accesskey_0" href="https://www.ncbi.nlm.nih.gov/guide/browsers/#ncbi_accesskeys" class="usa-sr-only" accesskey="0" tabindex="-1">Access keys</a>
+<a id="nws_header_accesskey_1" href="https://www.ncbi.nlm.nih.gov" class="usa-sr-only" accesskey="1" tabindex="-1">NCBI Homepage</a>
+<a id="nws_header_accesskey_2" href="/myncbi/" class="set-base-url usa-sr-only" accesskey="2" tabindex="-1">MyNCBI Homepage</a>
+<a id="nws_header_accesskey_3" href="#maincontent" class="usa-sr-only" accesskey="3" tabindex="-1">Main Content</a>
+<a id="nws_header_accesskey_4" href="#" class="usa-sr-only" accesskey="4" tabindex="-1">Main Navigation</a>
+</div> -->
+<section data-section="Alerts">
+  <div class="ncbi-alerts-placeholder"></div>
+</section>
+<!-- ========== END HEADER ========== -->
+
+  
+    <div class="nav usa-header usa-header--basic">
+      <div class="usa-nav-container nav-container">
+        <div class="usa-navbar ">
+          <button class="usa-menu-btn">Menu</button>
+        </div>
+        <nav class="usa-nav" aria-label="Primary navigation">
+          <button class="usa-nav-close"><img src="https://assets.nlm.nih.gov/uswds/img/close.svg" alt="close"></button>
+          <ul class="usa-nav-primary usa-accordion">
+            <li class="usa-nav-primary-item">
+              <a class="usa-nav-link" href="/research/trialgpt/" title="Home" aria-label="Home">
+                <span>Home</span>
+              </a>
+            </li>
+            <li class="usa-nav-primary-item">
+              <a class="usa-nav-link" href="/research/trialgpt/demo/" title="Demo" aria-label="Demo">
+                <span>Demo</span>
+              </a>
+            </li>
+            <!-- <li class="usa-nav-primary-item">
+              <a class="usa-nav-link" href="/research/trialgpt/news/" title="Press Release" aria-label="Press Release">
+                <span>Press Release</span>
+              </a>
+            </li> -->
+            <li class="usa-nav-primary-item">
+              <a class="usa-nav-link" href="/research/trialgpt/faq/" title="FAQ" aria-label="FAQ">
+                <span>FAQ</span>
+              </a>
+            </li>
+            <li class="usa-nav-primary-item">
+              <a class="usa-nav-link" href="https://github.com/ncbi-nlp/TrialGPT" title="Code & Data" aria-label="Code & Data" target="_blank">
+                <span>Code & Data</span>
+              </a>
+            </li>
+            <li class="usa-nav-primary-item">
+              <a class="usa-nav-link" href="/research/trialgpt/about/" title="About" aria-label="About">
+                <span>About</span>
+              </a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  
+
+  
+  <main id="main_content" accesskey="3">
+    
+<div class="hero">
+  <div class="stretch-container"> <img src="/research/trialgpt/static/main/img/trialgpt-home-banner.jpg" alt="NLM Library"> </div>
+  <div class="hero-text-content">
+    <h1 class="forstaffpages" style="opacity: 1;">TrialGPT</h1>
+    <h2 class="forstaffpages" style="opacity: 1;">An AI Powered Tool for Matching Patients to Clinical Trials</h2>
+  </div>
+</div>
+
+<section class="usa-section usa-section-light" id="more_on_nlm">
+  <div class="usa-grid latest-news">
+    <h2>Latest News</h2>
+    <div class="flex-container">
+      <div class="mySlides first-slide">
+        <div class="row">
+          <div class="slide-image"><img src="/research/trialgpt/static/main/img/health_science_top_25.png" alt="Regents Award"></div>
+          <div class="slide-text">
+            <h3>Our TrialGPT Paper is Ranked in the Health Science Top 25 of 2024</h3>
+            <p>Nature Communications highlights our article in their collection of the most downloaded 
+              papers in health science published in 2024.</p>
+              <a href="https://www.nature.com/collections/fabaifceda" class="blue-cta" target="_blank">Read More</a>
+          </div>
+        </div>
+      </div>
+      <div class="mySlides">
+        <div class="row">
+          <div class="slide-image"><img src="/research/trialgpt/static/main/img/ai_and_machine_learning_featured_article.jpg" alt="Regents Award"></div>
+          <div class="slide-text">
+            <h3>Our TrialGPT Paper is Highlighted by Nature Communications</h3>
+            <p>Nature Communications chose to feature our article in their dedicated Editors' 
+              Highlights of recent published research on "AI and machine learning".</p>
+              <a href="https://www.nature.com/collections/ceiajcdbeb" class="blue-cta" target="_blank">Read More</a>
+          </div>
+        </div>
+      </div>
+      <div class="mySlides">
+        <div class="row">
+          <div class="slide-image"><img src="/research/trialgpt/static/main/img/nih-trialgpt-news-release-202411-2.jpg" alt="Regents Award"></div>
+          <div class="slide-text">
+            <h3>NIH-developed AI Algorithm Matches Potential Volunteers to Clinical Trials</h3>
+            <p>Researchers from the National Institutes of Health (NIH) have developed an AI algorithm to speed up 
+              matching potential volunteers to relevant clinical research trials.</p>
+              <a href="https://www.nih.gov/news-events/news-releases/nih-developed-ai-algorithm-matches-potential-volunteers-clinical-trials" class="blue-cta" target="_blank">Read More</a>
+          </div>
+        </div>
+      </div>
+      <div class="mySlides">
+        <div class="row">
+          <div class="slide-image"><img src="/research/trialgpt/static/main/img/nlm-regents-award-2024.jpg" alt="Regents Award"></div>
+          <div class="slide-text">
+            <h3>Dr. Zhiyong Lu Received 2024 NLM Regents Award</h3>
+            <p>Dr. Zhiyong Lu was honored at the 2024 NLM Regents meeting for his leadership in developing TrialGPT.</p>
+          </div>
+        </div>
+      </div>
+      <div class="mySlides">
+        <div class="row">
+          <div class="slide-image"><img src="/research/trialgpt/static/main/img/framework_thumbnail.jpg" alt="Innovation Awards"></div>
+          <div class="slide-text">
+            <h3>TrialGPT 2.0 Selected for NIH Director's Challenge Innovation Awards</h3>
+            <p>We have developed a proof-of-concept system named TrialGPT 
+              that utilizes LLMs to efficiently match patients with suitable clinical trials.</p>
+            <a href="https://oir.nih.gov/sourcebook/awards-fellowships-grant-opportunities/directors-challenge-innovation-award-program/2024-directors-challenge-awards#2024-directors-lu" class="blue-cta" target="_blank">Read More</a>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="mySlides">
+        <div class="row">
+          <div class="slide-image"><img src="/research/trialgpt/static/main/img/aua-report.jpg" alt="AUA Report"></div>
+          <div class="slide-text">
+            <h3>TrialGPT Featured in the Cover Page of AUANews</h3>
+            <p>TrialGPT shows significant potential to efficiently and effectively match patients to clinical trials, 
+              standing at the forefront of a new era in clinical trial matching.</p>
+            <a href="https://auanews.net/issues/articles/2024/march-2024/artificial-intelligence-connecting-patients-to-clinical-trials-with-artificial-intelligence" class="blue-cta" target="_blank">Read More</a>
+          </div>
+        </div>
+      </div> -->
+    </div>
+    <div style="text-align:center">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+      <span class="dot" onclick="currentSlide(4)"></span>
+      <span class="dot" onclick="currentSlide(5)"></span>
+    </div>
+  </div>
+</section>
+
+<section class="usa-section">
+  <div class="usa-grid">
+    <div class="callout-block">
+      <div class="flex-container homepage-highlights">
+        <div class="flex-item three-up two-row">
+          <div class="home-highlights">
+            <h2>Highlights</h2>
+            <ul>
+              <li>An end-to-end framework for zero-shot patient-to-trial matching with LLM</li>
+              <li>Comprises three modules: TrialGPT-Retrieval, TrialGPT-Matching, and TrialGPT-Ranking</li>
+              <li>Achieves an accuracy of 87.3% with faithful explanations, close to the expert performance</li>
+              <li>Reduces the screening time by 42.6% in patient recruitment</li>
+            </ul>
+            <p class="text-white">
+              <a href="/research/trialgpt/about/" class="text-white">
+                <em>Learn more</em>
+              </a>
+            </p>
+          </div>
+          <div class="flex-item-img">
+            <img src="/research/trialgpt/static/main/img/trialgpt-home-highlights.png" alt="Highlights">
+          </div>
+        </div>
+          
+        <div class="flex-item two-col">
+          <div class="flex-item-video">
+            <iframe aria-labelledby="focusVideo2" 
+                    src="https://www.youtube.com/embed/Sys9Ki6t4DQ" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen="" 
+                    id="YTVideo_1" 
+                    data-gtm-yt-inspected-41="true" 
+                    data-gtm-yt-inspected-45="true" 
+                    title="TrialGPT Video"
+                    referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
+
+<section class="usa-section citation-section">
+  <div class="usa-grid">
+    <div class="citation-block">
+      <h2>Cite TrialGPT</h2>
+      <div class="publication">
+        <a href="https://www.nature.com/articles/s41467-024-53081-z" target="_blank" rel="noreferrer">
+          <div>
+            <div class="publication-journal">Nature Communications</div>
+            <div class="publication-year">2024</div>
+            <div class="publication-title">Matching Patients to Clinical Trials with Large Language Models</div>
+            <div class="publication-authors">Qiao Jin, Zifeng Wang, Charalampos S. Floudas, Fangyuan Chen, 
+              Changlin Gong, Dara Bracken-Clarke, Elisabetta Xue, Yifan Yang, Jimeng Sun, Zhiyong Lu
+            </div>
+          </div>
+        </a>
+      </div>
+      <!-- <div class="publication">
+        <a href="#" target="_blank" rel="noreferrer">
+          <div>
+            <div class="publication-journal">Nature Communications</div>
+            <div class="publication-year">2024</div>
+            <div class="publication-title">Matching Patients to Clinical Trials with Large Language Models</div>
+            <div class="publication-authors">Qiao Jin, Zifeng Wang, Charalampos S. Floudas, Fangyuan Chen, 
+              Changlin Gong, Dara Bracken-Clarke, Elisabetta Xue, Yifan Yang, Jimeng Sun, Zhiyong Lu
+            </div>
+          </div>
+        </a>
+      </div> -->
+      <!-- <div class="citation-wrapper cite-buttons">
+        <button class="cite-btn"><i class="fa-solid fa-quote-left"></i> Cite Us</button>
+      </div> -->
+    </div>
+  </div>
+</section>
+
+<section class="usa-section" id="focus_areas">
+  <div class="usa-grid">
+    <div class="homepage-focus-areas">
+      <h2>Contacts</h2>
+      <ul class="flex-container homepage-focus-areas-list">
+        <li class="list-item">
+          <a href="mailto:zhiyong.lu@nih.gov">
+            <img src="/research/trialgpt/static/main/img/luzh.png" alt="Zhiyong Lu">
+          </a>
+          <p><a href="mailto:zhiyong.lu@nih.gov">Zhiyong Lu, PhD FACMI FIAHSI</a>
+            <br>Senior Investigator<br>Division of Intramural Research, NLM, NIH</p>
+        </li> 
+        <li class="list-item">
+          <a href="mailto:yin.fang@nih.gov">
+            <img src="/research/trialgpt/static/main/img/yinfang.jpg" alt="Yin Fang">
+          </a>
+          <p><a href="mailto:yin.fang@nih.gov">Yin Fang, PhD</a>
+            <br>Postdoc Fellow<br>Division of Intramural Research, NLM, NIH</p>
+        </li>
+      </ul>
+      <!-- <p><strong>Team members: </strong>Qiao Jin (NIH), Zifeng Wang (UIUC), Charalampos S Floudas (NIH), 
+        Fangyuan Chen (UPitt), Changlin Gong (Jacobi Medical Center), Dara Bracken-Clarke (NIH), 
+        Elisabetta Xue (NIH), Jimeng Sun (UIUC), Zhiyong Lu (NIH)</p> -->
+    </div>
+  </div>
+</section>
+
+<script>
+  let slideIndex = 2;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+
+  // showSlides(slideIndex);
+  
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+  
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+  
+  function showSlides(n) {
+    let i;
+    if (n > slides.length) {slideIndex = 1}    
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";  
+    dots[slideIndex-1].className += " active";
+  }
+
+  function autoSlides() {
+    if (slideIndex > slides.length) {slideIndex = 1}
+    currentSlide(slideIndex);
+    slideIndex ++;
+  }
+
+  function auto(){
+    setInterval(autoSlides, 4000);
+  }
+  window.onload = auto;
+</script>
+
+  </main>
+  
+
+  <!-- ========== BEGIN FOOTER ========== -->
+<footer>
+  <section class="container-fluid bg-primary pt-5" style="padding-bottom: 2.0rem;">
+    <div class="usa-grid pt-5">
+      <div class="row mt-3">
+        <div class="col-lg-3 col-12">
+          <p><a class="text-white" href="https://www.nlm.nih.gov/socialmedia/index.html">Connect with NLM</a></p>
+          <ul class="social_media add-list-reset">
+            <li class="margin-right-05"><a href="https://www.facebook.com/nationallibraryofmedicine"><img class="bg-secondary" src="https://www.nlm.nih.gov/images/facebook.svg"  alt="Facebook"></a></li>
+            <li class="margin-right-05"><a title="External link: please review our privacy policy." href="https://www.linkedin.com/company/national-library-of-medicine-nlm/"><img class="bg-secondary" src="//www.nlm.nih.gov/images/linkedin.svg" alt="LinkedIn"></a></li>
+            <li class="margin-right-05"><a title="External link: please review our privacy policy." href="https://twitter.com/NLM_NIH"><img src="https://www.nlm.nih.gov/images/twitter.svg" class="bg-secondary" style="padding: 7px;" alt="Twitter"></a></li>
+            <li class="margin-right-05"><a title="External link: please review our privacy policy." href="https://www.youtube.com/user/NLMNIH"><img src="//www.nlm.nih.gov/images/youtube.svg" class="bg-secondary" alt="You Tube"></a></li>
+            <li class="margin-right-05"><a title="External link: please review our privacy policy." href="https://public.govdelivery.com/accounts/USNLMOCPL/subscriber/new?preferences=true"><img src="//www.nlm.nih.gov/images/mail.svg" class=" bg-secondary" alt="Government Delivery"></a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-12">
+          <p class="address_footer text-white">National Library of Medicine<br>
+            <a href="https://www.google.com/maps/place/8600+Rockville+Pike,+Bethesda,+MD+20894/@38.9959508,-77.101021,17z/data=!3m1!4b1!4m5!3m4!1s0x89b7c95e25765ddb:0x19156f88b27635b8!8m2!3d38.9959508!4d-77.0988323"
+              class="text-white" target="_blank" rel="noopener noreferrer">8600 Rockville Pike<br>
+              Bethesda, MD 20894</a></p>
+        </div>
+        <div class="col-lg-3 col-12 centered-lg">
+          <p><a href="https://www.nlm.nih.gov/web_policies.html" class="text-white">Web Policies</a><br>
+            <a href="https://www.nih.gov/institutes-nih/nih-office-director/office-communications-public-liaison/freedom-information-act-office"
+              class="text-white">FOIA</a><br>
+            <a href="https://www.hhs.gov/vulnerability-disclosure-policy/index.html" class="text-white" id="vdp">HHS Vulnerability Disclosure</a></p>
+        </div>
+        <div class="col-lg-3 col-12 centered-lg">
+          <p><a class="supportLink text-white" href="https://support.nlm.nih.gov/">Help</a><br>
+            <a href="https://www.nlm.nih.gov/accessibility.html" class="text-white">Accessibility</a><br>
+            <a href="https://www.nlm.nih.gov/careers/careers.html" class="text-white">Careers</a></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 centered-lg">
+          <nav class="bottom-links">
+            <ul class="mt-3">
+              <li>
+                <a class="text-white" href="//www.nlm.nih.gov/">NLM</a>
+              </li>
+              <li>
+                <a class="text-white"
+              href="https://www.nih.gov/">NIH</a>
+              </li>
+              <li>
+                <a class="text-white" href="https://www.hhs.gov/">HHS</a>
+              </li>
+              <li>
+                <a
+              class="text-white" href="https://www.usa.gov/">USA.gov</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+</footer>
+<!-- ========== END FOOTER ========== -->
+<!-- javascript to inject NWDS meta tags. Note: value of nwds_version is updated by "npm version" command -->
+ 
+<!-- <script type="text/javascript">
+  var nwds_version = "1.2.3";
+
+  var meta_nwds_ver = document.createElement('meta');
+  meta_nwds_ver.name = 'ncbi_nwds_ver';
+  meta_nwds_ver.content = nwds_version;
+  document.getElementsByTagName('head')[0].appendChild(meta_nwds_ver);
+
+  var meta_nwds = document.createElement('meta');
+  meta_nwds.name = 'ncbi_nwds';
+  meta_nwds.content = 'yes';
+  document.getElementsByTagName('head')[0].appendChild(meta_nwds);
+
+var alertsUrl = "/core/alerts/alerts.js";
+if (typeof ncbiBaseUrl !== 'undefined') {
+  alertsUrl = ncbiBaseUrl + alertsUrl;
+}
+</script> -->
+
+
+
+  
+    <!-- JavaScript -->
+    
+    <script src="/research/trialgpt/static/django_uswds/uswds/js/uswds.js"></script>
+    
+  
+  
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"
+          integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+          crossorigin="anonymous">
+    </script>
+    <script>
+        var fallbackJquery = "/research/trialgpt/static/base/js/jquery-3.5.0.min.js";
+        window.jQuery || document.write("<script src=" + fallbackJquery + ">\x3C/script>")
+    </script>
+  
+
+  
+    <script src="/research/trialgpt/static/nwds/js/nwds.js" type="text/javascript"> </script>
+    <script src="/research/trialgpt/static/nwds/js/header.js" type="text/javascript"> </script>
+    <script src="/research/trialgpt/static/nwds/js/ncbipopup.js" type="text/javascript"> </script>
+    <script src="/research/trialgpt/static/nwds/js/ncbiclearbutton.js" type="text/javascript"> </script>
+    <script src="/research/trialgpt/static/nwds/js/override-uswds.js" type="text/javascript"> </script>
+    <script src="/research/trialgpt/static/nwds/js/ncbifeedback.js" type="text/javascript"> </script>
+  
+
+
+  
+  
+  <script  type="text/javascript" src="https://www.ncbi.nlm.nih.gov/core/pinger/pinger.js"> </script>
+
+
+
+</body>
+</html>
